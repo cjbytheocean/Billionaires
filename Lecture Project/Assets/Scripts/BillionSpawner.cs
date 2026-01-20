@@ -19,7 +19,6 @@ public class BillionSpawner : MonoBehaviour
     // Using an InvokeRepeat to allow spawning to happen repeatedly. Looked up how to implement InvokeRepeating().
     void Start()
     {
-        Debug.Log("Spawner started");
         InvokeRepeating(nameof(BillionSpawn), spawnInterval, spawnInterval); 
     }
 
@@ -29,14 +28,18 @@ public class BillionSpawner : MonoBehaviour
 
     void BillionSpawn()
     {
-        Debug.Log("Spawner firing");
-        Debug.Log("Prefab is: " + billionPrefab);
-        Debug.Log("BillionSpawn() called");
+       
         CircleCollider2D billionaireCollider = GetComponent<CircleCollider2D>();
         CircleCollider2D billionCollider = billionPrefab.GetComponent<CircleCollider2D>();
 
+        Debug.Log("Billionaire collider: " + billionaireCollider); 
+        Debug.Log("Billion collider: " + billionCollider);
+
         float billionaireRadius = billionaireCollider.radius * transform.localScale.x;
         float billionRadius = billionCollider.radius * billionPrefab.transform.localScale.x;
+
+        Debug.Log("Billionaire radius: " + billionaireRadius); 
+        Debug.Log("Billion radius: " + billionRadius);
 
         Vector2 position;
 
@@ -55,6 +58,8 @@ public class BillionSpawner : MonoBehaviour
             position = (Vector2)lastSpawned.transform.position +  spawnDirection.normalized * (lastBillionRadius + billionRadius + spacing);
         }
 
+        Debug.Log("Spawn position (2D): " + position);
+
         // Creates a new billion at runtime, sets SpriteRenderer to the color of the base determined in the inspector.
         // Then, adds billion to the list of spawned billions.
         // Used Quaternion from lab, I had to research more about how they work.
@@ -62,7 +67,9 @@ public class BillionSpawner : MonoBehaviour
 
         Vector3 position3D = new Vector3(position.x, position.y, 0f);
         //Vector3 position3D = new Vector3(transform.position.x + 1f, transform.position.y, 0f);
+        Debug.Log("pre inst " + position);
         GameObject billion = Instantiate(billionPrefab, position3D, Quaternion.identity);
+        Debug.Log("post inst " + position);
         SpriteRenderer coloring = billion.GetComponent<SpriteRenderer>();
         coloring.color = billionaireColor;
         spawnedBillions.Add(billion);
