@@ -52,15 +52,12 @@ public class BillionSpawner : MonoBehaviour
             r++;
         }
 
-        int c = num;
+        // Variables for trigonometry math
 
-        // Vector2 Parameters created using a "triangular" cluster to pack closer together
-        // Horizontal spacing scaled by sqrt3/2
-
-        float x = dist + r * (diameter * 0.87f);
-        float y = (c - r * 0.5f) * diameter;
-
-        Vector2 offset = new Vector2(x, y);
+        float angle = (2f * Mathf.PI / space) * num;
+        float radius = dist + r * diameter; 
+        
+        Vector2 offset = new Vector2(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius);
       
         // Creates a new billion at runtime, sets SpriteRenderer to the color of the base determined in the inspector.
         // Then, adds billion to the list of spawned billions.
