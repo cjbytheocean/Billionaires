@@ -9,12 +9,11 @@ public class BillionSpawner : MonoBehaviour
     public GameObject billionPrefab;
     public Color billionaireColor;
     public float spawnInterval = 5f;
-    public float spacing = 0.05f;
+    public float spacing = 0.01f;
     public Vector2 spawnDirection = Vector2.right;
 
     // Stores spawned billions in a list 
     private List<GameObject> spawnedBillions = new List<GameObject>();
-
     private int i = 0;
 
 
@@ -39,12 +38,14 @@ public class BillionSpawner : MonoBehaviour
         float billionRadius = billionCollider.radius * billionPrefab.transform.localScale.x;
         float dist = billionaireRadius + billionRadius + spacing;
 
-        // Cycling through offsets to create triangular spawn pattern
+        // Cycling through offsets to create triangular spawn pattern. 
+        // Right now, this causes the billions to overlap each other after spawning 3 unique places
+        // to avoid infinite spawning for the sake of submission 1.
         
         Vector2[] ls =
         {
             new Vector2(1f, 0f),
-            new Vector2(0.5f, -0.5f),
+            new Vector2(0.75f, -0.75f),
             new Vector2(0f, -1f)
         };
 
