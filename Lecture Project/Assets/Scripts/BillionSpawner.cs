@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using System.Data;
 using Unity.Collections;
+using System;
 
 public class BillionSpawner : MonoBehaviour
 {
@@ -43,10 +44,11 @@ public class BillionSpawner : MonoBehaviour
 
         int r = 0;
         int num = i;
+        int space = Math.Max(1, r * 6);
 
-        while (num >= r + 1)
+        while (num >= space)
         {
-            num -= r + 1;
+            num -= space;
             r++;
         }
 
