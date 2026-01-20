@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using System.Data;
 using Unity.Collections;
-using System;
 
 public class BillionSpawner : MonoBehaviour
 {
@@ -44,20 +43,22 @@ public class BillionSpawner : MonoBehaviour
 
         int r = 0;
         int num = i;
-        int space = Math.Max(1, r * 6);
 
-        while (num >= space)
+        while (num >= r + 1)
         {
-            num -= space;
+            num -= r + 1;
             r++;
         }
 
-        // Variables for trigonometry math
+        int c = num;
 
-        float angle = (2f * Mathf.PI / space) * num;
-        float radius = dist + r * diameter; 
-        
-        Vector2 offset = new Vector2(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius);
+        // Vector2 Parameters created using a "triangular" cluster to pack closer together
+        // Horizontal spacing scaled by sqrt3/2
+
+        float x = dist + r * (diameter * 0.87f);
+        float y = (c - r * 0.5f) * diameter;
+
+        Vector2 offset = new Vector2(x, y);
       
         // Creates a new billion at runtime, sets SpriteRenderer to the color of the base determined in the inspector.
         // Then, adds billion to the list of spawned billions.
