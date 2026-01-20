@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System.Data;
 
 public class BillionSpawner : MonoBehaviour
 {
@@ -37,20 +38,20 @@ public class BillionSpawner : MonoBehaviour
         float billionaireRadius = billionaireCollider.radius * transform.localScale.x;
         float billionRadius = billionCollider.radius * billionPrefab.transform.localScale.x;
         float dist = billionaireRadius + billionRadius + spacing;
+        float diameter = billionRadius * 2f + spacing;
 
-        // Cycling through offsets to create spawn pattern.
-        
-        Vector2[] ls =
+     
+        int r = 0;
+        int num = i;
+
+        while (num >= r + 1)
         {
-            new Vector2(1f, 0f),
-            new Vector2(0.75f, -0.75f),
-            new Vector2(0f, -2f)
-        };
+            num -= r + 1;
+            r++;
+        }
 
-        int offsetIndex = i % ls.Length;
-        int j = i / ls.Length;
-        Vector2 offset = ls[offsetIndex] * dist;
-        offset.y -= j * billionRadius * 1.5f;
+        int c = num;
+      
 
         // Creates a new billion at runtime, sets SpriteRenderer to the color of the base determined in the inspector.
         // Then, adds billion to the list of spawned billions.
@@ -70,16 +71,9 @@ public class BillionSpawner : MonoBehaviour
     // Placeholders for the assumption that eventually the spawnning will stop and continue.
     // May be deleted later.
 
-    public void StopSpawn()
-    {
-       
-        
-    }
+    public void StopSpawn(){}
 
-    public void ContinueSpawn()
-    {
-        
-    }
+    public void ContinueSpawn(){}
 
 
 }
