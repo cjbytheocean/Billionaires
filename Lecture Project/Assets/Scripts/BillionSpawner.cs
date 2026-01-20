@@ -38,28 +38,26 @@ public class BillionSpawner : MonoBehaviour
         float billionRadius = billionCollider.radius * billionPrefab.transform.localScale.x;
         float dist = billionaireRadius + billionRadius + spacing;
 
-        // Cycling through offsets to create triangular spawn pattern. 
-        // Right now, this causes the billions to overlap each other after spawning 3 unique places
-        // to avoid infinite spawning for the sake of submission 1. 
+        // Cycling through offsets to create spawn pattern.
         
         Vector2[] ls =
         {
             new Vector2(1f, 0f),
             new Vector2(0.75f, -0.75f),
-            new Vector2(0f, -1f)
+            new Vector2(0f, -2f)
         };
 
         int offsetIndex = i % ls.Length;
-        Vector2 startingOffset = ls[offsetIndex].normalized;
         int j = i / ls.Length;
-        Vector2 offset = 
+        Vector2 offset = ls[offsetIndex] * dist;
+        offset.y -= j * billionRadius * 1.5f;
 
         // Creates a new billion at runtime, sets SpriteRenderer to the color of the base determined in the inspector.
         // Then, adds billion to the list of spawned billions.
         // Used Quaternion from lab, I had to research more about how they work.
         // I did not realize that Instantiate needs a 3D conversion.
 
-        Vector3 position3D = new Vector3(transform.position.x, transform.position.y, 0f);
+        Vector3 position3D = new Vector3(transform.position.x + offset.x, transform.position.y + offset.y, 0f);
         GameObject billion = Instantiate(billionPrefab, position3D, Quaternion.identity);
        
         SpriteRenderer coloring = billion.GetComponent<SpriteRenderer>();
