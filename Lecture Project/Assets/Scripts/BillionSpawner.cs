@@ -23,7 +23,8 @@ public class BillionSpawner : MonoBehaviour
     }
 
     // Handles the spawning of the Billions.
-    // Takes radii of Billionaires and Billions
+    // Takes radii of Billionaires and Billions and ensure there is no overlap, additionally,
+    // avoids billions spawning in random places.
 
     void BillionSpawn()
     {
@@ -34,6 +35,29 @@ public class BillionSpawner : MonoBehaviour
         float billionRadius = billionCollider.radius * billionPrefab.transform.localScale.x;
 
         Vector2 position;
+
+        // If there are no billions spawned on a billionaire, this ensures it spawns next to the billionaire
+        // and not somewhere random. Since this is a 2d game, casting to Vector2 removes Z axis.
+        // Else, ensure the billion spawns next to the last spawned billion, but allowing no overlap to it or the billionaire.
+
+        if (spawnedBillions.Count == 0)
+        {
+            position = (Vector2)transform.position +  spawnDirection.normalized * (billionaireRadius + billionRadius + spacing);
+        } 
+        else
+        {
+            GameObject lastSpawned = spawnedBillions[^1];
+            float lastBillionRadius = lastSpawned.GetComponent<CircleCollider2D>().radius * billionPrefab.transform.localScale.x;
+            position = (Vector2)transform.position +  spawnDirection.normalized * (billionaireRadius + billionRadius + spacing);
+        }
+
+        // Creates a new billion at runtime, sets SpriteRenderer to the color of the base determined in the inspector.
+        // Then, adds billion to the list of spawned billions.
+        // Used Quaternion from lab, I had to research more about how they work.
+
+        GameObject ball = Instantiate(billionPrefab, position, Quaternion.identity)
+
+
         
     }
 
