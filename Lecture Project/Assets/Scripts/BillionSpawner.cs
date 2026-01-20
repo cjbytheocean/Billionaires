@@ -48,7 +48,7 @@ public class BillionSpawner : MonoBehaviour
         {
             GameObject lastSpawned = spawnedBillions[^1];
             float lastBillionRadius = lastSpawned.GetComponent<CircleCollider2D>().radius * billionPrefab.transform.localScale.x;
-            position = (Vector2)transform.position +  spawnDirection.normalized * (billionaireRadius + billionRadius + spacing);
+            position = (Vector2)transform.position +  spawnDirection.normalized * (lastBillionRadius + billionRadius + spacing);
         }
 
         // Creates a new billion at runtime, sets SpriteRenderer to the color of the base determined in the inspector.
