@@ -55,10 +55,10 @@ public class BillionSpawner : MonoBehaviour
         // Then, adds billion to the list of spawned billions.
         // Used Quaternion from lab, I had to research more about how they work.
 
-        GameObject ball = Instantiate(billionPrefab, position, Quaternion.identity)
-
-
-        
+        GameObject billion = Instantiate(billionPrefab, position, Quaternion.identity);
+        SpriteRenderer coloring = billion.GetComponent<SpriteRenderer>();
+        coloring.color = billionaireColor;
+        spawnedBillions.Add(billion);
     }
 
     // Remaining empty for now, as I do not yet know how spawnning is controlled in Billionaires.
