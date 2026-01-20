@@ -73,14 +73,4 @@ public class BillionSpawner : MonoBehaviour
         spawnedBillions.Add(billion);
         i++;
     }
-
-    // Remaining empty for now, as I do not yet know how spawnning is controlled in Billionaires.
-    // Placeholders for the assumption that eventually the spawnning will stop and continue.
-    // May be deleted later.
-
-    public void StopSpawn(){}
-
-    public void ContinueSpawn(){}
-
-
 }
