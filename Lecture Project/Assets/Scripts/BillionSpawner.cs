@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using System.Data;
+using Unity.Collections;
 
 public class BillionSpawner : MonoBehaviour
 {
@@ -40,7 +41,6 @@ public class BillionSpawner : MonoBehaviour
         float dist = billionaireRadius + billionRadius + spacing;
         float diameter = billionRadius * 2f + spacing;
 
-     
         int r = 0;
         int num = i;
 
@@ -51,8 +51,15 @@ public class BillionSpawner : MonoBehaviour
         }
 
         int c = num;
-      
 
+        // Vector2 Parameters created using a "triangular" cluster to pack closer together
+        // Horizontal spacing scaled by sqrt3/2
+
+        float x = dist + r * (diameter * 0.87f);
+        float y = (c - r * 0.5f) * diameter;
+
+        Vector2 offset = new Vector2(x, y);
+      
         // Creates a new billion at runtime, sets SpriteRenderer to the color of the base determined in the inspector.
         // Then, adds billion to the list of spawned billions.
         // Used Quaternion from lab, I had to research more about how they work.
