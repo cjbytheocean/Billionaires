@@ -23,9 +23,17 @@ public class BillionSpawner : MonoBehaviour
     }
 
     // Handles the spawning of the Billions.
+    // Takes radii of Billionaires and Billions
 
     void BillionSpawn()
     {
+        CircleCollider2D billionaireCollider = GetComponent<CircleCollider2D>();
+        CircleCollider2D billionCollider = billionPrefab.GetComponent<CircleCollider2D>();
+
+        float billionaireRadius = billionaireCollider.radius * transform.localScale.x;
+        float billionRadius = billionCollider.radius * billionPrefab.transform.localScale.x;
+
+        Vector2 position;
         
     }
 
@@ -35,6 +43,7 @@ public class BillionSpawner : MonoBehaviour
 
     public void StopSpawn()
     {
+       
         
     }
 
