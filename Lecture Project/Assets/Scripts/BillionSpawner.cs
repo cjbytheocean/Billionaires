@@ -1,5 +1,6 @@
 using UnityEngine;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class BillionSpawner : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class BillionSpawner : MonoBehaviour
 
     // Stores spawned billions in a list 
     private List<GameObject> spawnedBillions = new List<GameObject>();
+
+    private int i = 0;
 
 
     // Runs on start, but in this case, functioning to repetitively spawn the billions on the given spawn interval.
@@ -32,33 +35,21 @@ public class BillionSpawner : MonoBehaviour
         CircleCollider2D billionaireCollider = GetComponent<CircleCollider2D>();
         CircleCollider2D billionCollider = billionPrefab.GetComponent<CircleCollider2D>();
 
-        Debug.Log("Billionaire collider: " + billionaireCollider); 
-        Debug.Log("Billion collider: " + billionCollider);
-
         float billionaireRadius = billionaireCollider.radius * transform.localScale.x;
         float billionRadius = billionCollider.radius * billionPrefab.transform.localScale.x;
+        float dist = billionaireRadius + billionRadius + spacing;
 
-        Debug.Log("Billionaire radius: " + billionaireRadius); 
-        Debug.Log("Billion radius: " + billionRadius);
-
-        Vector2 position;
-
-        // If there are no billions spawned on a billionaire, this ensures it spawns next to the billionaire
-        // and not somewhere random. Since this is a 2d game, casting to Vector2 removes Z axis.
-        // Else, ensure the billion spawns next to the last spawned billion, but allowing no overlap to it or the billionaire.
-
-        if (spawnedBillions.Count == 0)
+        // Cycling through offsets to create triangular spawn pattern
+        
+        Vector2[] ls =
         {
-            position = (Vector2)transform.position +  spawnDirection.normalized * (billionaireRadius + billionRadius + spacing);
-        } 
-        else
-        {
-            GameObject lastSpawned = spawnedBillions[^1];
-            float lastBillionRadius = lastSpawned.GetComponent<CircleCollider2D>().radius * billionPrefab.transform.localScale.x;
-            position = (Vector2)lastSpawned.transform.position +  spawnDirection.normalized * (lastBillionRadius + billionRadius + spacing);
-        }
+            new Vector2(1f, 0f),
+            new Vector2(0.5f, -0.5f),
+            new Vector2(0f, -1f)
+        };
 
-        Debug.Log("Spawn position (2D): " + position);
+        Vector2 offset = ls[i % ls.Length].normalized;
+        Vector2 position = (Vector2)transform.position + offset * dist;
 
         // Creates a new billion at runtime, sets SpriteRenderer to the color of the base determined in the inspector.
         // Then, adds billion to the list of spawned billions.
@@ -66,13 +57,12 @@ public class BillionSpawner : MonoBehaviour
         // I did not realize that Instantiate needs a 3D conversion.
 
         Vector3 position3D = new Vector3(position.x, position.y, 0f);
-        //Vector3 position3D = new Vector3(transform.position.x + 1f, transform.position.y, 0f);
-        Debug.Log("pre inst " + position);
         GameObject billion = Instantiate(billionPrefab, position3D, Quaternion.identity);
-        Debug.Log("post inst " + position);
+       
         SpriteRenderer coloring = billion.GetComponent<SpriteRenderer>();
         coloring.color = billionaireColor;
         spawnedBillions.Add(billion);
+        i++;
     }
 
     // Remaining empty for now, as I do not yet know how spawnning is controlled in Billionaires.
