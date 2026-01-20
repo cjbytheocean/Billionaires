@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8751033151111634102}
   - component: {fileID: 3632580579342495290}
   - component: {fileID: -3540196674410704879}
+  - component: {fileID: 4294160271484620301}
   m_Layer: 0
   m_Name: Green Base
   m_TagString: Untagged
@@ -124,3 +125,20 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.455
+--- !u!114 &4294160271484620301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6677568397468479234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d291661b5f2f74ccaa45a758c7517e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billionPrefab: {fileID: 702548173380332382, guid: 7e3347f9fd5ee49aeba05cb404a883c2, type: 3}
+  billionaireColor: {r: 0, g: 1, b: 0.07855153, a: 0}
+  spawnInterval: 2
+  spacing: 0.05
+  spawnDirection: {x: 1, y: 0}
