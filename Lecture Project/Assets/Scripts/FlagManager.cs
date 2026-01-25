@@ -27,6 +27,7 @@ public class FlagManager : MonoBehaviour
     void Start()
     {
         c = Camera.main; 
+        Debug.Log("FlagManager running");
     }
 
     void Update()
@@ -34,11 +35,13 @@ public class FlagManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             ClickBlue();
+            Debug.Log("blue clicked");
         }
 
         if (Input.GetKeyDown(KeyCode.G))
         {
             ClickGreen();
+            Debug.Log("green clicked");
         }
 
         // if (Input.GetKeyDown(KeyCode.R))
@@ -76,6 +79,10 @@ public class FlagManager : MonoBehaviour
 
     void PickColor(List<GameObject> ls, GameObject g)
     {
+        if (g == null)
+        {
+            Debug.Log("no flag assigned");
+        }
         // Uses current mouse position to place flags.
         Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
         position.z = 0;
