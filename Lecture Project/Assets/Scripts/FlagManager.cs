@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class FlagManager : MonoBehaviour
 {
+    // In my game field, I only have blue and green bases at the moment. I started to write methods that will
+    // work with the red and yellow bases, but the code will be commented out until it is used.
     public GameObject blueFlag;
     public GameObject greenFlag;
 
@@ -28,6 +30,25 @@ public class FlagManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ClickBlue();
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            ClickGreen();
+        }
+
+        // if (Input.GetKeyDown(KeyCode.R))
+        // {
+        //     ClickRed();
+        // }
+
+        // if (Input.GetKeyDown(KeyCode.Y))
+        // {
+        //     ClickYellow();
+        // }
         
     }
 
@@ -41,8 +62,6 @@ public class FlagManager : MonoBehaviour
         PickColor(greenFlags, greenFlag);
     }
 
-    // Commented out for now, but will utilize these when all four bases are added.
-    
     // void ClickRed()
     // {
     //     PickColor(redFlags, redFlag); 
