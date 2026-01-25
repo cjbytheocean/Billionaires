@@ -19,15 +19,14 @@ public class FlagManager : MonoBehaviour
     // private List<GameObject> yellowFlags = new List<GameObject>();
 
     private Camera c;
-    private GameObject dragging;
-    private LineRenderer drawing;
+    private GameObject dragging; // For dragging the flags.
+    private LineRenderer drawing; // For drawing the line from point A to point B.
 
 
     // Converts screen coordinates to handle flag placement.
     void Start()
     {
         c = Camera.main; 
-        Debug.Log("FlagManager running");
     }
 
     void Update()
@@ -35,13 +34,11 @@ public class FlagManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             ClickBlue();
-            Debug.Log("blue clicked");
         }
 
         if (Input.GetKeyDown(KeyCode.G))
         {
             ClickGreen();
-            Debug.Log("green clicked");
         }
 
         // if (Input.GetKeyDown(KeyCode.R))
@@ -53,6 +50,8 @@ public class FlagManager : MonoBehaviour
         // {
         //     ClickYellow();
         // }
+
+        FlagDragging();
         
     }
 
@@ -77,15 +76,11 @@ public class FlagManager : MonoBehaviour
         
     // }
 
-    void PickColor(List<GameObject> ls, GameObject g)
+    public void PickColor(List<GameObject> ls, GameObject g)
     {
-        if (g == null)
-        {
-            Debug.Log("no flag assigned");
-        }
-        // Uses current mouse position to place flags.
-        Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
-        position.z = 0;
+    
+        // Uses current mouse position to place flags, calls helper method to handle placement.
+        Vector3 position = PostBottom(g);
 
         // Ensures only two flags per unique color can be added.
         if (ls.Count < 2)
@@ -110,5 +105,30 @@ public class FlagManager : MonoBehaviour
             }
             nearestFlag.transform.position = position;
         } 
+    }
+
+    public void FlagDragging()
+    {
+        Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
+        position.z = 0;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            
+        }
+    }
+
+    // Helper method to reference the bottom of the flag post.
+
+    Vector3 PostBottom(GameObject g)
+    {
+        Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
+        position.z = 0;
+
+        SpriteRenderer s = g.GetComponent<SpriteRenderer>();
+
+        // Looked this up to help with bottom offset. Half of the vertical height.
+        float bottom = s.bounds.extents.y;
+        return position + Vector3.up * bottom; 
     }
 }
