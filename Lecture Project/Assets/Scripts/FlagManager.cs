@@ -19,9 +19,11 @@ public class FlagManager : MonoBehaviour
     private GameObject dragging;
     private LineRenderer drawing;
 
+
+    // Converts screen coordinates to handle flag placement.
     void Start()
     {
-        
+        c = Camera.main; 
     }
 
     void Update()
@@ -31,21 +33,24 @@ public class FlagManager : MonoBehaviour
 
     void ClickBlue()
     {
-        
+        PickColor(blueFlags, blueFlag);
     }
 
     void ClickGreen()
     {
-        
+        PickColor(greenFlags, greenFlag);
     }
 
+    // Commented out for now, but will utilize these when all four bases are added.
+    
     // void ClickRed()
     // {
-        
+    //     PickColor(redFlags, redFlag); 
     // }
 
     // void ClickYellow()
     // {
+    //     PickColor(yellowFlags, yellowFlag);
         
     // }
 
