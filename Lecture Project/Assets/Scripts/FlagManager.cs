@@ -75,6 +75,16 @@ public class FlagManager : MonoBehaviour
 
     void PickColor(List<GameObject> ls, GameObject g)
     {
+        // Uses current mouse position to place flags.
+        Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
+        position.z = 0;
+
+        // Ensures only two flags per unique color can be added.
+        if (ls.Count < 2)
+        {
+            GameObject newFlag = Instantiate(g, position, Quaternion.identity);
+            ls.Add(newFlag);
+        }
         
     }
 }
