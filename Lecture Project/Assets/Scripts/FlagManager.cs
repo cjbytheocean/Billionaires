@@ -109,12 +109,13 @@ public class FlagManager : MonoBehaviour
 
     public void FlagDragging()
     {
-        Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
-        position.z = 0;
-
+    
         if (Input.GetMouseButtonDown(0))
         {
-            
+            Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
+            position.z = 0;
+            Collider2D collide = Physics2D.OverlapPoint(position);
+            dragging = collide.gameObject;
         }
     }
 
