@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -85,6 +86,22 @@ public class FlagManager : MonoBehaviour
             GameObject newFlag = Instantiate(g, position, Quaternion.identity);
             ls.Add(newFlag);
         }
-        
+        else
+        {
+            // Finds nearest flag, moves that one.
+            GameObject nearestFlag = ls[0];
+            float dist = Vector3.Distance(position, nearestFlag.transform.position);
+
+            for (int i = 1; i < ls.Count; i++)
+            {
+                float dist2 = Vector3.Distance(position, ls[i].transform.position);
+                if (dist2 < dist)
+                {
+                    dist = dist2;
+                    nearestFlag = ls[i];
+                } 
+            }
+            nearestFlag.transform.position = position;
+        } 
     }
 }
