@@ -125,6 +125,7 @@ public class FlagManager : MonoBehaviour
                 drawing.positionCount = 2; // straight line, two points
                 drawing.startWidth = 0.05f;
                 drawing.endWidth = 0.05f; // no change in width
+                drawing.material = new Material(Shader.Find("Sprites/Default"));
                 drawing.startColor = Color.gray;
                 drawing.endColor = Color.gray; // no gradient
             } 
@@ -134,14 +135,18 @@ public class FlagManager : MonoBehaviour
 
         if (dragging != null && Input.GetMouseButton(0))
         {
-            dragging.transform.position = PostBottom(dragging);
+            drawing.SetPosition(0, dragging.transform.position);
+            drawing.SetPosition(1, position);
         }
 
         // When draging has stopped.
 
         if (Input.GetMouseButtonUp(0))
         {
+            dragging.transform.position = PostBottom(dragging);
+            Destroy(drawing); // releases line
             dragging = null;
+            drawing = null; // resets dragging & line
         }
     }
 
