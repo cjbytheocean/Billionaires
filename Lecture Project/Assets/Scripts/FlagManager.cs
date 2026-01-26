@@ -124,6 +124,9 @@ public class FlagManager : MonoBehaviour
                 drawing = dragging.AddComponent<LineRenderer>();
                 drawing.positionCount = 2; // straight line, two points
                 drawing.startWidth = 0.05f;
+                drawing.endWidth = 0.05f; // no change in width
+                drawing.startColor = Color.gray;
+                drawing.endColor = Color.gray; // no gradient
             } 
         }
 
