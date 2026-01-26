@@ -119,6 +119,11 @@ public class FlagManager : MonoBehaviour
             if (collide != null)
             {
                 dragging = collide.gameObject; 
+
+                // Creating the LineRenderer
+                drawing = dragging.AddComponent<LineRenderer>();
+                drawing.positionCount = 2; // straight line, two points
+                drawing.startWidth = 0.05f;
             } 
         }
 
