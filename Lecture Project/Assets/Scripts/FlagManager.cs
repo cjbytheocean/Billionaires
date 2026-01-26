@@ -131,7 +131,8 @@ public class FlagManager : MonoBehaviour
 
             // When draging has stopped.
 
-            if (dragging != null && Input.GetMouseButtonUp(0))
+            //if (dragging != null && Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 dragging = null;
             }
