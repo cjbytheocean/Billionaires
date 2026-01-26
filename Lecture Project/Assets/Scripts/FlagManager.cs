@@ -144,7 +144,12 @@ public class FlagManager : MonoBehaviour
         if (dragging != null && Input.GetMouseButtonUp(0))
         {
             dragging.transform.position = PostBottom(dragging);
-            Destroy(drawing); // releases line
+
+            if (drawing != null)
+            {
+                Destroy(drawing); // releases line
+            }
+           
             dragging = null;
             drawing = null; // resets dragging & line
         }
