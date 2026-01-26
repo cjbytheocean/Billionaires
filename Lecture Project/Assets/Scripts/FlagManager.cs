@@ -110,33 +110,30 @@ public class FlagManager : MonoBehaviour
 
     public void FlagDragging()
     {
-    
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
-            position.z = 0;
-            Collider2D collide = Physics2D.OverlapPoint(position);
+        Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
+        position.z = 0;
 
+          if (Input.GetMouseButtonDown(0))
+        {
+            Collider2D collide = Physics2D.OverlapPoint(position);
             if (collide != null)
             {
                 dragging = collide.gameObject; 
-            }
+            } 
+        }
 
-            // While dragging is occuring.
+        // While dragging is occuring.
 
-            if (dragging != null && Input.GetMouseButton(0))
-            {
-                dragging.transform.position = PostBottom(dragging);
-            }
+        if (dragging != null && Input.GetMouseButton(0))
+        {
+            dragging.transform.position = PostBottom(dragging);
+        }
 
-            // When draging has stopped.
+        // When draging has stopped.
 
-            //if (dragging != null && Input.GetMouseButtonUp(0))
-            if (Input.GetMouseButtonUp(0))
-            {
-                dragging = null;
-            }
-            
+        if (Input.GetMouseButtonUp(0))
+        {
+            dragging = null;
         }
     }
 
