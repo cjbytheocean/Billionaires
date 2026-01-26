@@ -133,7 +133,7 @@ public class FlagManager : MonoBehaviour
 
         // While dragging is occuring.
 
-        if (dragging != null && Input.GetMouseButton(0))
+        if (dragging != null && Input.GetMouseButton(0) && drawing != null)
         {
             drawing.SetPosition(0, dragging.transform.position);
             drawing.SetPosition(1, position);
@@ -141,7 +141,7 @@ public class FlagManager : MonoBehaviour
 
         // When draging has stopped.
 
-        if (Input.GetMouseButtonUp(0))
+        if (dragging != null && Input.GetMouseButtonUp(0))
         {
             dragging.transform.position = PostBottom(dragging);
             Destroy(drawing); // releases line
