@@ -30,6 +30,8 @@ public class FlagManager : MonoBehaviour
         c = Camera.main; 
     }
 
+    // When corresponding keys are pressed, flags of that color are either placed or changed.
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))
@@ -56,6 +58,7 @@ public class FlagManager : MonoBehaviour
         
     }
 
+    // Methods for each flag that are placed.
     void ClickBlue()
     {
         PickColor(blueFlags, blueFlag);
@@ -113,7 +116,9 @@ public class FlagManager : MonoBehaviour
         Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
         position.z = 0;
 
-          if (Input.GetMouseButtonDown(0))
+        // When mouse is clicked over flag, begin dragging.
+
+        if (Input.GetMouseButtonDown(0))
         {
             Collider2D collide = Physics2D.OverlapPoint(position);
             if (collide != null)
@@ -156,7 +161,6 @@ public class FlagManager : MonoBehaviour
     }
 
     // Helper method to reference the bottom of the flag post.
-
     Vector3 PostBottom(GameObject g)
     {
         Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
