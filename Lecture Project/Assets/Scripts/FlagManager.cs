@@ -10,14 +10,14 @@ public class FlagManager : MonoBehaviour
     public GameObject blueFlag;
     public GameObject greenFlag;
 
-    // public GameObject redFlag;
-    // public GameObject yellowFlag;
+    public GameObject redFlag;
+    public GameObject yellowFlag;
 
     private List<GameObject> blueFlags = new List<GameObject>();
     private List<GameObject> greenFlags = new List<GameObject>();
 
-    // private List<GameObject> redFlags = new List<GameObject>();
-    // private List<GameObject> yellowFlags = new List<GameObject>();
+    private List<GameObject> redFlags = new List<GameObject>();
+    private List<GameObject> yellowFlags = new List<GameObject>();
 
     private Camera c;
     private GameObject dragging; // For dragging the flags.
@@ -44,15 +44,15 @@ public class FlagManager : MonoBehaviour
             ClickGreen();
         }
 
-        // if (Input.GetKeyDown(KeyCode.R))
-        // {
-        //     ClickRed();
-        // }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ClickRed();
+        }
 
-        // if (Input.GetKeyDown(KeyCode.Y))
-        // {
-        //     ClickYellow();
-        // }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            ClickYellow();
+        }
 
         FlagDragging();
         
@@ -69,16 +69,16 @@ public class FlagManager : MonoBehaviour
         PickColor(greenFlags, greenFlag);
     }
 
-    // void ClickRed()
-    // {
-    //     PickColor(redFlags, redFlag); 
-    // }
+    void ClickRed()
+    {
+        PickColor(redFlags, redFlag); 
+    }
 
-    // void ClickYellow()
-    // {
-    //     PickColor(yellowFlags, yellowFlag);
+    void ClickYellow()
+    {
+        PickColor(yellowFlags, yellowFlag);
         
-    // }
+    }
 
     public void PickColor(List<GameObject> ls, GameObject g)
     {
