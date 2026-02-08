@@ -2,20 +2,25 @@ using UnityEngine;
 
 public class BillionDamage : MonoBehaviour
 {
-    public GameObject billionPrefab;
-    private int destroyClicks = 4;
-    private int clicks = 0;
-
+    public int destroyClicks = 5;
+    public int clicks = 0;
+    private SpriteRenderer sr;
+    Vector3 scale;
+    void Awake()
+    {
+        scale = transform.localScale;
+        //sr = GetComponent<SpriteRenderer>();
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            Vector2 v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(v, Vector2.zero);
 
-            if (Physics.Raycast(r, out hit))
+            if (Physics2D.Raycast(v, Vector2.zero))
             {
-                if (hit.collider.gameObject == billionPrefab)
+                if (hit.collider != null && hit.collider.gameObject == gameObject)
                 {
                     DealDamage();
                 }
@@ -25,17 +30,13 @@ public class BillionDamage : MonoBehaviour
 
     void DealDamage()
     {
-        clicks++
+        clicks++;
 
 
         if (clicks == destroyClicks)
         {
             DestroyBillion();
         }
-        
-
-
-    
     }
     void DestroyBillion()
     {
