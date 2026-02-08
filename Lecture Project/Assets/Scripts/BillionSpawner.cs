@@ -55,17 +55,17 @@ public class BillionSpawner : MonoBehaviour
         // Vector2 Parameters created using a "triangular" cluster to pack closer together
         // Horizontal spacing scaled by sqrt3/2
 
-        float x = dist + r * (diameter * 0.87f) * spawnDirection.x;
+        float x = dist + r * (diameter * 0.87f);
         float y = (c - r * 0.5f) * diameter;
 
-        Vector2 offset = new Vector2(x, y);
+        Vector2 offset = new Vector2(x * spawnDirection.x, y);
       
         // Creates a new billion at runtime, sets SpriteRenderer to the color of the base determined in the inspector.
         // Then, adds billion to the list of spawned billions.
         // Used Quaternion from lab, I had to research more about how they work.
         // I did not realize that Instantiate needs a 3D conversion.
 
-        Vector3 position3D = new Vector3(transform.position.x + offset.x, transform.position.y + offset.y, 0f);
+        Vector3 position3D = transform.position + (Vector3) offset;
         GameObject billion = Instantiate(billionPrefab, position3D, Quaternion.identity);
        
         SpriteRenderer coloring = billion.GetComponent<SpriteRenderer>();
