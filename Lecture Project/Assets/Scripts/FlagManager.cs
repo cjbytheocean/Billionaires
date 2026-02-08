@@ -31,7 +31,6 @@ public class FlagManager : MonoBehaviour
     }
 
     // When corresponding keys are pressed, flags of that color are either placed or changed.
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))

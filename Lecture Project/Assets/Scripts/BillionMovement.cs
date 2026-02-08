@@ -16,6 +16,7 @@ public class BillionMovement : MonoBehaviour
 
     private GameObject[] allFlags;
 
+    // Rigidbody and SpriteRenderer components, removes gravity so the billions don't immediately fall, then lowers damping to control velocity.
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,13 +25,11 @@ public class BillionMovement : MonoBehaviour
         rb.linearDamping = 0.005f;
     }
 
-    // ai used to help with vector math, i was not sure what to do
+    // I utilized AI to assist with the Vector math. First time doing work like this, so I was unfamiliar with it.
+    // Handles the actual movement of the billions, with them accelerating towards the nearest flag, then slowing down on approach.
     void FixedUpdate()
     {
-        if (flag == null)
-        {
-            flag = FindNearestFlag();
-        }
+        flag = FindNearestFlag();
 
         if (flag == null)
         {
@@ -53,9 +52,7 @@ public class BillionMovement : MonoBehaviour
         rb.AddForce(s);
     }
 
-    // finds the nearest flag to each respective billion
-
-    
+    // Finds the near flag in respective to each billion of the bases respective color.
     GameObject FindNearestFlag()
     {
         GameObject[] flags = GameObject.FindGameObjectsWithTag("Flag");
@@ -64,7 +61,9 @@ public class BillionMovement : MonoBehaviour
 
         foreach (GameObject flag in flags)
         {
-            // help with this line
+            // Documentation for this line:
+            // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Component.TryGetComponent.html
+
             if (flag.TryGetComponent<SpriteRenderer>(out var individualSR))
             {
                 if (CheckColor(individualSR.color, sr.color))
@@ -82,7 +81,7 @@ public class BillionMovement : MonoBehaviour
         return closestFlag;
     }
 
-    // helper method to help detect color 
+    // Helper method to check the similarity between two colors.
     bool CheckColor(Color one, Color two, float delta = 0.05f)
     {
         return Mathf.Abs(one.r - two.r) < delta && Mathf.Abs(one.g - two.g) < delta && Mathf.Abs(one.b - two.b) < delta;

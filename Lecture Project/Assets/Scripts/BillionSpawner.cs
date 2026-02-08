@@ -86,7 +86,8 @@ public class BillionSpawner : MonoBehaviour
         i++;
     }
 
-    // reused from BillionMovement
+    // This code is largely reused from BillionMovement.cs to find flags. Without this, players were able to 
+    // drag the billions and bases as well as the flags.
     GameObject FindFlag(Color c)
     {
         GameObject[] flags = GameObject.FindGameObjectsWithTag("Flag");
