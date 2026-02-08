@@ -121,7 +121,7 @@ public class FlagManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Collider2D collide = Physics2D.OverlapPoint(position);
-            if (collide != null)
+            if (collide != null && CheckIfFlag(collide.gameObject))
             {
                 dragging = collide.gameObject; 
 
@@ -171,5 +171,10 @@ public class FlagManager : MonoBehaviour
         // Looked this up to help with bottom offset. Half of the vertical height.
         float bottom = s.bounds.extents.y;
         return position + Vector3.up * bottom; 
+    }
+
+    private bool CheckIfFlag(GameObject g)
+    {
+        return blueFlags.Contains(g) || greenFlags.Contains(g) || redFlags.Contains(g) || yellowFlags.Contains(g);
     }
 }

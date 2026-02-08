@@ -8,7 +8,7 @@ public class BillionMovement : MonoBehaviour
 {
     float maxSpeed = 5f;
     float accSpeed = 7f;
-    float slowDownWithinRange = 1.5f;
+    float slowDownWithinRange = 5f;
   
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -21,13 +21,12 @@ public class BillionMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         rb.gravityScale = 0f;
-        rb.linearDamping = 0.001f;
+        rb.linearDamping = 0.005f;
     }
 
     // ai used to help with vector math, i was not sure what to do
     void FixedUpdate()
     {
-
         if (flag == null)
         {
             flag = FindNearestFlag();
@@ -59,7 +58,6 @@ public class BillionMovement : MonoBehaviour
     
     GameObject FindNearestFlag()
     {
-        Debug.Log("FindNearestFlag() called");
         GameObject[] flags = GameObject.FindGameObjectsWithTag("Flag");
         GameObject closestFlag = null;
         float dist = float.MaxValue;
@@ -69,12 +67,8 @@ public class BillionMovement : MonoBehaviour
             // help with this line
             if (flag.TryGetComponent<SpriteRenderer>(out var individualSR))
             {
-                Debug.Log($"Comparing Billion {sr.color} with Flag {individualSR.color}");
-                Debug.Log("loop reached");
                 if (CheckColor(individualSR.color, sr.color))
                 {
-                    Debug.Log("loop checked");
-                    Debug.Log($"Billion: {sr.color} Flag: {individualSR.color}");
                     float localDist = Vector2.Distance(transform.position, flag.transform.position);
 
                     if (localDist < dist)
@@ -85,7 +79,6 @@ public class BillionMovement : MonoBehaviour
                 }
             }
         }
-        Debug.Log("if loop not checked skip");
         return closestFlag;
     }
 

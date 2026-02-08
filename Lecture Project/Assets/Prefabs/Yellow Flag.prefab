@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10001
   m_Sprite: {fileID: 4733360251461579862, guid: f21465c21fabd46a0929da3201ba7d56, type: 3}
   m_Color: {r: 0.9137255, g: 0.8, b: 0, a: 1}
   m_FlipX: 0
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
