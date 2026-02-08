@@ -14,6 +14,8 @@ public class BillionSpawner : MonoBehaviour
     public float spacing = 0.01f;
     public Vector2 spawnDirection = Vector2.right;
 
+    public Vector3 basePosition;
+
     // Stores spawned billions in a list 
     private List<GameObject> spawnedBillions = new List<GameObject>();
     private int i = 0;
@@ -23,6 +25,7 @@ public class BillionSpawner : MonoBehaviour
     // Using an InvokeRepeat to allow spawning to happen repeatedly. Looked up how to implement InvokeRepeating().
     void Start()
     {
+        basePosition = transform.position;
         InvokeRepeating(nameof(BillionSpawn), spawnInterval, spawnInterval); 
     }
 
@@ -46,36 +49,37 @@ public class BillionSpawner : MonoBehaviour
 
         if (currentFlag != null && spawnedBillions.Count > 0)
         {
-            
+            pos = basePosition;
         }
-
-        int r = 0;
-        int num = i;
-
-        while (num >= r + 1)
+        else
         {
-            num -= r + 1;
-            r++;
+            int r = 0;
+            int num = i;
+
+            while (num >= r + 1)
+            {
+                num -= r + 1;
+                r++;
+            }
+
+            int c = num;
+
+            // Vector2 Parameters created using a "triangular" cluster to pack closer together
+            // Horizontal spacing scaled by sqrt3/2
+
+            float x = dist + r * (diameter * 0.87f);
+            float y = (c - r * 0.5f) * diameter;
+
+            Vector2 offset = new Vector2(x * spawnDirection.x, y);
+            pos = transform.position + (Vector3)offset;
         }
-
-        int c = num;
-
-        // Vector2 Parameters created using a "triangular" cluster to pack closer together
-        // Horizontal spacing scaled by sqrt3/2
-
-        float x = dist + r * (diameter * 0.87f);
-        float y = (c - r * 0.5f) * diameter;
-
-        Vector2 offset = new Vector2(x * spawnDirection.x, y);
       
         // Creates a new billion at runtime, sets SpriteRenderer to the color of the base determined in the inspector.
         // Then, adds billion to the list of spawned billions.
         // Used Quaternion from lab, I had to research more about how they work.
         // I did not realize that Instantiate needs a 3D conversion.
 
-        Vector3 position3D = transform.position + (Vector3) offset;
-        GameObject billion = Instantiate(billionPrefab, position3D, Quaternion.identity);
-       
+        GameObject billion = Instantiate(billionPrefab, pos, Quaternion.identity);
         SpriteRenderer coloring = billion.GetComponent<SpriteRenderer>();
         coloring.color = billionaireColor;
         spawnedBillions.Add(billion);
