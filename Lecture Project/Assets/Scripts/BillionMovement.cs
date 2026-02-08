@@ -67,6 +67,7 @@ public class BillionMovement : MonoBehaviour
             // help with this line
             if (flag.TryGetComponent<SpriteRenderer>(out var individualSR))
             {
+                Debug.Log($"Comparing Billion {sr.color} with Flag {individualSR.color}");
                 Debug.Log("loop reached");
                 if (CheckColor(individualSR.color, sr.color))
                 {
