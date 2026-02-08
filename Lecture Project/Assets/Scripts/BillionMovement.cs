@@ -22,6 +22,14 @@ public class BillionMovement : MonoBehaviour
     void FixedUpdate()
     {
         GameObject moveHere = FindNearestFlag();
+        
+        Vector2 v = moveHere.transform.position - transform.position;
+        float dist = v.magnitude;
+        Vector2 d = v.normalized;
+
+        float slowDownSpeed = maxSpeed;
+        
+        
 
 
         
