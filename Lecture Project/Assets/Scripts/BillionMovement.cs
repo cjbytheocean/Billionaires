@@ -12,26 +12,31 @@ public class BillionMovement : MonoBehaviour
   
     private Rigidbody2D rb;
     private SpriteRenderer sr;
+    private GameObject flag;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         rb.gravityScale = 0f;
-        rb.linearDamping = 0;
+        rb.linearDamping = 0.1f;
     }
 
     // ai used to help with vector math, i was not sure what to do
     void FixedUpdate()
     {
-        GameObject moveHere = FindNearestFlag();
 
-        if (moveHere == null)
+        if (flag == null)
+        {
+            flag = FindNearestFlag();
+        }
+
+        if (flag == null)
         {
             return;
         }
         
-        Vector2 v = moveHere.transform.position - transform.position;
+        Vector2 v = (Vector2)flag.transform.position - rb.position;
         float dist = v.magnitude;
         Vector2 d = v.normalized;
 
@@ -44,42 +49,46 @@ public class BillionMovement : MonoBehaviour
         Vector2 dv = d * slowDownSpeed;
         Vector2 s = dv - rb.linearVelocity;
         s = Vector2.ClampMagnitude(s, accSpeed * Time.fixedDeltaTime);
-        rb.linearVelocity += dv;
-    }
-
-    // helper method to help detect color 
-
-    bool CheckColor(Color one, Color two, float delta = 0.05f)
-    {
-        return Math.Abs(one.r - two.r) < delta && Math.Abs(one.g - two.g) < delta && Math.Abs(one.b - two.b) < delta;
+        rb.AddForce(s);
     }
 
     // finds the nearest flag to each respective billion
+
+    
     GameObject FindNearestFlag()
     {
+        Debug.Log("FindNearestFlag() called");
         GameObject[] flags = GameObject.FindGameObjectsWithTag("Flag");
         GameObject closestFlag = null;
         float dist = float.MaxValue;
 
         foreach (GameObject flag in flags)
         {
-            SpriteRenderer individualSR = flag.GetComponent<SpriteRenderer>();
-
-            // if the color of the sprite renderers don't match, billion should not go towards that flag
-            if (!CheckColor(individualSR.color, sr.color))
+            // help with this line
+            if (flag.TryGetComponent<SpriteRenderer>(out var individualSR))
             {
-                Debug.Log("null");
-                continue;
-            }
+                Debug.Log("loop reached");
+                if (CheckColor(individualSR.color, sr.color))
+                {
+                    Debug.Log("loop checked");
+                    Debug.Log($"Billion: {sr.color} Flag: {individualSR.color}");
+                    float localDist = Vector2.Distance(transform.position, flag.transform.position);
 
-            float localDist = Vector2.Distance(transform.position, flag.transform.position);
-
-            if (localDist < dist)
-            {
-                dist = localDist;
-                closestFlag = flag;
+                    if (localDist < dist)
+                    {
+                        dist = localDist;
+                        closestFlag = flag;
+                    }  
+                }
             }
         }
+        Debug.Log("if loop not checked skip");
         return closestFlag;
+    }
+
+    // helper method to help detect color 
+    bool CheckColor(Color one, Color two, float delta = 0.05f)
+    {
+        return Mathf.Abs(one.r - two.r) < delta && Mathf.Abs(one.g - two.g) < delta && Mathf.Abs(one.b - two.b) < delta;
     }
 }
