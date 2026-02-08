@@ -41,6 +41,14 @@ public class BillionSpawner : MonoBehaviour
         float dist = billionaireRadius + billionRadius + spacing;
         float diameter = billionRadius * 2f + spacing;
 
+        Vector3 pos;
+        GameObject currentFlag = FindFlag(billionaireColor);
+
+        if (currentFlag != null && spawnedBillions.Count > 0)
+        {
+            
+        }
+
         int r = 0;
         int num = i;
 
@@ -72,5 +80,23 @@ public class BillionSpawner : MonoBehaviour
         coloring.color = billionaireColor;
         spawnedBillions.Add(billion);
         i++;
+    }
+
+    // reused from BillionMovement
+    GameObject FindFlag(Color c)
+    {
+        GameObject[] flags = GameObject.FindGameObjectsWithTag("Flag");
+
+        foreach (GameObject flag in flags)
+        {
+            if (flag.TryGetComponent<SpriteRenderer>(out var sr))
+            {
+                if (Mathf.Abs(sr.color.r - c.r) < 0.05f && Mathf.Abs(sr.color.g - c.g) < 0.05f &&Mathf.Abs(sr.color.b - c.b) < 0.05f)
+                {
+                    return flag;
+                }
+            }
+        }
+        return null;
     }
 }

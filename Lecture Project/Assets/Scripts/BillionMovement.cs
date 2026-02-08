@@ -14,12 +14,14 @@ public class BillionMovement : MonoBehaviour
     private SpriteRenderer sr;
     private GameObject flag;
 
+    private GameObject[] allFlags;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         rb.gravityScale = 0f;
-        rb.linearDamping = 0.1f;
+        rb.linearDamping = 0.001f;
     }
 
     // ai used to help with vector math, i was not sure what to do
@@ -48,7 +50,7 @@ public class BillionMovement : MonoBehaviour
 
         Vector2 dv = d * slowDownSpeed;
         Vector2 s = dv - rb.linearVelocity;
-        s = Vector2.ClampMagnitude(s, accSpeed * Time.fixedDeltaTime);
+        s = Vector2.ClampMagnitude(s, accSpeed);
         rb.AddForce(s);
     }
 
