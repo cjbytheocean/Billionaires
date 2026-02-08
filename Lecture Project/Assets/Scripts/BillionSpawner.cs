@@ -55,7 +55,7 @@ public class BillionSpawner : MonoBehaviour
         // Vector2 Parameters created using a "triangular" cluster to pack closer together
         // Horizontal spacing scaled by sqrt3/2
 
-        float x = dist + r * (diameter * 0.87f);
+        float x = dist + r * (diameter * 0.87f) * spawnDirection.x;
         float y = (c - r * 0.5f) * diameter;
 
         Vector2 offset = new Vector2(x, y);

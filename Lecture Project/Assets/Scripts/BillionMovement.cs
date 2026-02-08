@@ -18,9 +18,11 @@ public class BillionMovement : MonoBehaviour
         rb.linearDamping = 0;
     }
 
+
     void FixedUpdate()
     {
         GameObject moveHere = FindNearestFlag();
+
 
         
     }
