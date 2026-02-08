@@ -3,6 +3,8 @@ using UnityEngine;
 public class BillionDamage : MonoBehaviour
 {
     public GameObject billionPrefab;
+    private int destroyClicks = 4;
+    private int clicks = 0;
 
     void Update()
     {
@@ -23,6 +25,16 @@ public class BillionDamage : MonoBehaviour
 
     void DealDamage()
     {
+        clicks++
+
+
+        if (clicks == destroyClicks)
+        {
+            DestroyBillion();
+        }
+        
+
+
     
     }
     void DestroyBillion()
