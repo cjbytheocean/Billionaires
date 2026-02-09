@@ -11,27 +11,18 @@ public class BillionDamage : MonoBehaviour
     void Awake()
     {
         scale = transform.localScale;
-        //sr = GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
     }
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Collider2D col = Physics2D.OverlapPoint(mousePos);
 
-            if (col != null && col.gameObject == gameObject)
-            {
-                DealDamage();
-            }
-        }
+
+    void OnMouseDown()
+    {
+        DealDamage();
     }
 
     void DealDamage()
     {
         clicks++;
-
-
         if (clicks == destroyClicks)
         {
             DestroyBillion();
