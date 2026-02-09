@@ -26,7 +26,7 @@ public class BillionDamage : MonoBehaviour
     void DealDamage()
     {
         clicks++;
-        health -= 20;
+        health -= 25;
         if (clicks == destroyClicks)
         {
             health = 0;
