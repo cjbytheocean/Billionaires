@@ -6,6 +6,8 @@ public class BillionDamage : MonoBehaviour
     public int clicks = 0;
     private SpriteRenderer sr;
     Vector3 scale;
+
+
     void Awake()
     {
         scale = transform.localScale;
@@ -15,15 +17,12 @@ public class BillionDamage : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(v, Vector2.zero);
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Collider2D col = Physics2D.OverlapPoint(mousePos);
 
-            if (Physics2D.Raycast(v, Vector2.zero))
+            if (col != null && col.gameObject == gameObject)
             {
-                if (hit.collider != null && hit.collider.gameObject == gameObject)
-                {
-                    DealDamage();
-                }
+                DealDamage();
             }
         }
     }
