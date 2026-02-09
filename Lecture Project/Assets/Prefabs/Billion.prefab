@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyClicks: 4
   clicks: 0
-  bs: {fileID: 0}
+  dontScaleChild: {fileID: 4940793345947739051}
 --- !u!1 &8803965727253787389
 GameObject:
   m_ObjectHideFlags: 0
