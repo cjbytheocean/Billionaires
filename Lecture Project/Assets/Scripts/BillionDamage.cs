@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BillionDamage : MonoBehaviour
 {
-    private float lowerScaleAmount = 0.06f;
+    private float lowerScaleAmount = 0.04f;
     public Transform dontScaleChild;
-    public int destroyClicks = 5;
+    public int destroyClicks = 4; 
     public int clicks = 0;
     public int health = 100;
 

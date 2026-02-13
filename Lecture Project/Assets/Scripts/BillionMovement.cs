@@ -14,8 +14,6 @@ public class BillionMovement : MonoBehaviour
     private SpriteRenderer sr;
     private GameObject flag;
 
-    private GameObject[] allFlags;
-
     // Rigidbody and SpriteRenderer components, removes gravity so the billions don't immediately fall, then lowers damping to control velocity.
     void Awake()
     {
