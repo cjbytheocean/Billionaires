@@ -198,8 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turret: {fileID: 2359453851664651348}
-  billionColor: {r: 0, g: 0, b: 0, a: 0}
-  placeholder: {fileID: 0}
+  billionaireColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8803965727253787389
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2191716726963001562, guid: dca6adb2576a3474fa7d5c2dcbba935c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.01
+      value: 0.102
       objectReference: {fileID: 0}
     - target: {fileID: 2191716726963001562, guid: dca6adb2576a3474fa7d5c2dcbba935c, type: 3}
       propertyPath: m_LocalPosition.z

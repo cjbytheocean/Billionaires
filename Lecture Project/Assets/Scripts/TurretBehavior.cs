@@ -26,6 +26,7 @@ public class TurretBehavior : MonoBehaviour
         if (t != null)
         {
             RotateBillion(t.transform);
+            Debug.DrawLine(transform.position, t.transform.position, Color.red);
         }
     }
 
@@ -60,15 +61,12 @@ public class TurretBehavior : MonoBehaviour
         return closestBillion;
     }
 
-    // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Quaternion.LookRotation.html
+    // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Quaternion.Euler.html
+    // Instead of just y/x, arc tangent will account for quadrants
     void RotateBillion(Transform tb)
     {
-        Vector3 pointDirection = tb.position - turret.position;
-        pointDirection.y = 0f;
-
-        if (pointDirection != Vector3.zero)
-        {
-            turret.rotation = Quaternion.LookRotation(pointDirection);
-        }
+        Vector2 pointDirection = tb.position - turret.position;
+        float angle = Mathf.Atan2(pointDirection.y, pointDirection.x) * Mathf.Rad2Deg;
+        turret.rotation = Quaternion.Euler(0, 0, angle);
     }
 }
