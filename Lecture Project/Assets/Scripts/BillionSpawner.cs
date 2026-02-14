@@ -78,8 +78,10 @@ public class BillionSpawner : MonoBehaviour
         // Then, adds billion to the list of spawned billions.
         // Used Quaternion from lab, I had to research more about how they work.
         // I did not realize that Instantiate needs a 3D conversion.
+        // CHANGES HERE FOR CHECKPOINT 4: billions know their color
 
         GameObject billion = Instantiate(billionPrefab, pos, Quaternion.identity);
+        billion.GetComponent<TurretBehavior>().billionaireColor = billionaireColor;
         SpriteRenderer coloring = billion.GetComponent<SpriteRenderer>();
         coloring.color = billionaireColor;
         spawnedBillions.Add(billion);

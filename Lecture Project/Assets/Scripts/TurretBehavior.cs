@@ -6,7 +6,7 @@ using UnityEngine;
 public class TurretBehavior : MonoBehaviour
 {
     public Transform turret;
-    public BillionSpawner bs;
+    public Color billionaireColor;
     public static List<GameObject> billions = new List<GameObject>(); 
 
     void Awake()
@@ -38,7 +38,13 @@ public class TurretBehavior : MonoBehaviour
         foreach (GameObject billion in billions)
         {
             TurretBehavior tb = billion.GetComponent<TurretBehavior>();
-            if (tb.bs.billionaireColor == bs.billionaireColor)
+            
+            if (billion == gameObject)
+            {
+                continue;
+            }
+
+            if (tb.billionaireColor == billionaireColor)
             {
                 continue;
             }
@@ -47,7 +53,7 @@ public class TurretBehavior : MonoBehaviour
 
             if (dst < dist)
             {
-                dst = dist;
+                dist = dst;
                 closestBillion = billion;
             }
         }
@@ -57,7 +63,7 @@ public class TurretBehavior : MonoBehaviour
     // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Quaternion.LookRotation.html
     void RotateBillion(Transform tb)
     {
-        Vector3 pointDirection = turret.position - tb.position;
+        Vector3 pointDirection = tb.position - turret.position;
         pointDirection.y = 0f;
 
         if (pointDirection != Vector3.zero)
