@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class TurretBehavior : MonoBehaviour
@@ -49,13 +50,19 @@ public class TurretBehavior : MonoBehaviour
                 dst = dist;
                 closestBillion = billion;
             }
-
         }
         return closestBillion;
     }
 
+    // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Quaternion.LookRotation.html
     void RotateBillion(Transform tb)
     {
-        
+        Vector3 pointDirection = turret.position - tb.position;
+        pointDirection.y = 0f;
+
+        if (pointDirection != Vector3.zero)
+        {
+            turret.rotation = Quaternion.LookRotation(pointDirection);
+        }
     }
 }
