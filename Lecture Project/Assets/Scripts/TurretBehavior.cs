@@ -19,7 +19,9 @@ public class TurretBehavior : MonoBehaviour
         billions.Remove(gameObject);
     }
 
-    void Update()
+    // https://docs.unity3d.com/560/Documentation/ScriptReference/MonoBehaviour.LateUpdate.html
+
+    void LateUpdate()
     {
         GameObject t = ClosestBillion();
 
@@ -62,11 +64,12 @@ public class TurretBehavior : MonoBehaviour
     }
 
     // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Quaternion.Euler.html
+
     // Instead of just y/x, arc tangent will account for quadrants
     void RotateBillion(Transform tb)
     {
-        Vector2 pointDirection = tb.position - turret.position;
+        Vector2 pointDirection = tb.position - transform.position;
         float angle = Mathf.Atan2(pointDirection.y, pointDirection.x) * Mathf.Rad2Deg;
-        turret.rotation = Quaternion.Euler(0, 0, angle);
+        turret.localRotation = Quaternion.Euler(0, 0, angle + 90f);
     }
 }
