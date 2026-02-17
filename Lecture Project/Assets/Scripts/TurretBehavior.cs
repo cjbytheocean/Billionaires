@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime;
+using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class TurretBehavior : MonoBehaviour
     public Transform turret;
     public Color billionaireColor;
     public static List<GameObject> billions = new List<GameObject>(); 
+    float storedAngle; 
 
     void Awake()
     {
@@ -20,6 +22,8 @@ public class TurretBehavior : MonoBehaviour
     }
 
     // https://docs.unity3d.com/560/Documentation/ScriptReference/MonoBehaviour.LateUpdate.html
+    // If there are several opponents, call ClosestBillion(). Otherwise, choose to rotate
+    // turret based on last stored angle.
 
     void LateUpdate()
     {
@@ -27,10 +31,16 @@ public class TurretBehavior : MonoBehaviour
 
         if (t != null)
         {
-            RotateBillion(t.transform);
-            Debug.DrawLine(transform.position, t.transform.position, Color.red);
+            RotateTurret(t.transform);
+        }
+        else
+        {
+            turret.localRotation = Quaternion.Euler(0, 0, storedAngle);
         }
     }
+
+    // Finds and returns the closest billion in respect to another billion. If the billion is itself or
+    // a billion of the same color, continue to calculate the closest distance until the closest opponent is located.
 
     GameObject ClosestBillion()
     {
@@ -64,12 +74,13 @@ public class TurretBehavior : MonoBehaviour
     }
 
     // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Quaternion.Euler.html
-
     // Instead of just y/x, arc tangent will account for quadrants
-    void RotateBillion(Transform tb)
+    // Stores last angle in the case of no opponents, then rotates turret according to calculation.
+    void RotateTurret(Transform tb)
     {
         Vector2 pointDirection = tb.position - transform.position;
         float angle = Mathf.Atan2(pointDirection.y, pointDirection.x) * Mathf.Rad2Deg;
+        storedAngle = angle + 90f;
         turret.localRotation = Quaternion.Euler(0, 0, angle + 90f);
     }
 }
