@@ -40,9 +40,6 @@ public class TurretBehavior : MonoBehaviour
             RotateTurret(t.transform);
             float dist = Vector3.Distance(transform.position, t.transform.position);
 
-            Debug.Log("Distance: " + dist + " | threshold: " + blasterDistance);
-
-
             if (dist <= blasterDistance)
             {
                 blasterFireTimer += Time.deltaTime;
@@ -50,7 +47,13 @@ public class TurretBehavior : MonoBehaviour
                 if (blasterFireTimer >= blasterInterval)
                 {
                     blasterFireTimer = 0;
-                    Instantiate(blaster, blasterFirePoint.position, blasterFirePoint.rotation);
+                    GameObject billionBlaster = Instantiate(blaster, blasterFirePoint.position, blasterFirePoint.rotation);
+
+                    SpriteRenderer sr = billionBlaster.GetComponent<SpriteRenderer>();
+                    if (sr != null)
+                    {
+                        sr.color = billionaireColor;
+                    }
                 }
             }
             else
