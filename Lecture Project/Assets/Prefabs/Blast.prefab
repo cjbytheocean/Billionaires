@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 551358909968124940}
   - component: {fileID: 1227220283984192016}
+  - component: {fileID: -1588789615247304540}
   m_Layer: 0
   m_Name: Blast
   m_TagString: Untagged
@@ -87,3 +88,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-1588789615247304540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655498332108650640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795dd40456a7d4570b0771dc65869464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blasterSpeed: 20
+  blasterLife: 5
+  blaster: {fileID: 0}

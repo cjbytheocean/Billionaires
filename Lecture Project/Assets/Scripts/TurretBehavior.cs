@@ -15,7 +15,7 @@ public class TurretBehavior : MonoBehaviour
     public float blasterInterval = 1.0f;
     public float blasterDistance = 15f;
     public Transform blasterFirePoint;
-    float fireTimer;
+    float blasterFireTimer;
 
     void Awake()
     {
@@ -38,7 +38,12 @@ public class TurretBehavior : MonoBehaviour
         if (t != null)
         {
             RotateTurret(t.transform);
-            
+            float dist = Vector3.Distance(transform.position, t.transform.position);
+
+            if (dist <= blasterDistance)
+            {
+                ShootBlaster();
+            }
         }
         else
         {
@@ -93,6 +98,12 @@ public class TurretBehavior : MonoBehaviour
 
     void ShootBlaster()
     {
-        
+        blasterFireTimer += Time.deltaTime;
+
+        if (blasterFireTimer >= blasterInterval)
+        {
+            blasterFireTimer = 0;
+            Instantiate(blaster, blasterFirePoint.position, blasterFirePoint.rotation);
+        }
     }
 }
