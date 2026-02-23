@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontScaleChild: {fileID: 4940793345947739051}
-  destroyClicks: 4
+  destroyHits: 4
   clicks: 0
   health: 100
 --- !u!114 &3288517064011478785

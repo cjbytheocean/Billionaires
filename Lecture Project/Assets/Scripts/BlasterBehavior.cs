@@ -23,4 +23,19 @@ public class BlasterBehavior : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D c)
+    {
+        BillionDamage bd = c.GetComponent<BillionDamage>();
+
+        if (bd != null)
+        {
+            TurretBehavior thisTB = GetComponent<TurretBehavior>();
+            TurretBehavior thatTB = c.GetComponent<TurretBehavior>();
+        }
+
+
+    }
+
+
 }

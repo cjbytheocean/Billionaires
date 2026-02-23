@@ -4,7 +4,7 @@ public class BillionDamage : MonoBehaviour
 {
     private float lowerScaleAmount = 0.04f;
     public Transform dontScaleChild;
-    public int destroyClicks = 4; 
+    public int destroyHits = 4; 
     public int clicks = 0;
     public int health = 100;
 
@@ -27,7 +27,7 @@ public class BillionDamage : MonoBehaviour
     {
         clicks++;
         health -= 25;
-        if (clicks == destroyClicks)
+        if (clicks == destroyHits)
         {
             health = 0;
             DestroyBillion();
