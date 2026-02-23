@@ -9,7 +9,13 @@ public class TurretBehavior : MonoBehaviour
     public Transform turret;
     public Color billionaireColor;
     public static List<GameObject> billions = new List<GameObject>(); 
-    float storedAngle; 
+    float storedAngle;
+
+    public GameObject blaster;
+    public float blasterInterval = 1.0f;
+    public float blasterDistance = 15f;
+    public Transform blasterFirePoint;
+    float fireTimer;
 
     void Awake()
     {
@@ -32,6 +38,7 @@ public class TurretBehavior : MonoBehaviour
         if (t != null)
         {
             RotateTurret(t.transform);
+            
         }
         else
         {
@@ -82,5 +89,10 @@ public class TurretBehavior : MonoBehaviour
         float angle = Mathf.Atan2(pointDirection.y, pointDirection.x) * Mathf.Rad2Deg;
         storedAngle = angle + 90f;
         turret.localRotation = Quaternion.Euler(0, 0, angle + 90f);
+    }
+
+    void ShootBlaster()
+    {
+        
     }
 }
