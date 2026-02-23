@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BlasterBehavior : MonoBehaviour
 {
-    public float blasterSpeed = 20f;
+    public float blasterSpeed = 10f;
     public float blasterLife = 5f; // this will be changed
     
     void Start()
@@ -12,6 +12,6 @@ public class BlasterBehavior : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.up * blasterSpeed * Time.deltaTime;
+        transform.position += -transform.right * blasterSpeed * Time.deltaTime;
     }
 }

@@ -199,7 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 2359453851664651348}
   billionaireColor: {r: 0, g: 0, b: 0, a: 0}
-  blaster: {fileID: 2655498332108650640, guid: d21d7a936dfc648eb9f1944a2fa254ac, type: 3}
+  blaster: {fileID: 8725263104601288896, guid: 91bba32559cb941fd99c2ce774c6850a, type: 3}
   blasterInterval: 1
   blasterDistance: 15
   blasterFirePoint: {fileID: 1986199815338742527}

@@ -13,7 +13,7 @@ public class TurretBehavior : MonoBehaviour
 
     public GameObject blaster;
     public float blasterInterval = 1.0f;
-    public float blasterDistance = 15f;
+    public float blasterDistance = 4f;
     public Transform blasterFirePoint;
     float blasterFireTimer;
 
