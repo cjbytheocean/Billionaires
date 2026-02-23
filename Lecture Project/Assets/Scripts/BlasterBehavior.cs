@@ -28,7 +28,12 @@ public class BlasterBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D c)
     {
-        Debug.Log("collision detected");
+        if (c.CompareTag("Border"))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         BillionDamage bd = c.GetComponent<BillionDamage>();
 
         if (bd != null)
