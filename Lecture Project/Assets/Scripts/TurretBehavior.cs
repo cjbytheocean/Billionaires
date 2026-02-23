@@ -13,7 +13,7 @@ public class TurretBehavior : MonoBehaviour
 
     public GameObject blaster;
     public float blasterInterval = 1.0f;
-    public float blasterDistance = 4f;
+    public float blasterDistance = 1.5f;
     public Transform blasterFirePoint;
     float blasterFireTimer;
 
@@ -40,9 +40,22 @@ public class TurretBehavior : MonoBehaviour
             RotateTurret(t.transform);
             float dist = Vector3.Distance(transform.position, t.transform.position);
 
+            Debug.Log("Distance: " + dist + " | threshold: " + blasterDistance);
+
+
             if (dist <= blasterDistance)
             {
-                ShootBlaster();
+                blasterFireTimer += Time.deltaTime;
+
+                if (blasterFireTimer >= blasterInterval)
+                {
+                    blasterFireTimer = 0;
+                    Instantiate(blaster, blasterFirePoint.position, blasterFirePoint.rotation);
+                }
+            }
+            else
+            {
+                blasterFireTimer = 0;
             }
         }
         else
@@ -94,16 +107,5 @@ public class TurretBehavior : MonoBehaviour
         float angle = Mathf.Atan2(pointDirection.y, pointDirection.x) * Mathf.Rad2Deg;
         storedAngle = angle + 90f;
         turret.localRotation = Quaternion.Euler(0, 0, angle + 90f);
-    }
-
-    void ShootBlaster()
-    {
-        blasterFireTimer += Time.deltaTime;
-
-        if (blasterFireTimer >= blasterInterval)
-        {
-            blasterFireTimer = 0;
-            Instantiate(blaster, blasterFirePoint.position, blasterFirePoint.rotation);
-        }
     }
 }
