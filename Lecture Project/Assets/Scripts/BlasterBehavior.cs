@@ -5,6 +5,8 @@ public class BlasterBehavior : MonoBehaviour
     public float blasterSpeed = 10f;
     public float blasterLife = 4f;
     public float blasterMaxDistance = 4f;
+
+    public Color blasterColor;
     Vector3 blasterSpawnPosition;
     
     void Start()
@@ -26,16 +28,22 @@ public class BlasterBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D c)
     {
+        Debug.Log("collision detected");
         BillionDamage bd = c.GetComponent<BillionDamage>();
 
         if (bd != null)
         {
-            TurretBehavior thisTB = GetComponent<TurretBehavior>();
             TurretBehavior thatTB = c.GetComponent<TurretBehavior>();
+    
+
+            if (bd != null && thatTB!= null)
+            {
+                if (thatTB.billionaireColor != blasterColor)
+                {
+                    bd.DealDamage();
+                    Destroy(gameObject);
+                } 
+            }
         }
-
-
     }
-
-
 }

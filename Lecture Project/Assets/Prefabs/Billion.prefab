@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontScaleChild: {fileID: 4940793345947739051}
   destroyHits: 4
-  clicks: 0
+  hits: 0
   health: 100
 --- !u!114 &3288517064011478785
 MonoBehaviour:
@@ -201,7 +201,7 @@ MonoBehaviour:
   billionaireColor: {r: 0, g: 0, b: 0, a: 0}
   blaster: {fileID: 8725263104601288896, guid: 91bba32559cb941fd99c2ce774c6850a, type: 3}
   blasterInterval: 1
-  blasterDistance: 2.5
+  blasterDistance: 3
   blasterFirePoint: {fileID: 1986199815338742527}
 --- !u!1 &1285074763675643646
 GameObject:

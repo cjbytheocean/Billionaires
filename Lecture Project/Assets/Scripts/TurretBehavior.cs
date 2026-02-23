@@ -13,7 +13,7 @@ public class TurretBehavior : MonoBehaviour
 
     public GameObject blaster;
     public float blasterInterval = 1.0f;
-    public float blasterDistance = 2.5f;
+    public float blasterDistance = 3f;
     public Transform blasterFirePoint;
     float blasterFireTimer;
 
@@ -48,6 +48,9 @@ public class TurretBehavior : MonoBehaviour
                 {
                     blasterFireTimer = 0;
                     GameObject billionBlaster = Instantiate(blaster, blasterFirePoint.position, blasterFirePoint.rotation);
+
+                    BlasterBehavior bb = billionBlaster.GetComponent<BlasterBehavior>();
+                    bb.blasterColor = billionaireColor;
 
                     SpriteRenderer sr = billionBlaster.GetComponent<SpriteRenderer>();
                     if (sr != null)
