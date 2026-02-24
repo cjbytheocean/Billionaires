@@ -15,6 +15,7 @@ public class BlasterBehavior : MonoBehaviour
         Destroy(gameObject, blasterLife);
     }
 
+    // Handles the position of an object. Movement is linear.
     void Update()
     {
         transform.position += -transform.right * blasterSpeed * Time.deltaTime;
@@ -25,6 +26,9 @@ public class BlasterBehavior : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    // If the blaster touches a border, destroy the blaster.
+    // If the blaster touches an opponent, deal damage to the opponent, and destroy the blaster.
 
     void OnTriggerEnter2D(Collider2D c)
     {
@@ -40,7 +44,6 @@ public class BlasterBehavior : MonoBehaviour
         {
             TurretBehavior thatTB = c.GetComponent<TurretBehavior>();
     
-
             if (bd != null && thatTB!= null)
             {
                 if (thatTB.billionaireColor != blasterColor)

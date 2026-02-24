@@ -10,16 +10,8 @@ public class BillionDamage : MonoBehaviour
 
     // When pressing on a billion, decrease the scale of the color while maintaining a white "ring"
     // For the use of OnMouseDown(): https://docs.unity3d.com/6000.3/Documentation/ScriptReference/MonoBehaviour.OnMouseDown.html
-
-        // Vector3 changedScale = transform.localScale - new Vector3(lowerScaleAmount, lowerScaleAmount, 0); 
-        // Vector3 startingScale = transform.localScale;
-        // transform.localScale = changedScale; 
-        
-        // Vector3 accountForFactor = new Vector3(startingScale.x / transform.localScale.x, startingScale.y / transform.localScale.y, 0); 
-        // dontScaleChild.localScale = Vector3.Scale(dontScaleChild.localScale, accountForFactor);
-    
-    // On each click of the billions, increase the click counter
-    // Additionally, for now, decrease billion health.
+    // On each hit of the billions, increase the hit counter and decrease billion health.
+    // When health hits zero, destroy billion.
     public void DealDamage()
     {
         hits++;
@@ -34,7 +26,8 @@ public class BillionDamage : MonoBehaviour
         }
     }
 
-    // From old verison of this class, just moved into a method call
+    // From old verison of this class, just moved into a method call. Is called
+    // when damage is dealt.
 
     public void WhiteRingEffect()
     {

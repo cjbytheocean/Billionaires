@@ -30,6 +30,7 @@ public class TurretBehavior : MonoBehaviour
     // https://docs.unity3d.com/560/Documentation/ScriptReference/MonoBehaviour.LateUpdate.html
     // If there are several opponents, call ClosestBillion(). Otherwise, choose to rotate
     // turret based on last stored angle.
+    // Updated for checkpoint 5
 
     void LateUpdate()
     {
