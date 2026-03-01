@@ -4,6 +4,14 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
+public enum BillionaireColor
+{
+    Blue,
+    Green,
+    Red, 
+    Yellow
+}
+
 public class TurretBehavior : MonoBehaviour
 {
     public Transform turret;

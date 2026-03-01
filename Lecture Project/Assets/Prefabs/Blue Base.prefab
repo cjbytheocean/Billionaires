@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8381528057194791744}
   - component: {fileID: -3033689507751847506}
   - component: {fileID: -8369179678199282214}
+  - component: {fileID: 8404254722360754634}
   m_Layer: 0
   m_Name: Blue Base
   m_TagString: Untagged
@@ -175,6 +176,24 @@ MonoBehaviour:
   spacing: 0.05
   spawnDirection: {x: 1, y: 0}
   basePosition: {x: 0, y: 0, z: 0}
+--- !u!114 &8404254722360754634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5265451491993671561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe507f2d52144fc492ef84e8b5f96dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 4913802068666547436}
+  billionaireColor: {r: 0, g: 0, b: 0, a: 0}
+  blaster: {fileID: 1201656402066759294, guid: ea91c26609bee4b7db0b2d362c5f4838, type: 3}
+  blasterInterval: 1
+  blasterDistance: 3
+  blasterFirePoint: {fileID: 7874440650995153031}
 --- !u!1001 &6511041993993069622
 PrefabInstance:
   m_ObjectHideFlags: 0
