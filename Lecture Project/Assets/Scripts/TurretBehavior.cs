@@ -86,20 +86,26 @@ public class TurretBehavior : MonoBehaviour
         {
             TurretBehavior tb = billion.GetComponent<TurretBehavior>();
 
-            if (billion == gameObject)
+            if (billion == gameObject || billion == null)
             {
                 continue;
             }
-            
 
-            
-        
-            float dst = Vector3.Distance(transform.position, billion.transform.position);
-
-            if (dst < dist)
+            if (tb.billionaire == true && tb.billionaireColor == billionaireColor)
             {
-                dist = dst;
-                closestBillion = billion;
+                continue;
+            }
+
+
+            if (tb.billionaire == false && tb.billionaireColor != billionaireColor)
+            {
+                float dst = Vector3.Distance(transform.position, billion.transform.position);
+
+                if (dst < dist)
+                {
+                    dist = dst;
+                    closestBillion = billion;
+                }
             }
         }
         return closestBillion;
