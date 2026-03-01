@@ -4,14 +4,6 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public enum BillionaireColor
-{
-    Blue,
-    Green,
-    Red, 
-    Yellow
-}
-
 public class TurretBehavior : MonoBehaviour
 {
     public Transform turret;
@@ -24,6 +16,8 @@ public class TurretBehavior : MonoBehaviour
     public float blasterDistance = 3f;
     public Transform blasterFirePoint;
     float blasterFireTimer;
+
+    public bool billionaire;
 
     void Awake()
     {
@@ -91,6 +85,11 @@ public class TurretBehavior : MonoBehaviour
         foreach (GameObject billion in billions)
         {
             TurretBehavior tb = billion.GetComponent<TurretBehavior>();
+
+            if (tb.billionaire)
+            {
+                continue;
+            }
             
             if (billion == gameObject)
             {
