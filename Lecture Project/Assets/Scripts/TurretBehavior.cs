@@ -86,21 +86,14 @@ public class TurretBehavior : MonoBehaviour
         {
             TurretBehavior tb = billion.GetComponent<TurretBehavior>();
 
-            if (tb.billionaire)
-            {
-                continue;
-            }
-            
             if (billion == gameObject)
             {
                 continue;
             }
+            
 
-            if (tb.billionaireColor == billionaireColor)
-            {
-                continue;
-            }
-
+            
+        
             float dst = Vector3.Distance(transform.position, billion.transform.position);
 
             if (dst < dist)
