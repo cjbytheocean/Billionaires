@@ -54,6 +54,7 @@ public class TurretBehavior : MonoBehaviour
 
                     BlasterBehavior bb = billionBlaster.GetComponent<BlasterBehavior>();
                     bb.blasterColor = billionaireColor;
+                    bb.isBillionaireBlaster = billionaire;
 
                     SpriteRenderer sr = billionBlaster.GetComponent<SpriteRenderer>();
                     if (sr != null)
