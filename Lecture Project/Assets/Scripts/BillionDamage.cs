@@ -8,14 +8,15 @@ public class BillionDamage : MonoBehaviour
     public int hits = 0;
     public int health = 100;
 
+
     // When pressing on a billion, decrease the scale of the color while maintaining a white "ring"
     // For the use of OnMouseDown(): https://docs.unity3d.com/6000.3/Documentation/ScriptReference/MonoBehaviour.OnMouseDown.html
     // On each hit of the billions, increase the hit counter and decrease billion health.
     // When health hits zero, destroy billion.
-    public void DealDamage()
+    public void DealDamage(int amount)
     {
         hits++;
-        health -= 25;
+        health -= amount;
 
         WhiteRingEffect();
         

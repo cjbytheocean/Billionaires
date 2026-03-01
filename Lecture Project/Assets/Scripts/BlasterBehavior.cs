@@ -7,6 +7,7 @@ public class BlasterBehavior : MonoBehaviour
     public float blasterMaxDistance = 4f;
 
     public Color blasterColor;
+    public bool billionaireBlaster;
     Vector3 blasterSpawnPosition;
     
     void Start()
@@ -48,7 +49,7 @@ public class BlasterBehavior : MonoBehaviour
             {
                 if (thatTB.billionaireColor != blasterColor)
                 {
-                    bd.DealDamage();
+                    bd.DealDamage(25);
                     Destroy(gameObject);
                 } 
             }
