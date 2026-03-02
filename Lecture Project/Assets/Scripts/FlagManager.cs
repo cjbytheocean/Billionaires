@@ -110,6 +110,7 @@ public class FlagManager : MonoBehaviour
         } 
     }
 
+    // Allows the flag to be dragged.
     public void FlagDragging()
     {
         Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
@@ -172,6 +173,7 @@ public class FlagManager : MonoBehaviour
         return position + Vector3.up * bottom; 
     }
 
+    // Identifies the object as a flag.
     private bool CheckIfFlag(GameObject g)
     {
         return blueFlags.Contains(g) || greenFlags.Contains(g) || redFlags.Contains(g) || yellowFlags.Contains(g);

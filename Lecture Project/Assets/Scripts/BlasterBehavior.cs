@@ -9,7 +9,8 @@ public class BlasterBehavior : MonoBehaviour
     public Color blasterColor;
     public bool isBillionaireBlaster;
     Vector3 blasterSpawnPosition;
-    
+
+    // Remembers where the blaster was spawned, and destroys it after blasterLife seconds.
     void Start()
     {
         blasterSpawnPosition = transform.position;

@@ -14,12 +14,15 @@ public class TurretBehavior : MonoBehaviour
     public GameObject blaster;
     public float blasterInterval = 1.0f;
     public float blasterDistance = 3f;
+    public float rotationSpeed = 180f;
     public Transform blasterFirePoint;
     float blasterFireTimer;
 
     public bool isBillionaire;
     public bool isBillion;
 
+    // If the object is a billion, add it to the list of billions.
+    // Otherwise, skip.
     void Awake()
     {
         if (isBillion)
@@ -28,6 +31,7 @@ public class TurretBehavior : MonoBehaviour
         }
     }
 
+    // When the object is destroyed, remove it from the list of billions.
     void OnDestroy()
     {
         billions.Remove(gameObject);
@@ -46,7 +50,7 @@ public class TurretBehavior : MonoBehaviour
         {
             if (isBillionaire)
             {
-                RotateBillionaireTurret(t.transform)
+                RotateBillionaireTurret(t.transform);
             }
             else
             {
@@ -131,8 +135,19 @@ public class TurretBehavior : MonoBehaviour
         turret.localRotation = Quaternion.Euler(0, 0, angle + 90f);
     }
 
+    // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Quaternion.RotateTowards.html
+    // Code somewhat reused from RotateBillionTurret(). However, instead of immediately pointing
+    // at the target, it only moves rotationSpeed * Time.deltaTime degrees per second, creating the
+    // fixed degree.
+
     void RotateBillionaireTurret(Transform tb)
     {
-        
+        Vector2 pointDirection = tb.position - transform.position;
+        float angle = Mathf.Atan2(pointDirection.y, pointDirection.x) * Mathf.Rad2Deg;
+        float billionAngle = angle + 90f;
+        storedAngle = billionAngle;
+
+        Quaternion turretRotation = Quaternion.Euler(0, 0, billionAngle);
+        turret.localRotation = Quaternion.RotateTowards(turret.localRotation, turretRotation, rotationSpeed * Time.deltaTime);
     }
 }
