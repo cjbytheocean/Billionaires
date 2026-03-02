@@ -44,7 +44,14 @@ public class TurretBehavior : MonoBehaviour
 
         if (t != null)
         {
-            RotateTurret(t.transform);
+            if (isBillionaire)
+            {
+                RotateBillionaireTurret(t.transform)
+            }
+            else
+            {
+                RotateBillionTurret(t.transform); 
+            }
             float dist = Vector3.Distance(transform.position, t.transform.position);
 
             if (dist <= blasterDistance)
@@ -116,11 +123,16 @@ public class TurretBehavior : MonoBehaviour
     // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Quaternion.Euler.html
     // Instead of just y/x, arc tangent will account for quadrants
     // Stores last angle in the case of no opponents, then rotates turret according to calculation.
-    void RotateTurret(Transform tb)
+    void RotateBillionTurret(Transform tb)
     {
         Vector2 pointDirection = tb.position - transform.position;
         float angle = Mathf.Atan2(pointDirection.y, pointDirection.x) * Mathf.Rad2Deg;
         storedAngle = angle + 90f;
         turret.localRotation = Quaternion.Euler(0, 0, angle + 90f);
+    }
+
+    void RotateBillionaireTurret(Transform tb)
+    {
+        
     }
 }
