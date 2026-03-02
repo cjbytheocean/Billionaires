@@ -17,7 +17,8 @@ public class TurretBehavior : MonoBehaviour
     public Transform blasterFirePoint;
     float blasterFireTimer;
 
-    public bool billionaire;
+    public bool isBillionaire;
+    public bool isBillion;
 
     void Awake()
     {
@@ -54,7 +55,7 @@ public class TurretBehavior : MonoBehaviour
 
                     BlasterBehavior bb = billionBlaster.GetComponent<BlasterBehavior>();
                     bb.blasterColor = billionaireColor;
-                    bb.isBillionaireBlaster = billionaire;
+                    bb.isBillionaireBlaster = isBillionaire;
 
                     SpriteRenderer sr = billionBlaster.GetComponent<SpriteRenderer>();
                     if (sr != null)
@@ -92,13 +93,13 @@ public class TurretBehavior : MonoBehaviour
                 continue;
             }
 
-            if (tb.billionaire == true && tb.billionaireColor == billionaireColor)
+            if (tb.isBillionaire == true && tb.billionaireColor == billionaireColor)
             {
                 continue;
             }
 
 
-            if (tb.billionaire == false && tb.billionaireColor != billionaireColor)
+            if (tb.isBillionaire == false && tb.billionaireColor != billionaireColor)
             {
                 float dst = Vector3.Distance(transform.position, billion.transform.position);
 

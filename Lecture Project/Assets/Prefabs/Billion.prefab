@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontScaleChild: {fileID: 4940793345947739051}
   destroyHits: 4
-  clicks: 0
+  hits: 0
   health: 100
 --- !u!114 &3288517064011478785
 MonoBehaviour:
@@ -203,6 +203,8 @@ MonoBehaviour:
   blasterInterval: 1
   blasterDistance: 2.5
   blasterFirePoint: {fileID: 1986199815338742527}
+  isBillionaire: 0
+  isBillion: 1
 --- !u!1 &1285074763675643646
 GameObject:
   m_ObjectHideFlags: 0
