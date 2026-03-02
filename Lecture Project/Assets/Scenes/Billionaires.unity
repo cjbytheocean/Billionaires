@@ -2868,9 +2868,10 @@ MonoBehaviour:
   billionaireColor: {r: 0.9137255, g: 0.8, b: 0, a: 1}
   blaster: {fileID: 1201656402066759294, guid: ea91c26609bee4b7db0b2d362c5f4838, type: 3}
   blasterInterval: 2
-  blasterDistance: 5
+  blasterDistance: 2
   blasterFirePoint: {fileID: 713961672}
-  billionaire: 1
+  isBillionaire: 0
+  isBillion: 0
 --- !u!1001 &103762441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5259,9 +5260,10 @@ MonoBehaviour:
   billionaireColor: {r: 0, g: 1, b: 0.03137255, a: 1}
   blaster: {fileID: 1201656402066759294, guid: ea91c26609bee4b7db0b2d362c5f4838, type: 3}
   blasterInterval: 2
-  blasterDistance: 5
+  blasterDistance: 2
   blasterFirePoint: {fileID: 360461264}
-  billionaire: 1
+  isBillionaire: 0
+  isBillion: 0
 --- !u!1001 &247286131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11355,9 +11357,10 @@ MonoBehaviour:
   billionaireColor: {r: 0.8862745, g: 0, b: 0, a: 1}
   blaster: {fileID: 1201656402066759294, guid: ea91c26609bee4b7db0b2d362c5f4838, type: 3}
   blasterInterval: 2
-  blasterDistance: 5
+  blasterDistance: 2
   blasterFirePoint: {fileID: 277637703}
-  billionaire: 1
+  isBillionaire: 0
+  isBillion: 0
 --- !u!1001 &606876836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39564,12 +39567,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8404254722360754634, guid: dbe222d049f4d405e8967ae5de74f6bf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404254722360754634, guid: dbe222d049f4d405e8967ae5de74f6bf, type: 3}
       propertyPath: billionaire
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8404254722360754634, guid: dbe222d049f4d405e8967ae5de74f6bf, type: 3}
+      propertyPath: isBillionaire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404254722360754634, guid: dbe222d049f4d405e8967ae5de74f6bf, type: 3}
       propertyPath: blasterDistance
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8404254722360754634, guid: dbe222d049f4d405e8967ae5de74f6bf, type: 3}
       propertyPath: blasterInterval

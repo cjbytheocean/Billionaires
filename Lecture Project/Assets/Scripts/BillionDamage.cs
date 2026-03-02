@@ -4,6 +4,7 @@ public class BillionDamage : MonoBehaviour
 {
     private float lowerScaleAmount = 0.04f;
     public Transform dontScaleChild;
+    public Transform dontScaleTurret;
     public int destroyHits = 4; 
     public int hits = 0;
     public int health = 100;
@@ -38,6 +39,7 @@ public class BillionDamage : MonoBehaviour
         
         Vector3 accountForFactor = new Vector3(startingScale.x / transform.localScale.x, startingScale.y / transform.localScale.y, 0); 
         dontScaleChild.localScale = Vector3.Scale(dontScaleChild.localScale, accountForFactor); 
+        dontScaleTurret.localScale = Vector3.Scale(dontScaleTurret.localScale, accountForFactor);
     }
 
     // Destroys the billion.

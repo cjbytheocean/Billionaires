@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontScaleChild: {fileID: 4940793345947739051}
+  dontScaleTurret: {fileID: 2359453851664651348}
   destroyHits: 4
   hits: 0
   health: 100
