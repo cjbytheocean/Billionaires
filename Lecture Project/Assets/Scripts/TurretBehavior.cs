@@ -80,6 +80,7 @@ public class TurretBehavior : MonoBehaviour
 
     // Finds and returns the closest billion in respect to another billion. If the billion is itself or
     // a billion of the same color, continue to calculate the closest distance until the closest opponent is located.
+    // https://docs.unity3d.com/6000.2/Documentation/ScriptReference/Vector4.Distance.html
 
     GameObject ClosestBillion()
     {
@@ -96,21 +97,17 @@ public class TurretBehavior : MonoBehaviour
                 continue;
             }
 
-            if (tb.isBillionaire == true && tb.billionaireColor == billionaireColor)
+            if (Vector4.Distance(tb.billionaireColor, billionaireColor) < 0.01f)
             {
                 continue;
             }
 
+            float dst = Vector3.Distance(transform.position, billion.transform.position);
 
-            if (tb.isBillionaire == false && tb.billionaireColor != billionaireColor)
+            if (dst < dist)
             {
-                float dst = Vector3.Distance(transform.position, billion.transform.position);
-
-                if (dst < dist)
-                {
-                    dist = dst;
-                    closestBillion = billion;
-                }
+                dist = dst;
+                closestBillion = billion;
             }
         }
         return closestBillion;
