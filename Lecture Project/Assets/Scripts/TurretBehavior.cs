@@ -22,7 +22,10 @@ public class TurretBehavior : MonoBehaviour
 
     void Awake()
     {
-        billions.Add(gameObject);
+        if (isBillion)
+        {
+            billions.Add(gameObject); 
+        }
     }
 
     void OnDestroy()
