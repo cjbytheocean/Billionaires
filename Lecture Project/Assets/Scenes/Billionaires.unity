@@ -2869,6 +2869,7 @@ MonoBehaviour:
   blaster: {fileID: 1201656402066759294, guid: ea91c26609bee4b7db0b2d362c5f4838, type: 3}
   blasterInterval: 2
   blasterDistance: 2
+  rotationSpeed: 180
   blasterFirePoint: {fileID: 713961672}
   isBillionaire: 0
   isBillion: 0
@@ -5261,6 +5262,7 @@ MonoBehaviour:
   blaster: {fileID: 1201656402066759294, guid: ea91c26609bee4b7db0b2d362c5f4838, type: 3}
   blasterInterval: 2
   blasterDistance: 2
+  rotationSpeed: 180
   blasterFirePoint: {fileID: 360461264}
   isBillionaire: 0
   isBillion: 0
@@ -11358,6 +11360,7 @@ MonoBehaviour:
   blaster: {fileID: 1201656402066759294, guid: ea91c26609bee4b7db0b2d362c5f4838, type: 3}
   blasterInterval: 2
   blasterDistance: 2
+  rotationSpeed: 180
   blasterFirePoint: {fileID: 277637703}
   isBillionaire: 0
   isBillion: 0
@@ -39577,6 +39580,10 @@ PrefabInstance:
     - target: {fileID: 8404254722360754634, guid: dbe222d049f4d405e8967ae5de74f6bf, type: 3}
       propertyPath: isBillionaire
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8404254722360754634, guid: dbe222d049f4d405e8967ae5de74f6bf, type: 3}
+      propertyPath: rotationSpeed
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8404254722360754634, guid: dbe222d049f4d405e8967ae5de74f6bf, type: 3}
       propertyPath: blasterDistance

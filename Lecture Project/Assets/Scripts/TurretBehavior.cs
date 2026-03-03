@@ -145,8 +145,8 @@ public class TurretBehavior : MonoBehaviour
         Vector2 pointDirection = tb.position - transform.position;
         float angle = Mathf.Atan2(pointDirection.y, pointDirection.x) * Mathf.Rad2Deg;
         float billionAngle = angle + 90f;
-        //storedAngle = billionAngle;
-
+        storedAngle = billionAngle;
+        
         Quaternion turretRotation = Quaternion.Euler(0, 0, billionAngle);
         turret.localRotation = Quaternion.RotateTowards(turret.localRotation, turretRotation, rotationSpeed * Time.deltaTime);
     }
