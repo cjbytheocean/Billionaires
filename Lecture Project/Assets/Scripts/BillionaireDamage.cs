@@ -20,21 +20,17 @@ public class BillionaireDamage : MonoBehaviour
     {
         health -= amount;
         healthBar.fillAmount -= amount/100f;
-
+        
         if (health <= 0)
         {
             DestroyBillionaire();
         }
     }
 
-    // void ChangeHealthBar(int amount)
-    // {
-    //     healthBar.fillAmount -= amount/100f;
-    // }
-
-    void ChangeExperienceBar(int degree)
+    // I have decided to make 100 XP equal to a rank
+    public void ChangeExperienceBar(int amount)
     {
-        
+        experienceBar.fillAmount += amount/100f;
     }
 
     // Destroys the billionaire.
