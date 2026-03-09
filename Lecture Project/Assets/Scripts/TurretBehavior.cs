@@ -23,12 +23,13 @@ public class TurretBehavior : MonoBehaviour
 
     // If the object is a billion, add it to the list of billions.
     // Otherwise, skip.
+    // First bullet point only required erasing if (isBillion) condition from awake.
     void Awake()
     {
-        if (isBillion)
-        {
+        //if (isBillion)
+        //{
             billions.Add(gameObject); 
-        }
+        //}
     }
 
     // When the object is destroyed, remove it from the list of billions.
