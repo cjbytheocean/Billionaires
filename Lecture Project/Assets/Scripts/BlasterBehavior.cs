@@ -5,10 +5,11 @@ public class BlasterBehavior : MonoBehaviour
     public float blasterSpeed = 10f;
     public float blasterLife = 4f;
     public float blasterMaxDistance = 4f;
-
     public Color blasterColor;
     public bool isBillionaireBlaster;
     Vector3 blasterSpawnPosition;
+
+    public BillionaireExperience opp; // NEW
 
     // Remembers where the blaster was spawned, and destroys it after blasterLife seconds.
     void Start()
@@ -53,11 +54,11 @@ public class BlasterBehavior : MonoBehaviour
                 {
                     if (isBillionaireBlaster)
                     {
-                        bd.DealBillionDamage(30);
+                        bd.DealBillionDamage(30, opp);
                     }
                     else
                     {
-                        bd.DealBillionDamage(25);
+                        bd.DealBillionDamage(25, opp);
                     }
                     Destroy(gameObject);
                 } 

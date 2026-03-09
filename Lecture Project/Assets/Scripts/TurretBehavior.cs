@@ -26,10 +26,7 @@ public class TurretBehavior : MonoBehaviour
     // First bullet point only required erasing if (isBillion) condition from awake.
     void Awake()
     {
-        //if (isBillion)
-        //{
-            billions.Add(gameObject); 
-        //}
+        billions.Add(gameObject); 
     }
 
     // When the object is destroyed, remove it from the list of billions.
@@ -71,6 +68,7 @@ public class TurretBehavior : MonoBehaviour
                     BlasterBehavior bb = billionBlaster.GetComponent<BlasterBehavior>();
                     bb.blasterColor = billionaireColor;
                     bb.isBillionaireBlaster = isBillionaire;
+                    bb.opp = GetComponent<BillionaireExperience>();
 
                     SpriteRenderer sr = billionBlaster.GetComponent<SpriteRenderer>();
                     if (sr != null)

@@ -15,12 +15,20 @@ public class BillionDamage : MonoBehaviour
     // For the use of OnMouseDown(): https://docs.unity3d.com/6000.3/Documentation/ScriptReference/MonoBehaviour.OnMouseDown.html
     // On each hit of the billions, increase the hit counter and decrease billion health.
     // When health hits zero, destroy billion.
-    public void DealBillionDamage(int amount)
+    public void DealBillionDamage(int amount, BillionaireExperience opp)
     {
         hits++;
         health -= amount;
 
+        // NEW
+        if (opp != null)
+        {
+            experienceBar = opp.experienceBar;
+        }
+
         WhiteRingEffect();
+
+        
         
         if (hits == destroyHits)
         {
