@@ -90,12 +90,11 @@ public class BillionSpawner : MonoBehaviour
         BillionaireExperience be = GetComponent<BillionaireExperience>();
         if (be != null)
         {
-            BillionDamage bd = GetComponent<BillionDamage>();
+            BillionDamage bd = billion.GetComponent<BillionDamage>();
             if (bd != null)
             {
-                
-            }
-            
+                bd.experienceBar = be.experienceBar;
+            } 
         }
 
         // NEW

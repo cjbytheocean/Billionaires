@@ -46,6 +46,10 @@ public class BillionDamage : MonoBehaviour
     // Destroys the billion.
     void DestroyBillion()
     {
+        if (experienceBar != null)
+        {
+            experienceBar.fillAmount += 0.05f;
+        }
         Destroy(gameObject);
     }
 }
