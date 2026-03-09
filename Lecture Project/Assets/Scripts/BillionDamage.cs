@@ -8,7 +8,8 @@ public class BillionDamage : MonoBehaviour
     public int destroyHits = 4; 
     public int hits = 0;
     public int health = 100;
-    public BillionaireDamage bd;
+
+    public UnityEngine.UI.Image experienceBar;
 
     // When pressing on a billion, decrease the scale of the color while maintaining a white "ring"
     // For the use of OnMouseDown(): https://docs.unity3d.com/6000.3/Documentation/ScriptReference/MonoBehaviour.OnMouseDown.html

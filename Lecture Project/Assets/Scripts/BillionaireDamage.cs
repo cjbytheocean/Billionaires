@@ -10,7 +10,6 @@ public class BillionaireDamage : MonoBehaviour
 
     // I had to type UnityEngine.UI.Image to clear ambiguity
     public UnityEngine.UI.Image healthBar;
-    public UnityEngine.UI.Image experienceBar;
 
     // When pressing on a billion, decrease the scale of the color while maintaining a white "ring"
     // For the use of OnMouseDown(): https://docs.unity3d.com/6000.3/Documentation/ScriptReference/MonoBehaviour.OnMouseDown.html
@@ -25,12 +24,6 @@ public class BillionaireDamage : MonoBehaviour
         {
             DestroyBillionaire();
         }
-    }
-
-    // I have decided to make 100 XP equal to a rank
-    public void ChangeExperienceBar(int amount)
-    {
-        experienceBar.fillAmount += amount/100f;
     }
 
     // Destroys the billionaire.
