@@ -41,25 +41,38 @@ public class BlasterBehavior : MonoBehaviour
         }
 
         BillionDamage bd = c.GetComponent<BillionDamage>();
+        BillionaireDamage bnd = c.GetComponent<BillionaireDamage>();
 
         if (bd != null)
         {
             TurretBehavior thatTB = c.GetComponent<TurretBehavior>();
     
-            if (bd != null && thatTB!= null)
+            if (bd != null && thatTB != null)
             {
                 if (thatTB.billionaireColor != blasterColor)
                 {
                     if (isBillionaireBlaster)
                     {
-                        bd.DealDamage(30);
+                        bd.DealBillionDamage(30);
                     }
                     else
                     {
-                        bd.DealDamage(25);
+                        bd.DealBillionDamage(25);
                     }
                     Destroy(gameObject);
                 } 
+            }
+        }
+        else if (bnd != null)
+        {
+            TurretBehavior thatTB = c.GetComponent<TurretBehavior>();
+            if (bnd != null && thatTB != null)
+            {
+                if (thatTB.billionaireColor != blasterColor)
+                {
+                    bnd.DealBillionaireDamage(5);
+                }
+                Destroy(gameObject);
             }
         }
     }

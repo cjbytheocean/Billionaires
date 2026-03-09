@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: -3033689507751847506}
   - component: {fileID: -8369179678199282214}
   - component: {fileID: 8404254722360754634}
+  - component: {fileID: 5203132542777160988}
   m_Layer: 0
   m_Name: Blue Base
   m_TagString: Untagged
@@ -193,7 +194,23 @@ MonoBehaviour:
   blaster: {fileID: 1201656402066759294, guid: ea91c26609bee4b7db0b2d362c5f4838, type: 3}
   blasterInterval: 1
   blasterDistance: 3
+  rotationSpeed: 180
   blasterFirePoint: {fileID: 7874440650995153031}
+  isBillionaire: 0
+  isBillion: 0
+--- !u!114 &5203132542777160988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5265451491993671561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1b29ea16c8f4e71a277b134c3ae6f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1001 &6511041993993069622
 PrefabInstance:
   m_ObjectHideFlags: 0
