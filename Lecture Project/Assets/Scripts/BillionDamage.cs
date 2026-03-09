@@ -1,3 +1,5 @@
+using NUnit.Framework.Constraints;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BillionDamage : MonoBehaviour
@@ -28,12 +30,10 @@ public class BillionDamage : MonoBehaviour
 
         WhiteRingEffect();
 
-        
-        
         if (hits == destroyHits)
         {
             health = 0;
-            DestroyBillion();
+            DestroyBillion(opp);
         }
     }
 
@@ -52,11 +52,11 @@ public class BillionDamage : MonoBehaviour
     }
 
     // Destroys the billion.
-    void DestroyBillion()
+    void DestroyBillion(BillionaireExperience opp)
     {
-        if (experienceBar != null)
+        if (opp != null && opp.experienceBar != null)
         {
-            experienceBar.fillAmount += 0.05f;
+            opp.experienceBar.fillAmount += 0.05f;
         }
         Destroy(gameObject);
     }
