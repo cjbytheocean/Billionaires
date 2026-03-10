@@ -30,7 +30,6 @@ public class BillionDamage : MonoBehaviour
         if (health <= 0)
         {
             DestroyBillion(opp);
-            Debug.Log("destroy billion called");
         }
     }
 
@@ -75,7 +74,6 @@ public class BillionDamage : MonoBehaviour
         {
             Debug.Log("DestroyBillion: opp.experienceBar exists, adding XP");
             opp.experienceBar.fillAmount += 0.05f;
-            Debug.Log("XP awarded");
         }
     }
 

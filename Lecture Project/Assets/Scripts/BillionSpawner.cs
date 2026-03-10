@@ -83,22 +83,22 @@ public class BillionSpawner : MonoBehaviour
 
         GameObject billion = Instantiate(billionPrefab, pos, Quaternion.identity);
         billion.GetComponent<TurretBehavior>().billionaireColor = billionaireColor;
-        SpriteRenderer coloring = billion.GetComponent<SpriteRenderer>();
-
+        billion.GetComponent<SpriteRenderer>().color = billionaireColor;
+        
         // NEW
 
-        BillionaireExperience be = GetComponent<BillionaireExperience>();
+        BillionaireExperience be = billion.GetComponent<BillionaireExperience>();
         if (be != null)
         {
-            BillionDamage bd = billion.GetComponent<BillionDamage>();
+            BillionaireExperience bd = GetComponent<BillionaireExperience>();
             if (bd != null)
             {
-                bd.experienceBar = be.experienceBar;
+                be.experienceBar = bd.experienceBar;
             } 
         }
 
         // NEW
-        coloring.color = billionaireColor;
+        //coloring.color = billionaireColor;
         spawnedBillions.Add(billion);
         i++;
     }

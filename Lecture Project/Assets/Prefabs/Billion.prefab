@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 708454601555632624}
   - component: {fileID: 1409218029733788031}
   - component: {fileID: 3288517064011478785}
-  - component: {fileID: -2117381447947860189}
+  - component: {fileID: 4277375857070320444}
   m_Layer: 0
   m_Name: Billion
   m_TagString: Untagged
@@ -207,7 +207,7 @@ MonoBehaviour:
   blasterFirePoint: {fileID: 1986199815338742527}
   isBillionaire: 0
   isBillion: 1
---- !u!114 &-2117381447947860189
+--- !u!114 &4277375857070320444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
