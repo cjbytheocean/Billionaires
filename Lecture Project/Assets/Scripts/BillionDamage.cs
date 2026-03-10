@@ -11,9 +11,9 @@ public class BillionDamage : MonoBehaviour
 
     public UnityEngine.UI.Image experienceBar;
     
-    // When pressing on a billion, decrease the scale of the color while maintaining a white "ring"
-    // For the use of OnMouseDown(): https://docs.unity3d.com/6000.3/Documentation/ScriptReference/MonoBehaviour.OnMouseDown.html
-    // On each hit of the billions, increase the hit counter and decrease billion health.
+    // When called, deal the corresponding amount of damage to the billions and
+    // handles opponent's experience bar.
+    // Calls WhiteRingEffect(), which shows the damage dealt the billion.
     // When health hits zero, destroy billion.
     public void DealBillionDamage(int amount, BillionaireExperience opp)
     {

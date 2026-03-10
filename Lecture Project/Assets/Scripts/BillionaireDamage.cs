@@ -11,10 +11,9 @@ public class BillionaireDamage : MonoBehaviour
     // I had to type UnityEngine.UI.Image to clear ambiguity
     public UnityEngine.UI.Image healthBar;
 
-    // When pressing on a billion, decrease the scale of the color while maintaining a white "ring"
-    // For the use of OnMouseDown(): https://docs.unity3d.com/6000.3/Documentation/ScriptReference/MonoBehaviour.OnMouseDown.html
-    // On each hit of the billions, increase the hit counter and decrease billion health.
-    // When health hits zero, destroy billion.
+    // Called when an opponent's blaster hits the billionaire. Deducts health by the
+    // parameter value when called, and the radial health decreases by a corresponding
+    // degree. When health hits 0, destroy the billionaire.
     public void DealBillionaireDamage(int amount)
     {
         health -= amount;
@@ -26,6 +25,8 @@ public class BillionaireDamage : MonoBehaviour
         }
     }
 
+    // Awards experience to the billionaire when called, does not
+    // hold meaning yet.
     public void AwardExperience(int amount)
     {
         experiencePoints += amount;

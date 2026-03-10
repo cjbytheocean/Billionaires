@@ -80,7 +80,8 @@ public class BillionSpawner : MonoBehaviour
         // I did not realize that Instantiate needs a 3D conversion.
         // CHANGES HERE FOR CHECKPOINT 4: billions know their color by setting variable in turret script and using that
         // information to not attack each other
-        // CHANGES FOR CHECKPOINT 6
+        
+        // Gets BillionaireExperience component and assigns the experienceBar image accordingly.
 
         GameObject billion = Instantiate(billionPrefab, pos, Quaternion.identity);
         billion.GetComponent<TurretBehavior>().billionaireColor = billionaireColor;
