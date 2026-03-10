@@ -10,7 +10,7 @@ public class BillionDamage : MonoBehaviour
     public int health = 100;
 
     public UnityEngine.UI.Image experienceBar;
-
+    
     // When pressing on a billion, decrease the scale of the color while maintaining a white "ring"
     // For the use of OnMouseDown(): https://docs.unity3d.com/6000.3/Documentation/ScriptReference/MonoBehaviour.OnMouseDown.html
     // On each hit of the billions, increase the hit counter and decrease billion health.
@@ -19,7 +19,6 @@ public class BillionDamage : MonoBehaviour
     {
         health -= amount;
 
-        // NEW
         if (opp != null)
         {
             experienceBar = opp.experienceBar;
@@ -50,33 +49,10 @@ public class BillionDamage : MonoBehaviour
     // Destroys the billion.
     void DestroyBillion(BillionaireExperience opp)
     {
-        
-        // if (opp != null && opp.experienceBar != null)
-        // {
-        //     opp.experienceBar.fillAmount += 0.05f;
-        //     Debug.Log("XP awarded");
-        // }
-        // Destroy(gameObject);
-
-        if (opp == null)
+        if (opp != null && opp.experienceBar != null)
         {
-            Debug.Log("DestroyBillion: opp is null");
-        }
-        else
-        {
-            Debug.Log("DestroyBillion: opp exists");
-
-            if (opp.experienceBar == null)
-            {
-                Debug.Log("DestroyBillion: opp.experienceBar is null");
-            }
-        else
-        {
-            Debug.Log("DestroyBillion: opp.experienceBar exists, adding XP");
             opp.experienceBar.fillAmount += 0.05f;
         }
-    }
-
-    Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

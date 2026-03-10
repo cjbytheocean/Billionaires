@@ -6,6 +6,7 @@ public class BillionaireDamage : MonoBehaviour
 {
     public int health = 100;
     public int experiencePoints = 0;
+    public int rank = 0;
 
     // I had to type UnityEngine.UI.Image to clear ambiguity
     public UnityEngine.UI.Image healthBar;
@@ -22,6 +23,17 @@ public class BillionaireDamage : MonoBehaviour
         if (health <= 0)
         {
             DestroyBillionaire();
+        }
+    }
+
+    public void AwardExperience(int amount)
+    {
+        experiencePoints += amount;
+        Debug.Log("experience points added");
+        if (experiencePoints % 100 == 0 && rank != 0)
+        {
+            rank++;
+            Debug.Log("rank changed");
         }
     }
 
