@@ -2892,6 +2892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   experiencePoints: 0
+  rank: 0
   healthBar: {fileID: 903780949}
 --- !u!114 &103734026
 MonoBehaviour:
@@ -5421,6 +5422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   experiencePoints: 0
+  rank: 0
   healthBar: {fileID: 1146798996}
 --- !u!114 &236742273
 MonoBehaviour:
@@ -11752,6 +11754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   experiencePoints: 0
+  rank: 0
   healthBar: {fileID: 829169184}
 --- !u!114 &603252630
 MonoBehaviour:

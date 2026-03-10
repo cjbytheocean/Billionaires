@@ -10,6 +10,7 @@ public class BillionaireDamage : MonoBehaviour
 
     // I had to type UnityEngine.UI.Image to clear ambiguity
     public UnityEngine.UI.Image healthBar;
+    
 
     // Called when an opponent's blaster hits the billionaire. Deducts health by the
     // parameter value when called, and the radial health decreases by a corresponding
@@ -31,7 +32,7 @@ public class BillionaireDamage : MonoBehaviour
     {
         experiencePoints += amount;
         Debug.Log("experience points added");
-        if (experiencePoints % 100 == 0 && rank != 0)
+        if (experiencePoints % 100 == 0 && experiencePoints != 0)
         {
             rank++;
             Debug.Log("rank changed");
