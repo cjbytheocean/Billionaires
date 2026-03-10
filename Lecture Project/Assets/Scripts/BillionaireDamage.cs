@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class BillionaireDamage : MonoBehaviour
 {
-    private float lowerScaleAmount = 0.04f;
     public int health = 100;
     public int experiencePoints = 0;
 

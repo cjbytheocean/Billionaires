@@ -35,6 +35,7 @@ public class BlasterBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D c)
     {
+        
         if (c.CompareTag("Border"))
         {
             Destroy(gameObject);

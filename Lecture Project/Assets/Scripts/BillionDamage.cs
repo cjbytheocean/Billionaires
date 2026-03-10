@@ -7,8 +7,6 @@ public class BillionDamage : MonoBehaviour
     private float lowerScaleAmount = 0.04f;
     public Transform dontScaleChild;
     public Transform dontScaleTurret;
-    public int destroyHits = 4; 
-    public int hits = 0;
     public int health = 100;
 
     public UnityEngine.UI.Image experienceBar;
@@ -19,7 +17,6 @@ public class BillionDamage : MonoBehaviour
     // When health hits zero, destroy billion.
     public void DealBillionDamage(int amount, BillionaireExperience opp)
     {
-        hits++;
         health -= amount;
 
         // NEW
@@ -30,10 +27,10 @@ public class BillionDamage : MonoBehaviour
 
         WhiteRingEffect();
 
-        if (hits == destroyHits)
+        if (health <= 0)
         {
-            health = 0;
             DestroyBillion(opp);
+            Debug.Log("destroy billion called");
         }
     }
 
@@ -54,10 +51,34 @@ public class BillionDamage : MonoBehaviour
     // Destroys the billion.
     void DestroyBillion(BillionaireExperience opp)
     {
-        if (opp != null && opp.experienceBar != null)
+        
+        // if (opp != null && opp.experienceBar != null)
+        // {
+        //     opp.experienceBar.fillAmount += 0.05f;
+        //     Debug.Log("XP awarded");
+        // }
+        // Destroy(gameObject);
+
+        if (opp == null)
         {
-            opp.experienceBar.fillAmount += 0.05f;
+            Debug.Log("DestroyBillion: opp is null");
         }
-        Destroy(gameObject);
+        else
+        {
+            Debug.Log("DestroyBillion: opp exists");
+
+            if (opp.experienceBar == null)
+            {
+                Debug.Log("DestroyBillion: opp.experienceBar is null");
+            }
+        else
+        {
+            Debug.Log("DestroyBillion: opp.experienceBar exists, adding XP");
+            opp.experienceBar.fillAmount += 0.05f;
+            Debug.Log("XP awarded");
+        }
+    }
+
+    Destroy(gameObject);
     }
 }
