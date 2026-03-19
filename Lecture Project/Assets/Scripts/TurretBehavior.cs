@@ -21,7 +21,7 @@ public class TurretBehavior : MonoBehaviour
     public bool isBillionaire;
     public bool isBillion;
 
-    public BillionaireExperience shooterBase; // THIS IS NEW
+    public BillionaireExperience shooterBase;
 
     // If the object is a billion, add it to the list of billions.
     // Otherwise, skip.
@@ -72,8 +72,7 @@ public class TurretBehavior : MonoBehaviour
                     bb.blasterColor = billionaireColor;
                     bb.isBillionaireBlaster = isBillionaire;
 
-                    //bb.opp = GetComponentInParent<BillionaireExperience>();
-                    bb.opp = shooterBase; // THIS IS NEW
+                    bb.opp = shooterBase;
 
                     SpriteRenderer sr = billionBlaster.GetComponent<SpriteRenderer>();
                     if (sr != null)

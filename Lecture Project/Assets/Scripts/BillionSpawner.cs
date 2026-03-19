@@ -20,6 +20,8 @@ public class BillionSpawner : MonoBehaviour
     private List<GameObject> spawnedBillions = new List<GameObject>();
     private int i = 0;
 
+    public BillionaireExperience xpBase;
+
 
     // Runs on start, but in this case, functioning to repetitively spawn the billions on the given spawn interval.
     // Using an InvokeRepeat to allow spawning to happen repeatedly. Looked up how to implement InvokeRepeating().
@@ -85,7 +87,9 @@ public class BillionSpawner : MonoBehaviour
 
         GameObject billion = Instantiate(billionPrefab, pos, Quaternion.identity);
         billion.GetComponent<TurretBehavior>().billionaireColor = billionaireColor;
+        billion.GetComponent<TurretBehavior>().shooterBase = xpBase;
         billion.GetComponent<SpriteRenderer>().color = billionaireColor;
+
         
         BillionaireExperience be = billion.GetComponent<BillionaireExperience>();
         if (be != null)

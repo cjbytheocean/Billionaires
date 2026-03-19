@@ -14,12 +14,9 @@ public class BillionaireExperience : MonoBehaviour
     {
         experiencePoints += amount;
 
-        Debug.Log("xp: " + experiencePoints + " on " + gameObject.name);
-
-        if (experiencePoints % 100 == 0 && experiencePoints != 0)
+        if (experiencePoints % 200 == 0 && experiencePoints != 0)
         {
             rank++;
-            Debug.Log("rank changed");
         }
     }
 }
