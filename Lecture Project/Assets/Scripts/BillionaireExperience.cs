@@ -14,7 +14,7 @@ public class BillionaireExperience : MonoBehaviour
     {
         experiencePoints += amount;
 
-        Debug.Log("XP now: " + experiencePoints + " on " + gameObject.name);
+        Debug.Log("xp: " + experiencePoints + " on " + gameObject.name);
 
         if (experiencePoints % 100 == 0 && experiencePoints != 0)
         {
