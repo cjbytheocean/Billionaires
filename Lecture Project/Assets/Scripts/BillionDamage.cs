@@ -10,6 +10,7 @@ public class BillionDamage : MonoBehaviour
     public int health = 100;
 
     public UnityEngine.UI.Image experienceBar;
+
     
     // When called, deal the corresponding amount of damage to the billions and
     // handles opponent's experience bar.
@@ -52,7 +53,9 @@ public class BillionDamage : MonoBehaviour
         if (opp != null && opp.experienceBar != null)
         {
             opp.experienceBar.fillAmount += 0.05f;
+            opp.AwardExperience(10);
         }
+    
         Destroy(gameObject);
     }
 }
