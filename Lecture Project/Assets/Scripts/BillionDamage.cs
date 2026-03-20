@@ -52,7 +52,6 @@ public class BillionDamage : MonoBehaviour
     {
         if (opp != null && opp.experienceBar != null)
         {
-            //opp.experienceBar.fillAmount += 0.05f;
             opp.AwardExperience(10);
         }
     

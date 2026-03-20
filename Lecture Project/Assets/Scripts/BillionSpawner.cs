@@ -22,7 +22,7 @@ public class BillionSpawner : MonoBehaviour
 
     public BillionaireExperience xpBase;
 
-    public int rank;
+
 
 
     // Runs on start, but in this case, functioning to repetitively spawn the billions on the given spawn interval.
@@ -31,11 +31,6 @@ public class BillionSpawner : MonoBehaviour
     {
         basePosition = transform.position;
         InvokeRepeating(nameof(BillionSpawn), spawnInterval, spawnInterval); 
-    }
-
-    void Update()
-    {
-        rank = xpBase.rank;
     }
 
     // Handles the spawning of the Billions.
