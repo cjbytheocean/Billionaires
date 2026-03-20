@@ -22,9 +22,6 @@ public class BillionSpawner : MonoBehaviour
 
     public BillionaireExperience xpBase;
 
-
-
-
     // Runs on start, but in this case, functioning to repetitively spawn the billions on the given spawn interval.
     // Using an InvokeRepeat to allow spawning to happen repeatedly. Looked up how to implement InvokeRepeating().
     void Start()

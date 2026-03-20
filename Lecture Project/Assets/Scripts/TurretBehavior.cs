@@ -23,6 +23,8 @@ public class TurretBehavior : MonoBehaviour
 
     public BillionaireExperience shooterBase;
 
+    public int rank;
+
     // If the object is a billion, add it to the list of billions.
     // Otherwise, skip.
     // First bullet point only required erasing if (isBillion) condition from awake.
@@ -35,6 +37,14 @@ public class TurretBehavior : MonoBehaviour
     void OnDestroy()
     {
         billions.Remove(gameObject);
+    }
+
+    void Update()
+    {
+        if (shooterBase != null)
+        {
+            rank = shooterBase.rank;
+        }
     }
 
     // https://docs.unity3d.com/560/Documentation/ScriptReference/MonoBehaviour.LateUpdate.html
@@ -73,7 +83,7 @@ public class TurretBehavior : MonoBehaviour
                     bb.isBillionaireBlaster = isBillionaire;
 
                     bb.opp = shooterBase;
-
+   
                     SpriteRenderer sr = billionBlaster.GetComponent<SpriteRenderer>();
                     if (sr != null)
                     {
@@ -91,6 +101,7 @@ public class TurretBehavior : MonoBehaviour
             turret.localRotation = Quaternion.Euler(0, 0, storedAngle);
         }
     }
+
 
     // Finds and returns the closest billion in respect to another billion. If the billion is itself or
     // a billion of the same color, continue to calculate the closest distance until the closest opponent is located.
