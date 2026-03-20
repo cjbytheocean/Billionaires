@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class BillionaireExperience : MonoBehaviour
@@ -8,6 +9,8 @@ public class BillionaireExperience : MonoBehaviour
     public int experiencePoints = 0;
     public int rank = 0;
 
+    public TextMeshProUGUI rankText;
+
     // Awards experience to the billionaire when called, does not
     // hold meaning yet.
     public void AwardExperience(int amount)
@@ -17,6 +20,7 @@ public class BillionaireExperience : MonoBehaviour
         if (experiencePoints % 200 == 0 && experiencePoints != 0)
         {
             rank++;
+            rankText.text = $"{rank}";
         }
     }
 }
