@@ -11,6 +11,8 @@ public class BillionaireExperience : MonoBehaviour
 
     public TextMeshProUGUI rankText;
 
+    int threshold;
+
     // Awards experience to the billionaire when called, does not
     // hold meaning yet.
     public void AwardExperience(int amount)
@@ -21,6 +23,7 @@ public class BillionaireExperience : MonoBehaviour
         {
             rank++;
             rankText.text = $"{rank}";
+            experienceBar.fillAmount -= 1f;
         }
     }
 }
