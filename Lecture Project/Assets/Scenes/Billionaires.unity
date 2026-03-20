@@ -2852,6 +2852,7 @@ MonoBehaviour:
   spacing: 0.025
   spawnDirection: {x: -1, y: 0}
   basePosition: {x: 0, y: 0, z: 0}
+  xpBase: {fileID: 103734026}
 --- !u!114 &103734022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2873,6 +2874,7 @@ MonoBehaviour:
   blasterFirePoint: {fileID: 713961672}
   isBillionaire: 1
   isBillion: 0
+  shooterBase: {fileID: 0}
 --- !u!4 &103734024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7328258139262086915, guid: bb43e99ecfad244948688971f4e953b9, type: 3}
@@ -2891,8 +2893,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  experiencePoints: 0
-  rank: 0
   healthBar: {fileID: 903780949}
 --- !u!114 &103734026
 MonoBehaviour:
@@ -2907,6 +2907,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceBar: {fileID: 873868442}
+  experiencePoints: 0
+  rank: 0
 --- !u!1001 &103762441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5403,6 +5405,7 @@ MonoBehaviour:
   blasterFirePoint: {fileID: 360461264}
   isBillionaire: 1
   isBillion: 0
+  shooterBase: {fileID: 0}
 --- !u!4 &236742271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8751033151111634102, guid: f75a323923f964354a32a474012cd1fa, type: 3}
@@ -5421,8 +5424,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  experiencePoints: 0
-  rank: 0
   healthBar: {fileID: 1146798996}
 --- !u!114 &236742273
 MonoBehaviour:
@@ -5437,6 +5438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceBar: {fileID: 752757888}
+  experiencePoints: 0
+  rank: 0
 --- !u!1001 &247286131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11714,6 +11717,7 @@ MonoBehaviour:
   spacing: 0.025
   spawnDirection: {x: -1, y: 0}
   basePosition: {x: 0, y: 0, z: 0}
+  xpBase: {fileID: 603252630}
 --- !u!114 &603252626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11735,6 +11739,7 @@ MonoBehaviour:
   blasterFirePoint: {fileID: 277637703}
   isBillionaire: 1
   isBillion: 0
+  shooterBase: {fileID: 0}
 --- !u!4 &603252628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6482319063174294036, guid: f98815ebf12224a4798235c5979f2a86, type: 3}
@@ -11753,8 +11758,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  experiencePoints: 0
-  rank: 0
   healthBar: {fileID: 829169184}
 --- !u!114 &603252630
 MonoBehaviour:
@@ -11769,6 +11772,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceBar: {fileID: 874221284}
+  experiencePoints: 0
+  rank: 0
 --- !u!1001 &606876836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18678,6 +18683,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceBar: {fileID: 336383064}
+  experiencePoints: 0
+  rank: 0
 --- !u!1001 &1003720234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22635,6 +22642,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceBar: {fileID: 336383064}
+  experiencePoints: 0
+  rank: 0
 --- !u!1001 &1197026940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23335,6 +23344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceBar: {fileID: 752757888}
+  experiencePoints: 0
+  rank: 0
 --- !u!1001 &1228424873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27320,6 +27331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceBar: {fileID: 874221284}
+  experiencePoints: 0
+  rank: 0
 --- !u!1 &1443946862
 GameObject:
   m_ObjectHideFlags: 0
@@ -37978,6 +37991,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceBar: {fileID: 873868442}
+  experiencePoints: 0
+  rank: 0
 --- !u!1001 &2010516478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40782,6 +40797,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8369179678199282214, guid: dbe222d049f4d405e8967ae5de74f6bf, type: 3}
+      propertyPath: xpBase
+      value: 
+      objectReference: {fileID: 1192608487}
+    - target: {fileID: -8369179678199282214, guid: dbe222d049f4d405e8967ae5de74f6bf, type: 3}
       propertyPath: spacing
       value: 0.025
       objectReference: {fileID: 0}
@@ -41483,6 +41502,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 4294160271484620301, guid: f75a323923f964354a32a474012cd1fa, type: 3}
+      propertyPath: xpBase
+      value: 
+      objectReference: {fileID: 236742273}
     - target: {fileID: 4294160271484620301, guid: f75a323923f964354a32a474012cd1fa, type: 3}
       propertyPath: spacing
       value: 0.025
