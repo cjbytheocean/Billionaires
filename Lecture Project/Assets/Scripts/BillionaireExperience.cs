@@ -15,6 +15,7 @@ public class BillionaireExperience : MonoBehaviour
 
     // Awards experience to the billionaire when called, does not
     // hold meaning yet.
+
     public void AwardExperience(int amount)
     {
         experiencePoints += amount;
