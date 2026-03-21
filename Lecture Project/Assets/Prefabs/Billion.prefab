@@ -207,6 +207,7 @@ MonoBehaviour:
   isBillionaire: 0
   isBillion: 1
   shooterBase: {fileID: 0}
+  rank: 0
 --- !u!1 &1285074763675643646
 GameObject:
   m_ObjectHideFlags: 0
