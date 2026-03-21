@@ -56,22 +56,21 @@ public class BlasterBehavior : MonoBehaviour
                 {
                     TurretBehavior tb = GetComponentInParent<TurretBehavior>();
 
-                    int damage;
+                    int damage = 1;
 
-                    if (tb.rank == 0)
+                    if (tb != null)
                     {
-                        damage = 1;
+                        if (tb.rank == 0)
+                        {
+                            damage = 1;
+                        }
+                        else
+                        {
+                            damage = Mathf.RoundToInt(tb.rank / 2f);
+                        }
                     }
 
-                    damage = Mathf.RoundToInt(tb.rank / 2f);
-                    if (isBillionaireBlaster)
-                    {
-                        bd.DealBillionDamage(damage, opp);
-                    }
-                    else
-                    {
-                        bd.DealBillionDamage(damage, opp);
-                    }
+                    bd.DealBillionDamage(damage, opp);
                     Destroy(gameObject);
                 } 
             }
@@ -83,7 +82,7 @@ public class BlasterBehavior : MonoBehaviour
             {
                 if (thatTB.billionaireColor != blasterColor)
                 {
-                    bnd.DealBillionaireDamage(5);
+                    bnd.DealBillionaireDamage(1);
                 }
                 Destroy(gameObject);
             }
