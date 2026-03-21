@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using System.Data;
 using Unity.Collections;
+using System;
 
 public class BillionSpawner : MonoBehaviour
 {
@@ -85,11 +86,16 @@ public class BillionSpawner : MonoBehaviour
         // Gets BillionaireExperience component and assigns the experienceBar image accordingly.
 
         GameObject billion = Instantiate(billionPrefab, pos, Quaternion.identity);
-        billion.GetComponent<TurretBehavior>().billionaireColor = billionaireColor;
-        billion.GetComponent<TurretBehavior>().shooterBase = xpBase;
+
+        TurretBehavior tb = billion.GetComponent<TurretBehavior>();
+        tb.billionaireColor = billionaireColor;
+        tb.shooterBase = xpBase;
+        tb.rank = xpBase.rank;
+
+        // billion.GetComponent<TurretBehavior>().billionaireColor = billionaireColor;
+        // billion.GetComponent<TurretBehavior>().shooterBase = xpBase;
         billion.GetComponent<SpriteRenderer>().color = billionaireColor;
 
-        
         BillionaireExperience be = billion.GetComponent<BillionaireExperience>();
         if (be != null)
         {
