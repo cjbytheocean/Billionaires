@@ -7,9 +7,25 @@ public class BillionDamage : MonoBehaviour
     private float lowerScaleAmount = 0.04f;
     public Transform dontScaleChild;
     public Transform dontScaleTurret;
-    public int health = 100;
+    public int health = 50;
 
     public UnityEngine.UI.Image experienceBar;
+
+    // Applies health upgrade
+    void Start()
+    {
+        TurretBehavior tb = GetComponent<TurretBehavior>();
+        int rank = tb.rank;
+
+        float multiplier = rank * 2.5f;
+
+        if (rank == 0)
+        {
+            multiplier = 1f;
+        }
+
+        health = Mathf.RoundToInt(50 * multiplier);
+    }
 
     
     // When called, deal the corresponding amount of damage to the billions and
