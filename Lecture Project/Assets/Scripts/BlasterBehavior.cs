@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BlasterBehavior : MonoBehaviour
@@ -53,13 +54,23 @@ public class BlasterBehavior : MonoBehaviour
             {
                 if (thatTB.billionaireColor != blasterColor)
                 {
+                    TurretBehavior tb = GetComponentInParent<TurretBehavior>();
+
+                    int damage;
+
+                    if (tb.rank == 0)
+                    {
+                        damage = 1;
+                    }
+
+                    damage = Mathf.RoundToInt(tb.rank / 2f);
                     if (isBillionaireBlaster)
                     {
-                        bd.DealBillionDamage(30, opp);
+                        bd.DealBillionDamage(damage, opp);
                     }
                     else
                     {
-                        bd.DealBillionDamage(25, opp);
+                        bd.DealBillionDamage(damage, opp);
                     }
                     Destroy(gameObject);
                 } 
