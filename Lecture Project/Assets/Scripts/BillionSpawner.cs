@@ -91,10 +91,12 @@ public class BillionSpawner : MonoBehaviour
         tb.billionaireColor = billionaireColor;
         tb.shooterBase = xpBase;
         tb.rank = xpBase.rank;
-
-        // billion.GetComponent<TurretBehavior>().billionaireColor = billionaireColor;
-        // billion.GetComponent<TurretBehavior>().shooterBase = xpBase;
         billion.GetComponent<SpriteRenderer>().color = billionaireColor;
+
+        // Shrinking Billion based on rank
+
+        float multiplier = 1f;
+        billion.transform.localScale *= multiplier;
 
         BillionaireExperience be = billion.GetComponent<BillionaireExperience>();
         if (be != null)
