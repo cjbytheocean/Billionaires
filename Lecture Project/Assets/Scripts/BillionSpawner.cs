@@ -93,12 +93,6 @@ public class BillionSpawner : MonoBehaviour
         tb.rank = xpBase.rank;
         billion.GetComponent<SpriteRenderer>().color = billionaireColor;
 
-        // Shrinking Billion based on rank
-
-        float multiplier = 0.3f - (tb.rank/10);
-        multiplier = Mathf.Max(multiplier, 0.2f);
-        billion.transform.localScale -=  multiplier;
-
         BillionaireExperience be = billion.GetComponent<BillionaireExperience>();
         if (be != null)
         {
