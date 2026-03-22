@@ -95,8 +95,9 @@ public class BillionSpawner : MonoBehaviour
 
         // Shrinking Billion based on rank
 
-        float multiplier = 1f;
-        billion.transform.localScale *= multiplier;
+        float multiplier = 0.3f - (tb.rank/10);
+        multiplier = Mathf.Max(multiplier, 0.2f);
+        billion.transform.localScale -=  multiplier;
 
         BillionaireExperience be = billion.GetComponent<BillionaireExperience>();
         if (be != null)
