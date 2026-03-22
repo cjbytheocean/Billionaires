@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using System.Data;
 using Unity.Collections;
 using System;
+using TMPro;
 
 public class BillionSpawner : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class BillionSpawner : MonoBehaviour
     private int i = 0;
 
     public BillionaireExperience xpBase;
+
+    public TextMeshPro billionRankText;
 
     // Runs on start, but in this case, functioning to repetitively spawn the billions on the given spawn interval.
     // Using an InvokeRepeat to allow spawning to happen repeatedly. Looked up how to implement InvokeRepeating().
@@ -92,6 +95,7 @@ public class BillionSpawner : MonoBehaviour
         tb.shooterBase = xpBase;
         tb.rank = xpBase.rank;
         billion.GetComponent<SpriteRenderer>().color = billionaireColor;
+        billionRankText.text = $"{tb.rank}";
 
         BillionaireExperience be = billion.GetComponent<BillionaireExperience>();
         if (be != null)
