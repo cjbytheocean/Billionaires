@@ -96,7 +96,7 @@ public class BillionSpawner : MonoBehaviour
         
         TextMeshPro text = billion.GetComponentInChildren<TextMeshPro>();
         text.text = tb.rank.ToString();
-
+       
         BillionaireExperience be = billion.GetComponent<BillionaireExperience>();
         if (be != null)
         {
