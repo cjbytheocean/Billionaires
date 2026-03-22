@@ -2875,6 +2875,7 @@ MonoBehaviour:
   isBillionaire: 1
   isBillion: 0
   shooterBase: {fileID: 0}
+  rank: 0
 --- !u!4 &103734024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7328258139262086915, guid: bb43e99ecfad244948688971f4e953b9, type: 3}
@@ -5407,6 +5408,7 @@ MonoBehaviour:
   isBillionaire: 1
   isBillion: 0
   shooterBase: {fileID: 0}
+  rank: 0
 --- !u!4 &236742271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8751033151111634102, guid: f75a323923f964354a32a474012cd1fa, type: 3}
@@ -8236,7 +8238,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -11986,6 +11988,7 @@ MonoBehaviour:
   isBillionaire: 1
   isBillion: 0
   shooterBase: {fileID: 0}
+  rank: 0
 --- !u!4 &603252628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6482319063174294036, guid: f98815ebf12224a4798235c5979f2a86, type: 3}
@@ -12867,7 +12870,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -24689,7 +24692,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -31581,7 +31584,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
