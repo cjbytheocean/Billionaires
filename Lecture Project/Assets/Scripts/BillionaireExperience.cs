@@ -13,8 +13,8 @@ public class BillionaireExperience : MonoBehaviour
 
     int threshold = 50;
 
-    // Awards experience to the billionaire when called, does not
-    // hold meaning yet.
+    // Awards experience to the billionaire when called, fills its
+    // experience bar accordingly, and handles rank ups.
 
     public void AwardExperience(int amount)
     {

@@ -11,7 +11,7 @@ public class BillionDamage : MonoBehaviour
 
     public UnityEngine.UI.Image experienceBar;
 
-    // Applies health upgrade
+    // Applies health upgrade to billions.
     void Start()
     {
         TurretBehavior tb = GetComponent<TurretBehavior>();

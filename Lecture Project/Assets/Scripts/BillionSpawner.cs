@@ -85,6 +85,7 @@ public class BillionSpawner : MonoBehaviour
         // information to not attack each other
         
         // Gets BillionaireExperience component and assigns the experienceBar image accordingly.
+        // Sets ranks to billions according to bases current rank.
 
         GameObject billion = Instantiate(billionPrefab, pos, Quaternion.identity);
 
