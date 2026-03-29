@@ -32,7 +32,6 @@ public class BillionSpawner : MonoBehaviour
         InvokeRepeating(nameof(BillionSpawn), spawnInterval, spawnInterval); 
     }
     
-
     // Handles the spawning of the Billions.
     // Takes radii of Billionaires and Billions and ensure there is no overlap, additionally,
     // avoids billions spawning in random places.
