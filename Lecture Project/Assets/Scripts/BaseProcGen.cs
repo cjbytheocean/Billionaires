@@ -48,13 +48,14 @@ public class BaseProcGen : MonoBehaviour
             GameObject billionaire = Instantiate(billionairePrefabs[i], spawnPositions[i], Quaternion.identity);
 
             BillionSpawner bs = billionaire.GetComponent<BillionSpawner>();
-            BillionaireExperience be = billionaire.GetComponent<BillionaireExperience>();
+            BillionaireExperience be = billionaire.GetComponentInChildren<BillionaireExperience>();
 
             if (bs != null)
             {
                 bs.xpBase = be;
-                
 
+                SpriteRenderer sr = billionaire.GetComponent<SpriteRenderer>();
+                bs.billionaireColor = sr.color;
             }
         } 
     }

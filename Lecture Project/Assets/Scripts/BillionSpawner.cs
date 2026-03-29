@@ -28,11 +28,10 @@ public class BillionSpawner : MonoBehaviour
     // Using an InvokeRepeat to allow spawning to happen repeatedly. Looked up how to implement InvokeRepeating().
     void Start()
     {
-        Debug.Log("Color: " + billionaireColor);
-        Debug.Log("XP Base: " + xpBase);
         basePosition = transform.position;
         InvokeRepeating(nameof(BillionSpawn), spawnInterval, spawnInterval); 
     }
+    
 
     // Handles the spawning of the Billions.
     // Takes radii of Billionaires and Billions and ensure there is no overlap, additionally,
