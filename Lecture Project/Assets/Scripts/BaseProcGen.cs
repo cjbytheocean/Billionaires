@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Xml.XPath;
 using UnityEditor.Profiling.Memory.Experimental;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
@@ -44,7 +45,17 @@ public class BaseProcGen : MonoBehaviour
 
         for (int i = 0; i < spawnPositions.Count; i++)
         {
-            Instantiate(billionairePrefabs[i], spawnPositions[i], Quaternion.identity);
+            GameObject billionaire = Instantiate(billionairePrefabs[i], spawnPositions[i], Quaternion.identity);
+
+            BillionSpawner bs = billionaire.GetComponent<BillionSpawner>();
+            BillionaireExperience be = billionaire.GetComponent<BillionaireExperience>();
+
+            if (bs != null)
+            {
+                bs.xpBase = be;
+                
+
+            }
         } 
     }
 

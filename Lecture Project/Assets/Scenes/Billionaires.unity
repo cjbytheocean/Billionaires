@@ -13212,8 +13212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af15421dd63c24a01a403446a745bf43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallMargin: 10
-  baseMargin: 10
+  wallMargin: 1
+  baseMargin: 1
   billionairePrefabs:
   - {fileID: 5265451491993671561, guid: dbe222d049f4d405e8967ae5de74f6bf, type: 3}
   - {fileID: 6677568397468479234, guid: f75a323923f964354a32a474012cd1fa, type: 3}
