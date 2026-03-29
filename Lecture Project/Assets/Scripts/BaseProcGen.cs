@@ -13,6 +13,9 @@ public class BaseProcGen : MonoBehaviour
     public GameObject[] billionairePrefabs;
     List<Vector2> spawnPositions = new List<Vector2>();
 
+    public Vector2 minimum;
+    public Vector2 maximum;
+
     void Start()
     {
         BaseGeneration();
@@ -28,8 +31,8 @@ public class BaseProcGen : MonoBehaviour
         {
             t++;
 
-            float xPosition = 0.0f;
-            float yPosition = 0.0f;
+            float xPosition = Random.Range(minimum.x + wallMargin, maximum.x - wallMargin);
+            float yPosition = Random.Range(minimum.y + wallMargin, maximum.y - wallMargin);
 
             Vector2 spawned = new Vector2(xPosition, yPosition);
 
@@ -47,6 +50,13 @@ public class BaseProcGen : MonoBehaviour
 
     bool WithinConstraints(Vector2 v)
     {
-        return false; 
+        foreach (Vector2 sp in spawnPositions)
+        {
+            if (Vector2.Distance(v, sp) < baseMargin)
+            {
+                return false;
+            }
+        }
+        return true; 
     }
 }
