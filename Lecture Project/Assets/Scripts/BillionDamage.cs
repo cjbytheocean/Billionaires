@@ -65,7 +65,7 @@ public class BillionDamage : MonoBehaviour
     {
         if (opp != null && opp.experienceBar != null)
         {
-            opp.AwardExperience(10);
+            opp.AwardExperience(15);
         }
     
         Destroy(gameObject);

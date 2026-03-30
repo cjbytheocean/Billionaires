@@ -16,16 +16,17 @@ public class BillionaireExperience : MonoBehaviour
     // Awards experience to the billionaire when called, fills its
     // experience bar accordingly, and handles rank ups.
 
-    public void AwardExperience(int amount)
-    {
+    public void AwardExperience(int amount) { 
         experiencePoints += amount; 
-        experienceBar.fillAmount += ((float)amount/threshold); 
-        if (experiencePoints % threshold == 0 && experiencePoints != 0) 
+        
+        while (experiencePoints >= threshold) 
         { 
+            experiencePoints -= threshold;
             rank++; 
             rankText.text = $"{rank}"; 
-            experienceBar.fillAmount -= 1f; 
             threshold = threshold * 2; 
-        }
+        } 
+
+        experienceBar.fillAmount = ((float)experiencePoints/threshold); 
     }
 }
