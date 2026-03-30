@@ -18,25 +18,14 @@ public class BillionaireExperience : MonoBehaviour
 
     public void AwardExperience(int amount)
     {
-        experiencePoints += amount;
-
-        //experienceBar.fillAmount += ((float)amount/threshold);
-
-        while (experiencePoints >= threshold)
-        {
-            experiencePoints -= threshold;
-            rank++;
-            threshold = threshold * 2;
+        experiencePoints += amount; 
+        experienceBar.fillAmount += ((float)amount/threshold); 
+        if (experiencePoints % threshold == 0 && experiencePoints != 0) 
+        { 
+            rank++; 
+            rankText.text = $"{rank}"; 
+            experienceBar.fillAmount -= 1f; 
+            threshold = threshold * 2; 
         }
-
-        // if (experiencePoints % threshold == 0 && experiencePoints != 0)
-        // {
-        //     rank++;
-        //     rankText.text = $"{rank}";
-        //     experienceBar.fillAmount -= 1f;
-        //     threshold = threshold * 2;
-        // }
-
-        experienceBar.fillAmount += ((float)amount/threshold);
     }
 }
