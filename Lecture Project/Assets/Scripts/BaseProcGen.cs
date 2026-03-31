@@ -7,7 +7,6 @@ using UnityEngine.Rendering;
 
 public class BaseProcGen : MonoBehaviour
 {
-
     [SerializeField] float wallMargin = 10f;
     [SerializeField] float baseMargin = 10f;
 
@@ -22,11 +21,14 @@ public class BaseProcGen : MonoBehaviour
         BaseGeneration();
     }
 
+    // Spawns bases at determined valid spawn position for each base. When position is determined, instantiates
+    // the prefabs at those positions and gets their needed components.
+
     void BaseGeneration()
     {
         spawnPositions.Clear();
 
-        int t = 0; // i am using this to prevent an infinite loop, might not be needed ? 
+        int t = 0; // this is to help prevent an infinite loop
 
         while (spawnPositions.Count < 4 && t < 5000)
         {
@@ -59,6 +61,8 @@ public class BaseProcGen : MonoBehaviour
             }
         } 
     }
+
+    // Helper method to check if the generated position is within the bounds of the vectors.
 
     bool WithinConstraints(Vector2 v)
     {
