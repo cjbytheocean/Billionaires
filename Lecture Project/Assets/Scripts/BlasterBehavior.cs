@@ -10,6 +10,8 @@ public class BlasterBehavior : MonoBehaviour
     public bool isBillionaireBlaster;
     Vector3 blasterSpawnPosition;
 
+    
+
     public BillionaireExperience opp;
 
     // Remembers where the blaster was spawned, and destroys it after blasterLife seconds.
