@@ -27,12 +27,14 @@ public class ProcGenWalker : MonoBehaviour
     public float FillPercentage = 0.4f;
     public float WaitTime = 0.05f;
 
+    public bool FinishedLoading = false;
+
     //[SerializeField] GameObject loadingScreen;
 
     void Start()
     {
         InitializeGrid();
-        Camera.main.orthographicSize = 20f;
+        Camera.main.orthographicSize = 15f;
         //loadingScreen.SetActive(true);
     }
 
@@ -166,10 +168,6 @@ public class ProcGenWalker : MonoBehaviour
         }
     }
 
-
-
-
-
     IEnumerator CreateWalls()
     {
         for (int x = 0; x < gridHandler.GetLength(0) - 1; x++)
@@ -213,13 +211,43 @@ public class ProcGenWalker : MonoBehaviour
             }
         }
         CenterCamera();
-        //loadingScreen.SetActive(false);
+        FinishedLoading = true;
+        
     }
 
     // Looked up on documentation and StackOverFlow.
     void CenterCamera()
     {
-        Vector3Int centerTile = new Vector3Int(MapWidth / 2, MapHeight / 2, 0);
+        int xMin = MapWidth;
+        int yMin = MapHeight;
+        int xMax = 0;
+        int yMax = 0;
+        for (int x = 0; x < MapWidth; x++)
+        {
+            for (int y = 0; y < MapHeight; y++)
+            {
+                if (gridHandler[x, y] == Grid.FLOOR)
+                {
+                    if (x < xMin)
+                    {
+                        xMin = x;
+                    }
+                    if (y < yMin)
+                    {
+                        yMin = y;
+                    }
+                    if (x > xMax)
+                    {
+                        xMax = x;
+                    }
+                    if (y > yMax)
+                    {
+                        yMax = y;
+                    }
+                }
+            }
+        }
+        Vector3Int centerTile = new Vector3Int((xMin + xMax) / 2, (yMin + yMax) / 2, 0);
         Vector3 worldCenter = tileMap.GetCellCenterWorld(centerTile);
 
         Camera.main.transform.position = new Vector3(
