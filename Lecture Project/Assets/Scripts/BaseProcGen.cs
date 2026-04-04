@@ -14,8 +14,8 @@ public class BaseProcGen : MonoBehaviour
     public GameObject[] billionairePrefabs;
     List<Vector2> spawnPositions = new List<Vector2>();
 
-    public Vector2 minimum;
-    public Vector2 maximum;
+    // public Vector2 minimum;
+    // public Vector2 maximum;
 
     public ProcGenWalker pgw;
 
@@ -41,12 +41,15 @@ public class BaseProcGen : MonoBehaviour
         {
             t++;
 
-            float xPosition = Random.Range(minimum.x + wallMargin, maximum.x - wallMargin);
-            float yPosition = Random.Range(minimum.y + wallMargin, maximum.y - wallMargin);
+            float xPosition = Random.Range(pgw.mapMinimum.x + wallMargin, pgw.mapMaximum.x - wallMargin);
+            float yPosition = Random.Range(pgw.mapMinimum.y + wallMargin, pgw.mapMaximum.y - wallMargin);
 
             Vector2 spawned = new Vector2(xPosition, yPosition);
 
-            if (WithinConstraints(spawned))
+            int x = Mathf.RoundToInt(spawned.y);
+            int y = Mathf.RoundToInt(spawned.y);
+
+            if (WithinConstraints(spawned) && pgw.gridHandler[x, y] == ProcGenWalker.Grid.FLOOR)
             {
                 spawnPositions.Add(spawned);
             } 

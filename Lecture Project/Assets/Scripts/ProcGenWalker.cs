@@ -29,6 +29,9 @@ public class ProcGenWalker : MonoBehaviour
 
     public bool FinishedLoading = false;
 
+    public Vector2 mapMinimum;
+    public Vector2 mapMaximum;
+
     void Start()
     {
         InitializeGrid();
@@ -209,6 +212,7 @@ public class ProcGenWalker : MonoBehaviour
         }
         CenterCamera();
         FinishedLoading = true;
+
         
     }
 
@@ -219,6 +223,7 @@ public class ProcGenWalker : MonoBehaviour
         int yMin = MapHeight;
         int xMax = 0;
         int yMax = 0;
+        
         for (int x = 0; x < MapWidth; x++)
         {
             for (int y = 0; y < MapHeight; y++)
@@ -244,6 +249,10 @@ public class ProcGenWalker : MonoBehaviour
                 }
             }
         }
+
+        mapMinimum = new Vector2(xMin, yMin);
+        mapMaximum = new Vector2(xMax, yMax);
+
         Vector3Int centerTile = new Vector3Int((xMin + xMax) / 2, (yMin + yMax) / 2, 0);
         Vector3 worldCenter = tileMap.GetCellCenterWorld(centerTile);
 
