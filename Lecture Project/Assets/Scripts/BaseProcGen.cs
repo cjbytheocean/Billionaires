@@ -46,7 +46,7 @@ public class BaseProcGen : MonoBehaviour
 
             Vector2 spawned = new Vector2(xPosition, yPosition);
 
-            int x = Mathf.RoundToInt(spawned.y);
+            int x = Mathf.RoundToInt(spawned.x);
             int y = Mathf.RoundToInt(spawned.y);
 
             if (WithinConstraints(spawned) && pgw.gridHandler[x, y] == ProcGenWalker.Grid.FLOOR)

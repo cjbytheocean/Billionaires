@@ -286,7 +286,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 1003
   m_TargetDisplay: 0
 --- !u!114 &2745751071474819119
 MonoBehaviour:
@@ -527,7 +527,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1001
   m_TargetDisplay: 0
 --- !u!114 &6809183002705097770
 MonoBehaviour:
@@ -577,6 +577,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3243471657611387167, guid: f75a323923f964354a32a474012cd1fa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1002
+      objectReference: {fileID: 0}
     - target: {fileID: 3508924577813265677, guid: f75a323923f964354a32a474012cd1fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.02
@@ -600,6 +604,10 @@ PrefabInstance:
     - target: {fileID: 3632580579342495290, guid: f75a323923f964354a32a474012cd1fa, type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632580579342495290, guid: f75a323923f964354a32a474012cd1fa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1001
       objectReference: {fileID: 0}
     - target: {fileID: 4294160271484620301, guid: f75a323923f964354a32a474012cd1fa, type: 3}
       propertyPath: xpBase
@@ -664,6 +672,14 @@ PrefabInstance:
     - target: {fileID: 7955336616106818038, guid: f75a323923f964354a32a474012cd1fa, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751033151111634102, guid: f75a323923f964354a32a474012cd1fa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751033151111634102, guid: f75a323923f964354a32a474012cd1fa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 8751033151111634102, guid: f75a323923f964354a32a474012cd1fa, type: 3}
       propertyPath: m_LocalPosition.x

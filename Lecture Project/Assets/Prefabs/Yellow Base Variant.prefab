@@ -61,7 +61,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 1003
   m_TargetDisplay: 0
 --- !u!114 &7828886795180966804
 MonoBehaviour:
@@ -164,7 +164,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1001
   m_TargetDisplay: 0
 --- !u!114 &3986358701330011408
 MonoBehaviour:
@@ -577,6 +577,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 573824515332027818, guid: bb43e99ecfad244948688971f4e953b9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1002
+      objectReference: {fileID: 0}
     - target: {fileID: 1008006576898956511, guid: bb43e99ecfad244948688971f4e953b9, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.7071068
@@ -620,6 +624,18 @@ PrefabInstance:
     - target: {fileID: 7128433304284219522, guid: bb43e99ecfad244948688971f4e953b9, type: 3}
       propertyPath: m_Color.r
       value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128433304284219522, guid: bb43e99ecfad244948688971f4e953b9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328258139262086915, guid: bb43e99ecfad244948688971f4e953b9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328258139262086915, guid: bb43e99ecfad244948688971f4e953b9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 7328258139262086915, guid: bb43e99ecfad244948688971f4e953b9, type: 3}
       propertyPath: m_LocalPosition.x
