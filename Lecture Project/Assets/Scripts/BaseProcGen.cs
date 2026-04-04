@@ -4,6 +4,7 @@ using UnityEditor.Profiling.Memory.Experimental;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Rendering;
+using System.Collections;
 
 public class BaseProcGen : MonoBehaviour
 {
@@ -16,8 +17,14 @@ public class BaseProcGen : MonoBehaviour
     public Vector2 minimum;
     public Vector2 maximum;
 
-    void Start()
+    public ProcGenWalker pgw;
+
+    IEnumerator Start()
     {
+        while (!pgw.FinishedLoading)
+        {
+            yield return null;
+        }
         BaseGeneration();
     }
 

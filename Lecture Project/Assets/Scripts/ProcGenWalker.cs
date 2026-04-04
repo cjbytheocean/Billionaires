@@ -29,13 +29,10 @@ public class ProcGenWalker : MonoBehaviour
 
     public bool FinishedLoading = false;
 
-    //[SerializeField] GameObject loadingScreen;
-
     void Start()
     {
         InitializeGrid();
         Camera.main.orthographicSize = 15f;
-        //loadingScreen.SetActive(true);
     }
 
     void InitializeGrid()
