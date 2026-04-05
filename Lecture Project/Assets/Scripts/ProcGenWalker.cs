@@ -35,7 +35,7 @@ public class ProcGenWalker : MonoBehaviour
     void Start()
     {
         InitializeGrid();
-        Camera.main.orthographicSize = 15f;
+        Camera.main.orthographicSize = 5f;
     }
 
     void InitializeGrid()
@@ -211,10 +211,16 @@ public class ProcGenWalker : MonoBehaviour
             }
         }
         CenterCamera();
-        FinishedLoading = true;
 
-        
+        tileMap.CompressBounds();
+
+        TilemapCollider2D tmc = tileMap.GetComponent<TilemapCollider2D>();
+        tmc.enabled = false;
+        tmc.enabled = true;
+        FinishedLoading = true;
     }
+
+    
 
     
 
