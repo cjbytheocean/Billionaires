@@ -35,7 +35,7 @@ public class ProcGenWalker : MonoBehaviour
     void Start()
     {
         InitializeGrid();
-        Camera.main.orthographicSize = 5f;
+        Camera.main.orthographicSize = 15f;
     }
 
     void InitializeGrid()
