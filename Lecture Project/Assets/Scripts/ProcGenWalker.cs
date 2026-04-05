@@ -216,6 +216,8 @@ public class ProcGenWalker : MonoBehaviour
         
     }
 
+    
+
     // Looked up on documentation and StackOverFlow.
     void CenterCamera()
     {

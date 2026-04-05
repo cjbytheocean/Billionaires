@@ -130,7 +130,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!114 &-827166807293751449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   billionaireColor: {r: 0, g: 0, b: 0, a: 0}
   blaster: {fileID: 8725263104601288896, guid: 91bba32559cb941fd99c2ce774c6850a, type: 3}
   blasterInterval: 1
-  blasterDistance: 2.5
+  blasterDistance: 5
   rotationSpeed: 180
   blasterFirePoint: {fileID: 1986199815338742527}
   isBillionaire: 0

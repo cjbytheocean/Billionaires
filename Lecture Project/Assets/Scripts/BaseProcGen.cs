@@ -49,7 +49,7 @@ public class BaseProcGen : MonoBehaviour
             int x = Mathf.RoundToInt(spawned.x);
             int y = Mathf.RoundToInt(spawned.y);
 
-            if (WithinConstraints(spawned) && pgw.gridHandler[x, y] == ProcGenWalker.Grid.FLOOR)
+            if (WithinConstraints(spawned) && pgw.gridHandler[x, y] == ProcGenWalker.Grid.FLOOR && CheckWallDistance(x, y, 5))
             {
                 spawnPositions.Add(spawned);
             } 
@@ -84,5 +84,29 @@ public class BaseProcGen : MonoBehaviour
             }
         }
         return true; 
+    }
+
+    bool CheckWallDistance(int x, int y, int distance)
+    {
+        for (int i = 1; i <= distance; i++)
+        {
+            if (pgw.gridHandler[x + i, y] == ProcGenWalker.Grid.WALL)
+            {
+                return false;
+            }
+            if (pgw.gridHandler[x - i, y] == ProcGenWalker.Grid.WALL)
+            {
+                return false;
+            }
+            if (pgw.gridHandler[x, y + i] == ProcGenWalker.Grid.WALL)
+            {
+                return false;
+            }
+            if (pgw.gridHandler[x, y - i] == ProcGenWalker.Grid.WALL)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
