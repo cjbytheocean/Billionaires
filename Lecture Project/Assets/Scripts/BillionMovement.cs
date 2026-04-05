@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class BillionMovement : MonoBehaviour
 {
     float maxSpeed = 5f;
-    float accSpeed = 7f;
+    float accSpeed = 9f;
     float slowDownWithinRange = 5f;
   
     private Rigidbody2D rb;
@@ -20,7 +20,7 @@ public class BillionMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         rb.gravityScale = 0f;
-        rb.linearDamping = 0.005f;
+        rb.linearDamping = 0f;
     }
 
     // I utilized AI to assist with the Vector math. First time doing work like this, so I was unfamiliar with it.
@@ -83,5 +83,11 @@ public class BillionMovement : MonoBehaviour
     bool CheckColor(Color one, Color two, float delta = 0.05f)
     {
         return Mathf.Abs(one.r - two.r) < delta && Mathf.Abs(one.g - two.g) < delta && Mathf.Abs(one.b - two.b) < delta;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 0.5f); // match your collider
     }
 }
