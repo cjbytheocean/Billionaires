@@ -14,9 +14,6 @@ public class BaseProcGen : MonoBehaviour
     public GameObject[] billionairePrefabs;
     List<Vector2> spawnPositions = new List<Vector2>();
 
-    // public Vector2 minimum;
-    // public Vector2 maximum;
-
     public ProcGenWalker pgw;
 
     IEnumerator Start()
