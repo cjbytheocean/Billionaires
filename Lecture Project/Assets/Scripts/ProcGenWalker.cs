@@ -220,10 +220,6 @@ public class ProcGenWalker : MonoBehaviour
         FinishedLoading = true;
     }
 
-    
-
-    
-
     // Looked up on documentation and StackOverFlow.
     void CenterCamera()
     {
