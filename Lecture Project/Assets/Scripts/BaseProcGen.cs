@@ -34,7 +34,7 @@ public class BaseProcGen : MonoBehaviour
 
         int t = 0; // this is to help prevent an infinite loop
 
-        while (spawnPositions.Count < 4 && t < 5000)
+        while (spawnPositions.Count < 4 && t < 10000)
         {
             t++;
 
