@@ -45,7 +45,7 @@ public class PowerupManager : MonoBehaviour
             int x = UnityEngine.Random.Range((int) pgw.mapMinimum.x, (int) pgw.mapMaximum.x);
             int y = UnityEngine.Random.Range((int) pgw.mapMinimum.y, (int) pgw.mapMaximum.y);
 
-            if (ValidPosition(x, y, 3))
+            if (ValidPosition(x, y, 1))
             {
                 return new Vector2(x, y);
             }  
@@ -63,14 +63,14 @@ public class PowerupManager : MonoBehaviour
 
         for (int a = -b; a <= b; a++)
         {
-            for (int c = -b; a <= c; c++)
+            for (int c = -b; c <= b; c++)
             {
                 int newX = x + a;
-                int newY = x + c;
+                int newY = y + c;
 
                 if (newX < 0 || newY < 0 || newX >= pgw.gridHandler.GetLength(0) || newY >= pgw.gridHandler.GetLength(1))
                 {
-                    return false;
+                    continue;
                 }
 
                 if (pgw.gridHandler[newX, newY] == ProcGenWalker.Grid.WALL)
