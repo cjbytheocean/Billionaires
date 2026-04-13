@@ -17,14 +17,18 @@ public class PowerupManager : MonoBehaviour
 
     private Color immuneTeam;
     private bool hasImmunity = false;
+    private bool spawnPaused = false;
 
     void Update()
     {
-        spawnIntervalTimer += Time.deltaTime;
-        if (spawnIntervalTimer >= bombSpawnInterval)
+        if (!spawnPaused)
         {
-            spawnIntervalTimer = 0f;
-            SpawnBombPowerup();
+            spawnIntervalTimer += Time.deltaTime;
+            if (spawnIntervalTimer >= bombSpawnInterval)
+            {
+                spawnIntervalTimer = 0f;
+                SpawnBombPowerup();
+            }  
         }
     }
 
@@ -53,14 +57,32 @@ public class PowerupManager : MonoBehaviour
     {
         immuneTeam = c;
         hasImmunity = true;
+        spawnIntervalTimer = 0f;
+        PauseSpawn();
+        StartExplosion();
         thisBomb = null;
         StartCoroutine(ResetImmunity());
     }
 
     IEnumerator ResetImmunity()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(15f);
         hasImmunity = false;
+        UnpauseSpawn();
+    }
+
+    public void StartExplosion()
+    {
+        StartCoroutine(Explosion());
+    }
+
+    IEnumerator Explosion()
+    {
+        foreach (GameObject obj in TurretBehavior.billions.ToArray()) {
+
+            
+        }
+        yield return new WaitForSeconds(1f);
     }
 
     public bool CheckImmunity(Color c)
@@ -117,4 +139,16 @@ public class PowerupManager : MonoBehaviour
         }
         return true;
     }
+
+    private void PauseSpawn()
+    {
+        spawnPaused = true;
+    }
+
+    private void UnpauseSpawn()
+    {
+        spawnPaused = false;
+    }
+
+
 }
