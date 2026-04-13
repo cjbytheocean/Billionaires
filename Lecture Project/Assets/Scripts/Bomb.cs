@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    PowerupManager pm;
+    private PowerupManager pm;
 
     public void Init(PowerupManager m)
     {
@@ -14,8 +14,8 @@ public class Bomb : MonoBehaviour
         TurretBehavior tb = c.GetComponent<TurretBehavior>();
         if (tb != null)
         {
+            pm.BombPickup(tb.billionaireColor);
             Destroy(gameObject);
-            
         }
     }
 }

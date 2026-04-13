@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Threading;
 using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PowerupManager : MonoBehaviour
@@ -13,6 +14,9 @@ public class PowerupManager : MonoBehaviour
 
     public float bombSpawnInterval = 5f;
     private float spawnIntervalTimer;
+
+    private Color immuneTeam;
+    private bool hasImmunity = false;
 
     void Update()
     {
@@ -41,27 +45,32 @@ public class PowerupManager : MonoBehaviour
         }
 
         thisBomb = Instantiate(bombPrefab, position, Quaternion.identity);
-        Debug.Log("spawned at:" + position);
+        Bomb b = thisBomb.GetComponent<Bomb>();
+        b.Init(this);
     }
 
-    public void BombPickup()
+    public void BombPickup(Color c)
     {
+        immuneTeam = c;
+        hasImmunity = true;
+        thisBomb = null;
         StartCoroutine(ResetImmunity());
     }
 
     IEnumerator ResetImmunity()
     {
         yield return new WaitForSeconds(10f);
+        hasImmunity = false;
     }
 
     public bool CheckImmunity(Color c)
     {
-        return false;
+        return hasImmunity && SameColor(c, immuneTeam);
     }
 
     public bool SameColor(Color one, Color two)
     {
-        return true; 
+        return Mathf.Abs(one.r - two.r) < 0.05f && Mathf.Abs(one.g - two.g) < 0.05f && Mathf.Abs(one.b - two.b) < 0.05f;
     }
 
     // Helper method, gets valid spawn position
