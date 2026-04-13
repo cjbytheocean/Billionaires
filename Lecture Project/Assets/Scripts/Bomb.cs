@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    PowerupManager pm;
+
+    public void Init(PowerupManager m)
     {
-        
+        pm = m;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D c)
     {
-        
+        TurretBehavior tb = c.GetComponent<TurretBehavior>();
+        if (tb != null)
+        {
+            
+        }
     }
 }

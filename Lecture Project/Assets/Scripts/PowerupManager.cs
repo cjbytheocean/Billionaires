@@ -8,6 +8,7 @@ public class PowerupManager : MonoBehaviour
 
     public ProcGenWalker pgw;
     public GameObject bombPrefab;
+    private GameObject thisBomb;
 
     public float bombSpawnInterval = 5f;
     private float spawnIntervalTimer;
@@ -25,6 +26,11 @@ public class PowerupManager : MonoBehaviour
     // Actually spawns bomb
     void SpawnBombPowerup()
     {
+        if (thisBomb != null)
+        {
+            return;
+        }
+
         Vector2 position = GetPosition();
 
         if (position == Vector2.zero)
@@ -33,7 +39,7 @@ public class PowerupManager : MonoBehaviour
             return;
         }
 
-        Instantiate(bombPrefab, position, Quaternion.identity);
+        thisBomb = Instantiate(bombPrefab, position, Quaternion.identity);
         Debug.Log("spawned at:" + position);
     }
 
