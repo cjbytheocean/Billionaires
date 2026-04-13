@@ -14,6 +14,7 @@ public class Bomb : MonoBehaviour
         TurretBehavior tb = c.GetComponent<TurretBehavior>();
         if (tb != null)
         {
+            Destroy(gameObject);
             
         }
     }

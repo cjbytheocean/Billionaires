@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Threading;
 using Unity.Collections;
 using UnityEngine;
@@ -41,6 +42,26 @@ public class PowerupManager : MonoBehaviour
 
         thisBomb = Instantiate(bombPrefab, position, Quaternion.identity);
         Debug.Log("spawned at:" + position);
+    }
+
+    public void BombPickup()
+    {
+        StartCoroutine(ResetImmunity());
+    }
+
+    IEnumerator ResetImmunity()
+    {
+        yield return new WaitForSeconds(10f);
+    }
+
+    public bool CheckImmunity(Color c)
+    {
+        return false;
+    }
+
+    public bool SameColor(Color one, Color two)
+    {
+        return true; 
     }
 
     // Helper method, gets valid spawn position
