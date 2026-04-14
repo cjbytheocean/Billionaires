@@ -59,9 +59,13 @@ public class PowerupManager : MonoBehaviour
         hasImmunity = true;
         spawnIntervalTimer = 0f;
         PauseSpawn();
+
+        Vector3 bombPosition = thisBomb.transform.position;
         StartExplosion();
+        StartCoroutine(StartExplosionVisuals(bombPosition));
+
+
         thisBomb = null;
-        StartCoroutine(StartExplosionVisuals());
         StartCoroutine(ResetImmunity());
     }
 
@@ -92,11 +96,11 @@ public class PowerupManager : MonoBehaviour
         StartCoroutine(Explosion());
     }
 
-    IEnumerator StartExplosionVisuals()
+    IEnumerator StartExplosionVisuals(Vector3 p)
     {
         float explosionDuration = 10f;
         float explosionTimer = 0f;
-        GameObject explosionAid = Instantiate(explosionPrefab, Vector3.zero, Quaternion.identity);
+        GameObject explosionAid = Instantiate(explosionPrefab, p, Quaternion.identity);
 
         Debug.Log("explosion called");
 
@@ -106,7 +110,7 @@ public class PowerupManager : MonoBehaviour
 
             if (explosionAid != null)
             {
-                explosionAid.transform.localScale += Vector3.one * Time.deltaTime;
+                explosionAid.transform.localScale += Vector3.one * 10f * Time.deltaTime;
             }
 
             yield return null;
@@ -116,7 +120,7 @@ public class PowerupManager : MonoBehaviour
         {
             Destroy(explosionAid);
         }
-        
+
         Debug.Log("explosion ended");
     }
 
@@ -158,12 +162,24 @@ public class PowerupManager : MonoBehaviour
                         tb.particles.transform.parent = null;
                         tb.particles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
                     }
-                    Destroy(billion);
+                    //Destroy(billion);
+                    StartCoroutine(DestroyBillionsDelay(billion, 8f));
                 }
             }
         }
         RankDown();
         yield return new WaitForSeconds(1f);
+    }
+
+    IEnumerator DestroyBillionsDelay(GameObject g, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (g != null)
+        {
+            TurretBehavior.billions.Remove(g);
+            Destroy(g);
+        } 
     }
 
     void RankDown()
