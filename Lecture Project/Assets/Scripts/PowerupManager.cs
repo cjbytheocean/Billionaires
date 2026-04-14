@@ -154,9 +154,30 @@ public class PowerupManager : MonoBehaviour
             {
                 continue;
             }
+
+            if (SameColor(tb.billionaireColor, immuneTeam))
+            {
+                continue;
+            }
+
+            if (tb.rank <= 0)
+            {
+                continue;
+            }
+
+            if (highestRank == null || tb.rank > highestRank.rank)
+            {
+                highestRank = tb;
+            }
         }
 
+        if (highestRank == null)
+        {
+            return;
+        }
 
+        highestRank.rank = Mathf.Max(0, highestRank.rank - 1);
+        Debug.Log("rank down successful");
     }
 
     public bool CheckImmunity(Color c)
