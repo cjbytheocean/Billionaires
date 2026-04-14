@@ -32,7 +32,6 @@ public class PowerupManager : MonoBehaviour
         }
     }
 
-    // Actually spawns bomb
     void SpawnBombPowerup()
     {
         if (thisBomb != null)
@@ -44,11 +43,11 @@ public class PowerupManager : MonoBehaviour
 
         if (position == Vector2.zero)
         {
-            Debug.Log("failed");
             return;
         }
 
         thisBomb = Instantiate(bombPrefab, position, Quaternion.identity);
+        Debug.Log("bomb spawned");
         Bomb b = thisBomb.GetComponent<Bomb>();
         b.Init(this);
     }
@@ -58,6 +57,7 @@ public class PowerupManager : MonoBehaviour
         immuneTeam = c;
         hasImmunity = true;
         spawnIntervalTimer = 0f;
+        Debug.Log("bomb picked up");
         PauseSpawn();
         StartExplosion();
         thisBomb = null;
@@ -68,6 +68,20 @@ public class PowerupManager : MonoBehaviour
     {
         yield return new WaitForSeconds(15f);
         hasImmunity = false;
+
+        foreach (GameObject billion in TurretBehavior.billions.ToArray())
+        {
+            if (billion == null)
+            {
+                continue;
+            }
+
+            TurretBehavior tb = billion.GetComponent<TurretBehavior>();
+            if (tb != null && tb.isBillionaire)
+            {
+                tb.StartParticles(false);
+            }
+        }
         UnpauseSpawn();
     }
 
@@ -78,11 +92,71 @@ public class PowerupManager : MonoBehaviour
 
     IEnumerator Explosion()
     {
-        foreach (GameObject obj in TurretBehavior.billions.ToArray()) {
+        Debug.Log("explosion triggered");
+        foreach (GameObject billion in TurretBehavior.billions.ToArray()) {
 
-            
+            if (billion == null)
+            {
+                continue;
+            }
+
+            TurretBehavior tb = billion.GetComponent<TurretBehavior>();
+
+            if (tb == null)
+            {
+                continue;
+            }
+
+            bool immune = SameColor(tb.billionaireColor, immuneTeam);
+
+            if (immune)
+            {
+                if (tb.isBillionaire)
+                {
+                    tb.StartParticles(true);
+                }
+            }
+            else
+            {
+                if (tb.isBillionaire)
+                {
+                    tb.StartParticles(false); 
+                }
+                else
+                {
+                    if (tb.particles != null)
+                    {
+                        tb.particles.transform.parent = null;
+                        tb.particles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+                    }
+                    Destroy(billion);
+                }
+            }
         }
         yield return new WaitForSeconds(1f);
+        Debug.Log("ended");
+    }
+
+    void RankDown()
+    {
+        TurretBehavior highestRank = null;
+
+        foreach (GameObject billion in TurretBehavior.billions)
+        {
+            if (billion == null)
+            {
+                continue;
+            }
+
+            TurretBehavior tb = billion.GetComponent<TurretBehavior>();
+
+            if (tb == null || !tb.isBillionaire)
+            {
+                continue;
+            }
+        }
+
+
     }
 
     public bool CheckImmunity(Color c)
@@ -95,7 +169,6 @@ public class PowerupManager : MonoBehaviour
         return Mathf.Abs(one.r - two.r) < 0.05f && Mathf.Abs(one.g - two.g) < 0.05f && Mathf.Abs(one.b - two.b) < 0.05f;
     }
 
-    // Helper method, gets valid spawn position
     Vector2 GetPosition()
     {
         for (int i = 0; i < 250; i++)
@@ -111,7 +184,6 @@ public class PowerupManager : MonoBehaviour
         return Vector2.zero;
     }
 
-    // Helper method, checks if position is far enough away from floor tiles
     bool ValidPosition(int x, int y, int b)
     {
         if (pgw.gridHandler[x, y] != ProcGenWalker.Grid.FLOOR)
@@ -149,6 +221,4 @@ public class PowerupManager : MonoBehaviour
     {
         spawnPaused = false;
     }
-
-
 }

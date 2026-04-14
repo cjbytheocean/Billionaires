@@ -25,25 +25,25 @@ public class TurretBehavior : MonoBehaviour
 
     public int rank;
 
-    // If the object is a billion, add it to the list of billions.
-    // Otherwise, skip.
-    // First bullet point only required erasing if (isBillion) condition from awake.
+    public ParticleSystem particles;
+
     void Awake()
     {
         billions.Add(gameObject); 
+
+        if (particles == null)
+        {
+            particles = GetComponent<ParticleSystem>();
+        }
+
+        Debug.Log("ParticleSystem on self: " + GetComponent<ParticleSystem>());
+        Debug.Log("ParticleSystem in children: " + GetComponentInChildren<ParticleSystem>(true));
     }
 
-    // When the object is destroyed, remove it from the list of billions.
     void OnDestroy()
     {
         billions.Remove(gameObject);
     }
-
-    // https://docs.unity3d.com/560/Documentation/ScriptReference/MonoBehaviour.LateUpdate.html
-    // If there are several opponents, call ClosestBillion(). Otherwise, choose to rotate
-    // turret based on last stored angle.
-    // Officially assigns opponent to ensure it exists and correctly registers which billionaire should be
-    // receiving the points.
 
     void LateUpdate()
     {
@@ -94,16 +94,35 @@ public class TurretBehavior : MonoBehaviour
         }
     }
 
+    public void StartParticles(bool s)
+    {
+        Debug.Log($"Called: {gameObject.name} state={s}");
+        Debug.Log($"particles null? {particles == null}");
+        Debug.Log($"particles playing BEFORE: {particles.isPlaying}");
 
-    // Finds and returns the closest billion in respect to another billion. If the billion is itself or
-    // a billion of the same color, continue to calculate the closest distance until the closest opponent is located.
-    // https://docs.unity3d.com/6000.2/Documentation/ScriptReference/Vector4.Distance.html
+        if (!isBillionaire)
+        {
+            return;
+        }
+
+        if (s)
+        {
+            particles.gameObject.SetActive(true);
+            particles.Clear(true);
+            particles.Play();
+        }
+        else
+        {
+            particles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+
+        Debug.Log($"particles playing AFTER: {particles.isPlaying}");
+    }
 
     GameObject ClosestBillion()
     {
         GameObject closestBillion = null;
         float dist = Mathf.Infinity;
-
 
         foreach (GameObject billion in billions)
         {
@@ -130,9 +149,6 @@ public class TurretBehavior : MonoBehaviour
         return closestBillion;
     }
 
-    // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Quaternion.Euler.html
-    // Instead of just y/x, arc tangent will account for quadrants
-    // Stores last angle in the case of no opponents, then rotates turret according to calculation.
     void RotateBillionTurret(Transform tb)
     {
         Vector2 pointDirection = tb.position - transform.position;
@@ -140,11 +156,6 @@ public class TurretBehavior : MonoBehaviour
         storedAngle = angle + 90f;
         turret.localRotation = Quaternion.Euler(0, 0, angle + 90f);
     }
-
-    // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Quaternion.RotateTowards.html
-    // Code somewhat reused from RotateBillionTurret(). However, instead of immediately pointing
-    // at the target, it only moves rotationSpeed * Time.deltaTime degrees per second, creating the
-    // fixed degree.
 
     void RotateBillionaireTurret(Transform tb)
     {
