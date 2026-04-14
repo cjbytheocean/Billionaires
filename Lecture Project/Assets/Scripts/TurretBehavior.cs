@@ -35,9 +35,6 @@ public class TurretBehavior : MonoBehaviour
         {
             particles = GetComponent<ParticleSystem>();
         }
-
-        Debug.Log("ParticleSystem on self: " + GetComponent<ParticleSystem>());
-        Debug.Log("ParticleSystem in children: " + GetComponentInChildren<ParticleSystem>(true));
     }
 
     void OnDestroy()
@@ -96,10 +93,6 @@ public class TurretBehavior : MonoBehaviour
 
     public void StartParticles(bool s)
     {
-        Debug.Log($"Called: {gameObject.name} state={s}");
-        Debug.Log($"particles null? {particles == null}");
-        Debug.Log($"particles playing BEFORE: {particles.isPlaying}");
-
         if (!isBillionaire)
         {
             return;
@@ -115,8 +108,6 @@ public class TurretBehavior : MonoBehaviour
         {
             particles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
-
-        Debug.Log($"particles playing AFTER: {particles.isPlaying}");
     }
 
     GameObject ClosestBillion()

@@ -12,6 +12,8 @@ public class PowerupManager : MonoBehaviour
     public GameObject bombPrefab;
     private GameObject thisBomb;
 
+    public GameObject explosionPrefab;
+
     public float bombSpawnInterval = 5f;
     private float spawnIntervalTimer;
 
@@ -47,7 +49,6 @@ public class PowerupManager : MonoBehaviour
         }
 
         thisBomb = Instantiate(bombPrefab, position, Quaternion.identity);
-        Debug.Log("bomb spawned");
         Bomb b = thisBomb.GetComponent<Bomb>();
         b.Init(this);
     }
@@ -57,10 +58,10 @@ public class PowerupManager : MonoBehaviour
         immuneTeam = c;
         hasImmunity = true;
         spawnIntervalTimer = 0f;
-        Debug.Log("bomb picked up");
         PauseSpawn();
         StartExplosion();
         thisBomb = null;
+        StartCoroutine(StartExplosionVisuals());
         StartCoroutine(ResetImmunity());
     }
 
@@ -68,6 +69,7 @@ public class PowerupManager : MonoBehaviour
     {
         yield return new WaitForSeconds(15f);
         hasImmunity = false;
+        Debug.Log("immunity over");
 
         foreach (GameObject billion in TurretBehavior.billions.ToArray())
         {
@@ -90,9 +92,36 @@ public class PowerupManager : MonoBehaviour
         StartCoroutine(Explosion());
     }
 
+    IEnumerator StartExplosionVisuals()
+    {
+        float explosionDuration = 10f;
+        float explosionTimer = 0f;
+        GameObject explosionAid = Instantiate(explosionPrefab, Vector3.zero, Quaternion.identity);
+
+        Debug.Log("explosion called");
+
+        while (explosionTimer < explosionDuration)
+        {
+            explosionTimer += Time.deltaTime;
+
+            if (explosionAid != null)
+            {
+                explosionAid.transform.localScale += Vector3.one * Time.deltaTime;
+            }
+
+            yield return null;
+        }
+
+        if (explosionAid != null)
+        {
+            Destroy(explosionAid);
+        }
+        
+        Debug.Log("explosion ended");
+    }
+
     IEnumerator Explosion()
     {
-        Debug.Log("explosion triggered");
         foreach (GameObject billion in TurretBehavior.billions.ToArray()) {
 
             if (billion == null)
@@ -133,8 +162,8 @@ public class PowerupManager : MonoBehaviour
                 }
             }
         }
+        RankDown();
         yield return new WaitForSeconds(1f);
-        Debug.Log("ended");
     }
 
     void RankDown()
@@ -150,22 +179,34 @@ public class PowerupManager : MonoBehaviour
 
             TurretBehavior tb = billion.GetComponent<TurretBehavior>();
 
-            if (tb == null || !tb.isBillionaire)
+            if (tb == null)
             {
+                continue;
+            }
+
+            if (!tb.isBillionaire)
+            {
+                
                 continue;
             }
 
             if (SameColor(tb.billionaireColor, immuneTeam))
             {
+                
                 continue;
             }
 
-            if (tb.rank <= 0)
+            if (tb.shooterBase == null) // if it is null it crashes
             {
                 continue;
             }
 
-            if (highestRank == null || tb.rank > highestRank.rank)
+            if (tb.shooterBase.rank <= 0)
+            {
+                continue;
+            }
+
+            if (highestRank == null || tb.shooterBase.rank > highestRank.shooterBase.rank)
             {
                 highestRank = tb;
             }
@@ -176,8 +217,8 @@ public class PowerupManager : MonoBehaviour
             return;
         }
 
-        highestRank.rank = Mathf.Max(0, highestRank.rank - 1);
-        Debug.Log("rank down successful");
+        highestRank.shooterBase.rank = Mathf.Max(0, highestRank.shooterBase.rank - 1);
+        highestRank.shooterBase.RefreshRank();
     }
 
     public bool CheckImmunity(Color c)
@@ -236,10 +277,24 @@ public class PowerupManager : MonoBehaviour
     private void PauseSpawn()
     {
         spawnPaused = true;
+
+        BillionSpawner[] s = FindObjectsByType<BillionSpawner>(FindObjectsSortMode.None);
+
+        foreach (BillionSpawner sp in s)
+        {
+            sp.CancelInvoke(nameof(BillionSpawner.BillionSpawn));
+        }
     }
 
     private void UnpauseSpawn()
     {
         spawnPaused = false;
+
+        BillionSpawner[] s = FindObjectsByType<BillionSpawner>(FindObjectsSortMode.None);
+
+        foreach (BillionSpawner sp in s)
+        {
+            sp.InvokeRepeating(nameof(BillionSpawner.BillionSpawn), sp.spawnInterval, sp.spawnInterval);
+        }
     }
 }

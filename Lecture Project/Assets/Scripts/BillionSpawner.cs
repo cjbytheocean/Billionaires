@@ -36,7 +36,7 @@ public class BillionSpawner : MonoBehaviour
     // Takes radii of Billionaires and Billions and ensure there is no overlap, additionally,
     // avoids billions spawning in random places.
 
-    void BillionSpawn()
+    public void BillionSpawn()
     {
        
         CircleCollider2D billionaireCollider = GetComponent<CircleCollider2D>();

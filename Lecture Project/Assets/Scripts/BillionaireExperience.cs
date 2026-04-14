@@ -29,4 +29,10 @@ public class BillionaireExperience : MonoBehaviour
 
         experienceBar.fillAmount = ((float)experiencePoints/threshold); 
     }
+
+    public void RefreshRank()
+    {
+        rankText.text = $"{rank}";
+        experienceBar.fillAmount = ((float)experiencePoints/threshold); 
+    }
 }
