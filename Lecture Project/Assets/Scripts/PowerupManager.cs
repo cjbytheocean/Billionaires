@@ -238,7 +238,7 @@ public class PowerupManager : MonoBehaviour
 
     Vector2 GetPosition()
     {
-        // This is reused from another program I wrote, helps ensure that powerup is spawned in camera view.
+        // This is reused from another program I wrote, helps ensure that powerup is spawned in camera view and on floor tile.
         Camera c = Camera.main;
 
         for (int i = 0; i < 250; i++)
@@ -290,6 +290,8 @@ public class PowerupManager : MonoBehaviour
         return true;
     }
 
+    // Lines 298 and 310 are from AI. I tried to use FindObjectsOfType, but Unity flagged them obsolete, so I needed 
+    // help with the new verison. 
     private void PauseSpawn()
     {
         spawnPaused = true;
