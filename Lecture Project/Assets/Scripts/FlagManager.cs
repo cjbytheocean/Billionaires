@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class FlagManager : MonoBehaviour
 {
-    // In my game field, I only have blue and green bases at the moment. I started to write methods that will
-    // work with the red and yellow bases, but the code will be commented out until it is used.
     public GameObject blueFlag;
     public GameObject greenFlag;
 
@@ -20,17 +18,13 @@ public class FlagManager : MonoBehaviour
     private List<GameObject> yellowFlags = new List<GameObject>();
 
     private Camera c;
-    private GameObject dragging; // For dragging the flags.
-    private LineRenderer drawing; // For drawing the line from point A to point B.
+    private GameObject dragging;
+    private LineRenderer drawing;
 
-
-    // Converts screen coordinates to handle flag placement.
     void Start()
     {
         c = Camera.main; 
     }
-
-    // When corresponding keys are pressed, flags of that color are either placed or changed.
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))
@@ -57,7 +51,6 @@ public class FlagManager : MonoBehaviour
         
     }
 
-    // Methods for each flag that are placed.
     void ClickBlue()
     {
         PickColor(blueFlags, blueFlag);
@@ -81,11 +74,8 @@ public class FlagManager : MonoBehaviour
 
     public void PickColor(List<GameObject> ls, GameObject g)
     {
-    
-        // Uses current mouse position to place flags, calls helper method to handle placement.
         Vector3 position = PostBottom(g);
 
-        // Ensures only two flags per unique color can be added.
         if (ls.Count < 2)
         {
             GameObject newFlag = Instantiate(g, position, Quaternion.identity);
@@ -93,7 +83,6 @@ public class FlagManager : MonoBehaviour
         }
         else
         {
-            // Finds nearest flag, moves that one.
             GameObject nearestFlag = ls[0];
             float dist = Vector3.Distance(position, nearestFlag.transform.position);
 
@@ -110,13 +99,10 @@ public class FlagManager : MonoBehaviour
         } 
     }
 
-    // Allows the flag to be dragged.
     public void FlagDragging()
     {
         Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
         position.z = 0;
-
-        // When mouse is clicked over flag, begin dragging.
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -125,18 +111,15 @@ public class FlagManager : MonoBehaviour
             {
                 dragging = collide.gameObject; 
 
-                // Creating the LineRenderer
                 drawing = dragging.AddComponent<LineRenderer>();
-                drawing.positionCount = 2; // straight line, two points
+                drawing.positionCount = 2;
                 drawing.startWidth = 0.05f;
-                drawing.endWidth = 0.05f; // no change in width
+                drawing.endWidth = 0.05f;
                 drawing.material = new Material(Shader.Find("Sprites/Default"));
                 drawing.startColor = Color.gray;
-                drawing.endColor = Color.gray; // no gradient
+                drawing.endColor = Color.gray;
             } 
         }
-
-        // While dragging is occuring.
 
         if (dragging != null && Input.GetMouseButton(0) && drawing != null)
         {
@@ -144,23 +127,20 @@ public class FlagManager : MonoBehaviour
             drawing.SetPosition(1, position);
         }
 
-        // When draging has stopped.
-
         if (dragging != null && Input.GetMouseButtonUp(0))
         {
             dragging.transform.position = PostBottom(dragging);
 
             if (drawing != null)
             {
-                Destroy(drawing); // releases line
+                Destroy(drawing);
             }
            
             dragging = null;
-            drawing = null; // resets dragging & line
+            drawing = null;
         }
     }
 
-    // Helper method to reference the bottom of the flag post.
     Vector3 PostBottom(GameObject g)
     {
         Vector3 position = c.ScreenToWorldPoint(Input.mousePosition);
@@ -168,12 +148,10 @@ public class FlagManager : MonoBehaviour
 
         SpriteRenderer s = g.GetComponent<SpriteRenderer>();
 
-        // Looked this up to help with bottom offset. Half of the vertical height.
         float bottom = s.bounds.extents.y;
         return position + Vector3.up * bottom; 
     }
 
-    // Identifies the object as a flag.
     private bool CheckIfFlag(GameObject g)
     {
         return blueFlags.Contains(g) || greenFlags.Contains(g) || redFlags.Contains(g) || yellowFlags.Contains(g);

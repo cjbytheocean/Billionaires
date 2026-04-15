@@ -23,8 +23,6 @@ public class TurretBehavior : MonoBehaviour
 
     public BillionaireExperience shooterBase;
 
-    public int rank;
-
     public ParticleSystem particles;
 
     void Awake()

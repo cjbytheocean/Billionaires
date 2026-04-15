@@ -13,8 +13,10 @@ public class BillionaireExperience : MonoBehaviour
 
     int threshold = 50;
 
-    // Awards experience to the billionaire when called, fills its
-    // experience bar accordingly, and handles rank ups.
+    void Start()
+    {
+        Debug.Log(gameObject.name + " initial rank = " + rank);
+    }
 
     public void AwardExperience(int amount) { 
         experiencePoints += amount; 

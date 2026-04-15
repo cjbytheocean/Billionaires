@@ -11,12 +11,11 @@ public class BillionDamage : MonoBehaviour
 
     public UnityEngine.UI.Image experienceBar;
 
-    // Applies health upgrade to billions.
     void Start()
     {
         TurretBehavior tb = GetComponent<TurretBehavior>();
         
-        int rank = tb.rank;
+        int rank = tb.shooterBase.rank;
         health = Mathf.RoundToInt(rank * 2.5f);
 
         if (health <= 0)
@@ -25,10 +24,6 @@ public class BillionDamage : MonoBehaviour
         }
     }
 
-    // When called, deal the corresponding amount of damage to the billions and
-    // handles opponent's experience bar.
-    // Calls WhiteRingEffect(), which shows the damage dealt the billion.
-    // When health hits zero, destroy billion.
     public void DealBillionDamage(int amount, BillionaireExperience opp)
     {
         health -= amount;
@@ -46,9 +41,6 @@ public class BillionDamage : MonoBehaviour
         }
     }
 
-    // From old verison of this class, just moved into a method call. Is called
-    // when damage is dealt.
-
     public void WhiteRingEffect()
     {
         Vector3 changedScale = transform.localScale - new Vector3(lowerScaleAmount, lowerScaleAmount, 0); 
@@ -60,7 +52,6 @@ public class BillionDamage : MonoBehaviour
         dontScaleTurret.localScale = Vector3.Scale(dontScaleTurret.localScale, accountForFactor);
     }
 
-    // Destroys the billion.
     void DestroyBillion(BillionaireExperience opp)
     {
         if (opp != null && opp.experienceBar != null)

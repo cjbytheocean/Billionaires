@@ -10,18 +10,14 @@ public class BlasterBehavior : MonoBehaviour
     public bool isBillionaireBlaster;
     Vector3 blasterSpawnPosition;
 
-    
-
     public BillionaireExperience opp;
 
-    // Remembers where the blaster was spawned, and destroys it after blasterLife seconds.
     void Start()
     {
         blasterSpawnPosition = transform.position;
         Destroy(gameObject, blasterLife);
     }
 
-    // Handles the position of an object. Movement is linear.
     void Update()
     {
         transform.position += -transform.right * blasterSpeed * Time.deltaTime;
@@ -32,9 +28,6 @@ public class BlasterBehavior : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    // If the blaster touches a border, destroy the blaster.
-    // If the blaster touches an opponent, deal damage to the opponent, and destroy the blaster.
 
     void OnTriggerEnter2D(Collider2D c)
     {
@@ -60,15 +53,15 @@ public class BlasterBehavior : MonoBehaviour
 
                     int damage = 1;
 
-                    if (tb != null)
+                    if (tb != null && tb.shooterBase != null)
                     {
-                        if (tb.rank == 0)
+                        if (tb.shooterBase.rank == 0)
                         {
                             damage = 1;
                         }
                         else
                         {
-                            damage = Mathf.RoundToInt(tb.rank / 2f);
+                            damage = Mathf.RoundToInt(tb.shooterBase.rank / 2f);
                         }
                     }
 

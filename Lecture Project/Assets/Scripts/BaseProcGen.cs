@@ -25,9 +25,6 @@ public class BaseProcGen : MonoBehaviour
         BaseGeneration();
     }
 
-    // Spawns bases at determined valid spawn position for each base. When position is determined, instantiates
-    // the prefabs at those positions and gets their needed components.
-
     void BaseGeneration()
     {
         spawnPositions.Clear();
@@ -59,6 +56,12 @@ public class BaseProcGen : MonoBehaviour
             BillionSpawner bs = billionaire.GetComponent<BillionSpawner>();
             BillionaireExperience be = billionaire.GetComponentInChildren<BillionaireExperience>();
 
+            TurretBehavior tb = billionaire.GetComponent<TurretBehavior>();
+            if (tb != null)
+            {
+                tb.shooterBase = be;
+            }
+
             if (bs != null)
             {
                 bs.xpBase = be;
@@ -68,8 +71,6 @@ public class BaseProcGen : MonoBehaviour
             }
         } 
     }
-
-    // Helper method to check if the generated position is within the bounds of the vectors.
 
     bool WithinConstraints(Vector2 v)
     {

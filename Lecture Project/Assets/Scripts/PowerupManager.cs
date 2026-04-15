@@ -184,16 +184,20 @@ public class PowerupManager : MonoBehaviour
 
     void RankDown()
     {
-        TurretBehavior highestRank = null;
+        Debug.Log("RankDown running. Count: " + TurretBehavior.billions.Count);
+
+        BillionaireExperience highestRank = null;
 
         foreach (GameObject billion in TurretBehavior.billions)
         {
+            
             if (billion == null)
             {
                 continue;
             }
 
             TurretBehavior tb = billion.GetComponent<TurretBehavior>();
+            Debug.Log(tb.name + " isBillionaire=" + tb.isBillionaire + " rank=" + (tb.shooterBase != null ? tb.shooterBase.rank : -1));
 
             if (tb == null)
             {
@@ -208,23 +212,19 @@ public class PowerupManager : MonoBehaviour
 
             if (SameColor(tb.billionaireColor, immuneTeam))
             {
-                
                 continue;
             }
 
-            if (tb.shooterBase == null) // if it is null it crashes
+            BillionaireExperience bn = tb.shooterBase;
+
+            if (bn == null)
             {
                 continue;
             }
 
-            if (tb.shooterBase.rank <= 0)
+            if (highestRank == null || bn.rank > highestRank.rank)
             {
-                continue;
-            }
-
-            if (highestRank == null || tb.shooterBase.rank > highestRank.shooterBase.rank)
-            {
-                highestRank = tb;
+                highestRank = bn;
             }
         }
 
@@ -233,8 +233,8 @@ public class PowerupManager : MonoBehaviour
             return;
         }
 
-        highestRank.shooterBase.rank = Mathf.Max(0, highestRank.shooterBase.rank - 1);
-        highestRank.shooterBase.RefreshRank();
+        highestRank.rank = Mathf.Max(0, highestRank.rank - 1);
+        highestRank.RefreshRank();
     }
 
     public bool CheckImmunity(Color c)
