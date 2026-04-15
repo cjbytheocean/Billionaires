@@ -33,7 +33,6 @@ public class PowerupManager : MonoBehaviour
             }  
         }
     }
-
     void SpawnBombPowerup()
     {
         if (thisBomb != null)
@@ -73,7 +72,6 @@ public class PowerupManager : MonoBehaviour
     {
         yield return new WaitForSeconds(15f);
         hasImmunity = false;
-        Debug.Log("immunity over");
 
         foreach (GameObject billion in TurretBehavior.billions.ToArray())
         {
@@ -102,8 +100,6 @@ public class PowerupManager : MonoBehaviour
         float explosionTimer = 0f;
         GameObject explosionAid = Instantiate(explosionPrefab, p, Quaternion.identity);
 
-        Debug.Log("explosion called");
-
         while (explosionTimer < explosionDuration)
         {
             explosionTimer += Time.deltaTime;
@@ -120,8 +116,6 @@ public class PowerupManager : MonoBehaviour
         {
             Destroy(explosionAid);
         }
-
-        Debug.Log("explosion ended");
     }
 
     IEnumerator Explosion()
@@ -162,7 +156,6 @@ public class PowerupManager : MonoBehaviour
                         tb.particles.transform.parent = null;
                         tb.particles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
                     }
-                    //Destroy(billion);
                     StartCoroutine(DestroyBillionsDelay(billion, 8f));
                 }
             }
@@ -184,8 +177,6 @@ public class PowerupManager : MonoBehaviour
 
     void RankDown()
     {
-        Debug.Log("RankDown running. Count: " + TurretBehavior.billions.Count);
-
         BillionaireExperience highestRank = null;
 
         foreach (GameObject billion in TurretBehavior.billions)
@@ -197,7 +188,6 @@ public class PowerupManager : MonoBehaviour
             }
 
             TurretBehavior tb = billion.GetComponent<TurretBehavior>();
-            Debug.Log(tb.name + " isBillionaire=" + tb.isBillionaire + " rank=" + (tb.shooterBase != null ? tb.shooterBase.rank : -1));
 
             if (tb == null)
             {
@@ -206,7 +196,6 @@ public class PowerupManager : MonoBehaviour
 
             if (!tb.isBillionaire)
             {
-                
                 continue;
             }
 
@@ -249,10 +238,21 @@ public class PowerupManager : MonoBehaviour
 
     Vector2 GetPosition()
     {
+        // This is reused from another program I wrote, helps ensure that powerup is spawned in camera view.
+        Camera c = Camera.main;
+
         for (int i = 0; i < 250; i++)
         {
-            int x = UnityEngine.Random.Range((int) pgw.mapMinimum.x, (int) pgw.mapMaximum.x);
-            int y = UnityEngine.Random.Range((int) pgw.mapMinimum.y, (int) pgw.mapMaximum.y);
+            Vector3 v = new Vector3(UnityEngine.Random.Range(0.1f, 0.9f), UnityEngine.Random.Range(0.1f, 0.9f), Mathf.Abs(c.transform.position.z));
+            Vector3 conversion = c.ViewportToWorldPoint(v);
+
+            int x = Mathf.RoundToInt(conversion.x);
+            int y = Mathf.RoundToInt(conversion.y); 
+
+            if (x < 0 || y < 0 || x >= pgw.gridHandler.GetLength(0) || y >= pgw.gridHandler.GetLength(1))
+            {
+                continue;
+            }
 
             if (ValidPosition(x, y, 1))
             {
