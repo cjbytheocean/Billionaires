@@ -23,6 +23,11 @@ public class PowerupManager : MonoBehaviour
 
     void Update()
     {
+        if (!pgw.FinishedLoading)
+        {
+            return;
+        }
+        
         if (!spawnPaused)
         {
             spawnIntervalTimer += Time.deltaTime;

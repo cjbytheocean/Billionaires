@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class BillionaireExperience : MonoBehaviour
 {
-    // Only holds a reference to the experience bar.
     public UnityEngine.UI.Image experienceBar;
 
     public int experiencePoints = 0;
@@ -12,11 +11,6 @@ public class BillionaireExperience : MonoBehaviour
     public TextMeshProUGUI rankText;
 
     int threshold = 50;
-
-    void Start()
-    {
-        Debug.Log(gameObject.name + " initial rank = " + rank);
-    }
 
     public void AwardExperience(int amount) { 
         experiencePoints += amount; 
