@@ -19,7 +19,6 @@ public class BillionaireDamage : MonoBehaviour
         }
     }
 
-    // Destroys the billionaire.
     void DestroyBillionaire()
     {
         Destroy(gameObject);

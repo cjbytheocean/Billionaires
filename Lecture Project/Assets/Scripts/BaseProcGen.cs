@@ -9,7 +9,7 @@ using System.Collections;
 public class BaseProcGen : MonoBehaviour
 {
     [SerializeField] float wallMargin = 10f;
-    [SerializeField] float baseMargin = 10f;
+    [SerializeField] float baseMargin = 15f;
 
     public GameObject[] billionairePrefabs;
     List<Vector2> spawnPositions = new List<Vector2>();
@@ -31,7 +31,7 @@ public class BaseProcGen : MonoBehaviour
 
         int t = 0; // this is to help prevent an infinite loop
 
-        while (spawnPositions.Count < 4 && t < 100000)
+        while (spawnPositions.Count < 4 && t < 7000000)
         {
             t++;
 

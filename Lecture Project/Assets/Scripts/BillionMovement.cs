@@ -55,9 +55,7 @@ public class BillionMovement : MonoBehaviour
 
         foreach (GameObject flag in flags)
         {
-            // Documentation for this line:
             // https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Component.TryGetComponent.html
-
             if (flag.TryGetComponent<SpriteRenderer>(out var individualSR))
             {
                 if (CheckColor(individualSR.color, sr.color))
