@@ -31,7 +31,7 @@ public class BaseProcGen : MonoBehaviour
 
         int t = 0; // this is to help prevent an infinite loop
 
-        while (spawnPositions.Count < 4 && t < 10000)
+        while (spawnPositions.Count < 4 && t < 100000)
         {
             t++;
 
@@ -43,7 +43,7 @@ public class BaseProcGen : MonoBehaviour
             int x = Mathf.RoundToInt(spawned.x);
             int y = Mathf.RoundToInt(spawned.y);
 
-            if (WithinConstraints(spawned) && pgw.gridHandler[x, y] == ProcGenWalker.Grid.FLOOR && CheckWallDistance(x, y, 5))
+            if (WithinConstraints(spawned) && pgw.gridHandler[x, y] == ProcGenWalker.Grid.FLOOR && CheckWallDistance(x, y, 2.35f))
             {
                 spawnPositions.Add(spawned);
             } 
@@ -84,25 +84,24 @@ public class BaseProcGen : MonoBehaviour
         return true; 
     }
 
-    bool CheckWallDistance(int x, int y, int distance)
+    bool CheckWallDistance(int x, int y, float radius)
     {
-        for (int i = 1; i <= distance; i++)
+        for (float dx = -radius; dx <= radius; dx ++)
         {
-            if (pgw.gridHandler[x + i, y] == ProcGenWalker.Grid.WALL)
+            for (float dy = -radius; dy <= radius; dy++)
             {
-                return false;
-            }
-            if (pgw.gridHandler[x - i, y] == ProcGenWalker.Grid.WALL)
-            {
-                return false;
-            }
-            if (pgw.gridHandler[x, y + i] == ProcGenWalker.Grid.WALL)
-            {
-                return false;
-            }
-            if (pgw.gridHandler[x, y - i] == ProcGenWalker.Grid.WALL)
-            {
-                return false;
+                float xDistance = x + dx;
+                float yDistance = y + dy;
+
+                if (xDistance < 0 || yDistance < 0 || xDistance >= pgw.gridHandler.GetLength(0) || yDistance >= pgw.gridHandler.GetLength(1))
+                {
+                    continue;
+                }
+
+                if (pgw.gridHandler[(int) xDistance, (int) yDistance] == ProcGenWalker.Grid.WALL)
+                {
+                    return false;
+                }
             }
         }
         return true;
