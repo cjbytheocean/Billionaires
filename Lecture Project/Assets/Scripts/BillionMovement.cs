@@ -45,6 +45,11 @@ public class BillionMovement : MonoBehaviour
         Vector2 s = dv - rb.linearVelocity;
         s = Vector2.ClampMagnitude(s, accSpeed);
         rb.AddForce(s);
+
+        if (Physics2D.OverlapPoint(rb.position))
+        {
+            rb.AddForce(UnityEngine.Random.insideUnitCircle * accSpeed, ForceMode2D.Impulse);
+        }
     }
 
     GameObject FindNearestFlag()
