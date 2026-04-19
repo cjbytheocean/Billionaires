@@ -67,13 +67,6 @@ public class BillionSpawner : MonoBehaviour
       
         GameObject billion = Instantiate(billionPrefab, pos, Quaternion.identity);
 
-        // https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Random-insideUnitCircle.html
-        Rigidbody2D rb = billion.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.position += UnityEngine.Random.insideUnitCircle * 0.05f;
-        }
-
         TurretBehavior tb = billion.GetComponent<TurretBehavior>();
         tb.billionaireColor = billionaireColor;
         tb.shooterBase = xpBase;
