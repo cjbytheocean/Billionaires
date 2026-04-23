@@ -211,6 +211,7 @@ public class ProcGenWalker : MonoBehaviour
             }
         }
         CenterCamera();
+        CreateColliders();
 
         tileMap.CompressBounds();
 
@@ -218,6 +219,25 @@ public class ProcGenWalker : MonoBehaviour
         tmc.enabled = false;
         tmc.enabled = true;
         FinishedLoading = true;
+    }
+
+    void CreateColliders()
+    {
+        float colliderThickness = 1f;
+        float minX = mapMinimum.x;
+        float minY = mapMinimum.y;
+        float maxX = mapMaximum.x;
+        float maxY = mapMaximum.y;
+
+        
+    }
+
+    void CreateBorder(Vector2 placement, Vector2 size)
+    {
+        GameObject g = new GameObject("Border");
+        g.transform.position = placement;
+        BoxCollider2D bc = g.AddComponent<BoxCollider2D>();
+        bc.size = size; 
     }
 
     // Looked up on documentation and StackOverFlow.
