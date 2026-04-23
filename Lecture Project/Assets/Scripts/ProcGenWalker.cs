@@ -223,13 +223,19 @@ public class ProcGenWalker : MonoBehaviour
 
     void CreateColliders()
     {
-        float colliderThickness = 1f;
+        float colliderThickness = 5f;
         float minX = mapMinimum.x;
         float minY = mapMinimum.y;
         float maxX = mapMaximum.x;
         float maxY = mapMaximum.y;
 
-        
+        float w = maxX - minX;
+        float h = maxY - minY;
+
+        CreateBorder(new Vector2((minX + maxX) / 2, minY - colliderThickness / 2 + 1.5f), new Vector2(w + 2 * colliderThickness, colliderThickness));
+        CreateBorder(new Vector2((minX + maxX) / 2, maxY - colliderThickness / 2 + 4.5f), new Vector2(w + 2 * colliderThickness, colliderThickness));
+        CreateBorder(new Vector2(minX - colliderThickness / 2 + 12f, (minY + maxY) / 2), new Vector2(colliderThickness, h));
+        //CreateBorder(new Vector2((maxX + colliderThickness / 2 + 10f), (minY + maxY) / 2), new Vector2(colliderThickness, h));
     }
 
     void CreateBorder(Vector2 placement, Vector2 size)
