@@ -36,34 +36,10 @@ public class BillionSpawner : MonoBehaviour
         float billionaireRadius = billionaireCollider.radius * transform.localScale.x;
         float billionRadius = billionCollider.radius * billionPrefab.transform.localScale.x;
         float dist = billionaireRadius + billionRadius + spacing + 0.05f;
-        float diameter = billionRadius * 2f + spacing;
-
-        Vector3 pos;
-        GameObject currentFlag = FindFlag(billionaireColor);
-
-        if (currentFlag != null && spawnedBillions.Count > 0)
-        {
-            pos = basePosition;
-        }
-        else
-        {
-            int r = 0;
-            int num = i;
-
-            while (num >= r + 1)
-            {
-                num -= r + 1;
-                r++;
-            }
-
-            int c = num;
-
-            float x = dist + r * (diameter * 0.87f);
-            float y = (c - r * 0.5f) * diameter;
-
-            Vector2 offset = new Vector2(x * spawnDirection.x, y);
-            pos = transform.position + (Vector3)offset;
-        }
+     
+        float radius = dist + 0.1f;
+        Vector2 offset = UnityEngine.Random.insideUnitCircle * radius;
+        Vector3 pos = transform.position + (Vector3) offset;
       
         GameObject billion = Instantiate(billionPrefab, pos, Quaternion.identity);
 
