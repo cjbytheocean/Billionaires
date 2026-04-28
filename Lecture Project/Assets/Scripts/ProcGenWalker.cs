@@ -211,7 +211,6 @@ public class ProcGenWalker : MonoBehaviour
             }
         }
         CenterCamera();
-        CreateColliders();
 
         tileMap.CompressBounds();
 
@@ -219,30 +218,6 @@ public class ProcGenWalker : MonoBehaviour
         tmc.enabled = false;
         tmc.enabled = true;
         FinishedLoading = true;
-    }
-
-    void CreateColliders()
-    {
-        float colliderThickness = 5f;
-
-        Camera c = Camera.main;
-        Vector2 cameraPosition = c.transform.position;
-
-        float w = 2f * c.orthographicSize;
-        float h = w * c.aspect;
-
-       // CreateBorder(new Vector2(cameraPosition.x, cameraPosition.y + (h / 2f) + (colliderThickness / 2f)), new Vector2(w + 10, colliderThickness));
-       // CreateBorder(new Vector2(cameraPosition.x, cameraPosition.y - (h / 2f) - (colliderThickness / 2f)), new Vector2(w + 10, colliderThickness));
-       // CreateBorder(new Vector2(cameraPosition.x - (w / 2f) - (colliderThickness / 2f) + 10f, cameraPosition.y), new Vector2(colliderThickness, h + 10));
-       // CreateBorder(new Vector2(cameraPosition.x + (w / 2f) + (colliderThickness / 2f) - 10f, cameraPosition.y), new Vector2(colliderThickness, h + 10));
-    }
-
-    void CreateBorder(Vector2 placement, Vector2 size)
-    {
-        GameObject g = new GameObject("Border");
-        g.transform.position = placement;
-        BoxCollider2D bc = g.AddComponent<BoxCollider2D>();
-        bc.size = size; 
     }
 
     // Looked up on documentation and StackOverFlow.

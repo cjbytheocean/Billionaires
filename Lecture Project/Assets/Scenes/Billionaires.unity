@@ -603,8 +603,8 @@ MonoBehaviour:
   tileMap: {fileID: 2099276457}
   Floor: {fileID: 11400000, guid: 9c860a8a9984c4834835aa28223b39b8, type: 2}
   Wall: {fileID: 11400000, guid: 9449ecc89f9764c4fb50a853ba9fc1df, type: 2}
-  MapWidth: 90
-  MapHeight: 35
+  MapWidth: 62
+  MapHeight: 30
   MaximumWalkers: 8
   TileCount: 0
   FillPercentage: 0.5
