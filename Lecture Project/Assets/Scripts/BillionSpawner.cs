@@ -35,7 +35,7 @@ public class BillionSpawner : MonoBehaviour
 
         float billionaireRadius = billionaireCollider.radius * transform.localScale.x;
         float billionRadius = billionCollider.radius * billionPrefab.transform.localScale.x;
-        float dist = billionaireRadius + billionRadius + spacing;
+        float dist = billionaireRadius + billionRadius + spacing + 0.05f;
         float diameter = billionRadius * 2f + spacing;
 
         Vector3 pos;
