@@ -231,11 +231,6 @@ public class PowerupManager : MonoBehaviour
         highestRank.RefreshRank();
     }
 
-    public bool CheckImmunity(Color c)
-    {
-        return hasImmunity && SameColor(c, immuneTeam);
-    }
-
     public bool SameColor(Color one, Color two)
     {
         return Mathf.Abs(one.r - two.r) < 0.05f && Mathf.Abs(one.g - two.g) < 0.05f && Mathf.Abs(one.b - two.b) < 0.05f;

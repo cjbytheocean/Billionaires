@@ -23,7 +23,6 @@ public class BillionDamage : MonoBehaviour
             health = 1;
         }
     }
-
     public void DealBillionDamage(int amount, BillionaireExperience opp)
     {
         health -= amount;

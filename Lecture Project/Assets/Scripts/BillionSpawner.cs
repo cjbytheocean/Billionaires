@@ -64,21 +64,4 @@ public class BillionSpawner : MonoBehaviour
         spawnedBillions.Add(billion);
         i++;
     }
-
-    GameObject FindFlag(Color c)
-    {
-        GameObject[] flags = GameObject.FindGameObjectsWithTag("Flag");
-
-        foreach (GameObject flag in flags)
-        {
-            if (flag.TryGetComponent<SpriteRenderer>(out var sr))
-            {
-                if (Mathf.Abs(sr.color.r - c.r) < 0.05f && Mathf.Abs(sr.color.g - c.g) < 0.05f &&Mathf.Abs(sr.color.b - c.b) < 0.05f)
-                {
-                    return flag;
-                }
-            }
-        }
-        return null;
-    }
 }
