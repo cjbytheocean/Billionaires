@@ -30,24 +30,16 @@ public class BaseProcGen : MonoBehaviour
     {
         spawnPositions.Clear();
 
-        int t = 0; // this is to help prevent an infinite loop
+        int t = 0;
 
         while (spawnPositions.Count < 4 && t < 7000000)
         {
             t++;
-
-            // float xPosition = Random.Range(pgw.mapMinimum.x + wallMargin, pgw.mapMaximum.x - wallMargin);
-            // float yPosition = Random.Range(pgw.mapMinimum.y + wallMargin, pgw.mapMaximum.y - wallMargin);
-
-            // Vector2 spawned = new Vector2(xPosition, yPosition);
-
             Camera c = Camera.main;
 
             Vector3 v = new Vector3(Random.Range(0.1f, 0.9f), Random.Range(0.1f, 0.9f), Mathf.Abs(c.transform.position.z));
             Vector3 w = c.ViewportToWorldPoint(v);
             Vector2 spawned = new Vector2(w.x, w.y);
-
-            
 
             int x = Mathf.RoundToInt(spawned.x);
             int y = Mathf.RoundToInt(spawned.y);
