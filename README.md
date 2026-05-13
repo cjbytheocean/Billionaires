@@ -1,4 +1,10 @@
-# B453-Lecture-Project
+# Billionaires
+
+Instructions: 
+
+Press "B", "G", "R" or "Y" to place blue, green, red, or yellow flags respectively for up to two flags per team. To move flags, press the team's key, or click and drag to the desired location. The goal is to rank up bases and destroy other teams.
+
+Sources: 
 
 Radial Health Bar - https://www.youtube.com/watch?v=ZzkIn41DFFo
 
